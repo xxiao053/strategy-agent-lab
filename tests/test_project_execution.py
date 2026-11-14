@@ -188,6 +188,8 @@ def test_independent_builder_contract_check_uses_isolate_and_rejects_invalid_out
 
 def test_mxc_boundary_fails_closed_and_does_not_receive_provider_credentials(tmp_path,monkeypatch):
     from lab.project_evaluator import MXCBoundary
+    from types import SimpleNamespace
+    monkeypatch.setattr('lab.project_evaluator.os',SimpleNamespace(name='nt'))
     work=tmp_path/'work';home=tmp_path/'home';work.mkdir();home.mkdir()
     monkeypatch.setenv('OPENAI_API_KEY','private-probe-key')
     monkeypatch.setattr('lab.project_evaluator.shutil.which',lambda _:None)
@@ -297,6 +299,8 @@ def test_historical_mxc_config_is_readonly_and_probe_rejects_inside_writes(tmp_p
     import tomllib
     from lab.project_evaluator import MXCBoundary
     from lab.build_runtime import runtime_config
+    from types import SimpleNamespace
+    monkeypatch.setattr('lab.project_evaluator.os',SimpleNamespace(name='nt'))
     work=tmp_path/'work';home=tmp_path/'home';work.mkdir();home.mkdir()
     monkeypatch.setattr('lab.project_evaluator.shutil.which',lambda _:'codex')
     boundary=MXCBoundary(work,home)

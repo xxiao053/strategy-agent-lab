@@ -63,12 +63,13 @@ def test_partial_provider_usage_does_not_price_missing_output_as_free(tmp_path):
     assert record['usage_cost'] is None and record['committed_cost']==record['reserved_cost']
 
 
-def test_original_runner_future_requests_use_same_one_point_five_reservation(tmp_path):
+def test_original_runner_future_requests_use_same_one_point_five_reservation(tmp_path,monkeypatch):
     import json,httpx
     from lab.contracts import RunConfig
     from lab.providers import ProviderError
     from lab.runner import Runner
     from lab.store import Store
+    monkeypatch.setenv('OPENAI_API_KEY','offline-billing-fixture')
     cfg=RunConfig(mode='live',approved=True,paid_authorized=True,use_images=False,input_rate=.1,output_rate=.5)
     store=Store(tmp_path/'original.sqlite3');run=store.create(cfg.model_dump(),{},'offline-fixture')
     def reject(request):return httpx.Response(400,json={'error':{'type':'fixture'}})
@@ -99,12 +100,13 @@ def test_malformed_usage_components_rejected_before_normalization(raw):
     ({'input_tokens':1000,'output_tokens':200,'input_tokens_details':{'cached_tokens':800}},.000128),
     ({'input_tokens':1000},None),
 ])
-def test_original_runner_new_receipts_price_usage_without_margin_and_keep_legacy(tmp_path,reported,expected):
+def test_original_runner_new_receipts_price_usage_without_margin_and_keep_legacy(tmp_path,reported,expected,monkeypatch):
     import json,httpx
     from lab.contracts import RunConfig
     from lab.providers import ProviderError
     from lab.runner import Runner
     from lab.store import Store
+    monkeypatch.setenv('OPENAI_API_KEY','offline-billing-fixture')
     cfg=RunConfig(mode='live',approved=True,paid_authorized=True,use_images=False,budget_scope='offline')
     store=Store(tmp_path/'original.sqlite3');store.authorize_budget('offline',1)
     old=store.create(cfg.model_dump(),{},'old');store.begin_request(old['id'],'old','old','old',.01,{'body':{}})
