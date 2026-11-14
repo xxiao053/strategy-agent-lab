@@ -44,6 +44,12 @@ pnpm --dir web dev
 
 The Vite development server proxies API requests to the local backend on port 8765.
 
+## Continuous integration
+
+The [CI workflow](../../.github/workflows/ci.yml) checks pushes and pull requests with read-only repository permissions and no model credentials. Its Ubuntu jobs run Python 3.13 self-contained backend tests against the locked runtime, plus Node.js 22 frontend tests and both local/static builds using the frozen pnpm lock. Private-market integrations and opt-in engine checks are not part of this automatic suite; a green CI badge does not establish live-provider compatibility or operating-system/Docker acceptance.
+
+CI does not publish a website. The separate [Pages workflow](github-pages.md) remains manual-only. The README CI badge reflects the actual `main` workflow status, not a fixed passing label.
+
 ## Safe changes
 
 Follow [Product direction](product-direction.md) when extending the product. The builder and execution have different responsibilities and permissions. Do not add a chat wrapper while retaining cup-only assumptions as the generic project interface, or add dependencies merely to cover a technology checklist. Preserve the existing demonstration while designing explicit method boundaries.

@@ -1,12 +1,16 @@
 # Strategy Agent Lab
 
-[English](README.md) | [简体中文](README.zh-CN.md)
+[English](https://github.com/xxiao053/strategy-agent-lab#readme) | **简体中文**
 
 ### 把你的投资方法，变成可验证的策略项目。
 
 从一个投资想法、自己的交易规则，或笔记和图表案例开始。构建助手会追问不清楚的地方，把你确认的方法写成策略代码并测试。你可以用历史数据运行它，检查它做了什么，再在同一段对话中继续修改。
 
-**[在线体验](https://xxiao053.github.io/strategy-agent-lab/)** · **[本地运行](#快速开始)** · **[文档](#文档)** · **[演示视频](docs/media/walkthrough.mp4)**
+[![在线工作台](https://img.shields.io/badge/Open_Workbench-2357D9?style=for-the-badge)](https://xxiao053.github.io/strategy-agent-lab/)
+[![CI](https://img.shields.io/github/actions/workflow/status/xxiao053/strategy-agent-lab/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/xxiao053/strategy-agent-lab/actions/workflows/ci.yml)
+[![MIT 许可证](https://img.shields.io/badge/License-MIT-117A55?style=for-the-badge)](LICENSE)
+
+**[本地运行](#快速开始)** · **[文档](#文档)** · **[演示视频](docs/media/walkthrough.mp4)**
 
 ![真实构建对话与运行结果：权益、累计收益率、最大回撤和权益曲线](docs/media/workbench-run-results.png)
 

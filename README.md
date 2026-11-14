@@ -1,12 +1,16 @@
 # Strategy Agent Lab
 
-[English](README.md) | [简体中文](README.zh-CN.md)
+**English** | [简体中文](README.zh-CN.md)
 
 ### Turn your investment method into a testable strategy.
 
 Start with an investment idea, your own rules, or examples from your notes and charts. The Builder Agent asks questions to make the rules clear, then turns your approved method into strategy code and tests. Run it on historical data, inspect what it did, and refine it in the same conversation.
 
-**[Online demo](https://xxiao053.github.io/strategy-agent-lab/)** · **[Run locally](#quick-start)** · **[Documentation](#documentation)** · **[Watch the walkthrough](docs/media/walkthrough.mp4)**
+[![Open Workbench](https://img.shields.io/badge/Open_Workbench-2357D9?style=for-the-badge)](https://xxiao053.github.io/strategy-agent-lab/)
+[![CI](https://img.shields.io/github/actions/workflow/status/xxiao053/strategy-agent-lab/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/xxiao053/strategy-agent-lab/actions/workflows/ci.yml)
+[![MIT License](https://img.shields.io/badge/License-MIT-117A55?style=for-the-badge)](LICENSE)
+
+**[Run locally](#quick-start)** · **[Documentation](#documentation)** · **[Watch the walkthrough](docs/media/walkthrough.mp4)**
 
 ![A real Builder conversation beside run results: equity, total return, maximum drawdown and the equity curve](docs/media/workbench-run-results.png)
 
