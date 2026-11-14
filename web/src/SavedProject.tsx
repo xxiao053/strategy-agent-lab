@@ -1,6 +1,7 @@
 import {useEffect,useState} from 'react';
 import {useLanguage} from './i18n';
 import {Curve} from './App';
+import {runMetrics} from './run-metrics';
 import './workspace.css';
 import './saved-project.css';
 
@@ -8,14 +9,6 @@ type Obj=Record<string,any>;
 type Props={example:Obj;initialTab?:string;onTab?:(tab:string)=>void;imageURL?:(hash:string)=>string|undefined;onCopy?:(version:number)=>void;copying?:boolean};
 const money=(value:number)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(value);
 const percent=(value:number)=>new Intl.NumberFormat('en-US',{style:'percent',maximumFractionDigits:2}).format(value);
-
-export function runMetrics(run:Obj){
-  const initial=run.assumptions.initial_cash,curve=run.curve;
-  if(!Number.isFinite(initial)||initial<=0||!curve.length||curve.some((p:Obj)=>!Number.isFinite(p.equity)))return null;
-  let peak=initial,maxDrawdown=0;
-  for(const point of curve){peak=Math.max(peak,point.equity);maxDrawdown=Math.max(maxDrawdown,(peak-point.equity)/peak)}
-  return {totalReturn:(curve.at(-1).equity-initial)/initial,maxDrawdown};
-}
 
 export default function SavedProject({example,initialTab='method',onTab,imageURL,onCopy,copying=false}:Props){
   const {language}=useLanguage(),t=(zh:string,en:string)=>language==='en'?en:zh;

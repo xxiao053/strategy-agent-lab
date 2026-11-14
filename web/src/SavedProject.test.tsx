@@ -1,6 +1,7 @@
 import {afterEach,expect,test,vi} from 'vitest';
 import {cleanup,fireEvent,render,screen,within} from '@testing-library/react';
-import SavedProject,{runMetrics} from './SavedProject';
+import SavedProject from './SavedProject';
+import {runMetrics} from './run-metrics';
 
 afterEach(()=>{cleanup();vi.unstubAllGlobals();localStorage.clear()});
 const example={id:'actual-example',title:'Complete method',schema:'saved-builder-example-v1',
@@ -35,6 +36,15 @@ test('generated self-test output is not labeled as independent validation',()=>{
 test('return and drawdown use initial cash and the full daily equity path',()=>{
   expect(runMetrics({assumptions:{initial_cash:100},curve:[{equity:90},{equity:120},{equity:90},{equity:110}]})).toEqual({totalReturn:.1,maxDrawdown:.25});
   expect(runMetrics({assumptions:{initial_cash:100},curve:[]})).toBeNull();
+});
+
+test.each([0,-100,NaN,Infinity,undefined])('invalid initial cash %s has no invented performance percentages',initial_cash=>{
+  expect(runMetrics({assumptions:{initial_cash},curve:[{equity:110}]})).toBeNull();
+});
+
+test('missing or non-finite equity history has no performance percentages',()=>{
+  expect(runMetrics({assumptions:{initial_cash:100}})).toBeNull();
+  expect(runMetrics({assumptions:{initial_cash:100},curve:[{equity:100},{equity:NaN},{equity:110}]})).toBeNull();
 });
 
 test('saved result exposes return, daily close drawdown and independent review separately',()=>{

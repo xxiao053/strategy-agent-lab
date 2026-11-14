@@ -8,7 +8,7 @@
 
 **[在线体验](https://xxiao053.github.io/strategy-agent-lab/)** · **[本地运行](#快速开始)** · **[文档](#文档)** · **[演示视频](docs/media/walkthrough.mp4)**
 
-![真实构建对话与已确认方法](docs/media/builder-conversation.png)
+![真实构建对话与运行结果：权益、累计收益率、最大回撤和权益曲线](docs/media/workbench-run-results.png)
 
 视频是已保存真实记录的剪辑回放，配中英文字幕。浏览示范不会产生模型调用。
 

@@ -8,7 +8,7 @@ Start with an investment idea, your own rules, or examples from your notes and c
 
 **[Online demo](https://xxiao053.github.io/strategy-agent-lab/)** · **[Run locally](#quick-start)** · **[Documentation](#documentation)** · **[Watch the walkthrough](docs/media/walkthrough.mp4)**
 
-![A real Builder conversation beside its approved method](docs/media/builder-conversation.png)
+![A real Builder conversation beside run results: equity, total return, maximum drawdown and the equity curve](docs/media/workbench-run-results.png)
 
 The video is edited playback of real saved records, with English and Chinese captions. Browsing these examples makes no model calls.
 

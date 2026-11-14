@@ -1,6 +1,6 @@
 import React from 'react';
 import {afterEach,expect,test,vi} from 'vitest';
-import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
+import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react';
 import ProjectRuns from './ProjectRuns';
 afterEach(cleanup);
 const t=(_:string,en:string)=>en;
@@ -39,6 +39,49 @@ function result(id:string){return {id,build_id:'b1',version:1,status:'completed'
   trades:[{id:'d1-order',decision_id:'d1',date:'2024-01-04',symbol:'SPY',action:'buy',quantity:3,price:20,fee:0,reason:'next_session_open'}],
   decisions:[{id:'d1',cutoff:'2024-01-03',status:'ordered',proposal:{symbol:'SPY',action:'buy',sizing:{shares:3},explanation:'Approved entry R1'},
     rule:'Approved entry R1',input_hash:'input-hash',account:{cash:100,positions:{}},evidence:{SPY:[{date:'2024-01-03',open:12,high:14,low:11,close:13,volume:100}]},model:null}]};}
+
+test.each(['en','zh-CN'])('saved run shows frozen-capital return and peak-to-trough drawdown in %s',async language=>{
+  const saved=result('metrics-run');
+  saved.curve=[90,120,90,110].map((equity,index)=>({date:`2024-01-0${index+2}`,equity}));
+  const api=async(path:string)=>path==='/execution-catalog'?{symbols:['SPY']}:path.endsWith('/runs')?[saved]:saved;
+  const translate=(zh:string,en:string)=>language==='en'?en:zh;
+  render(<ProjectRuns project={project()} connections={[]} budget={2} rolesPending={false} api={api} t={translate} onQuote={()=>{}} onChanged={async()=>{}}/>);
+  fireEvent.click(await screen.findByRole('button',{name:/metrics-run/}));
+  const summary=await screen.findByRole('group',{name:translate('运行表现','Run performance')});
+  expect(within(summary).getByText('$110.00')).toBeTruthy();
+  expect(within(summary).getByText(translate('累计收益率','Total return'))).toBeTruthy();
+  expect(within(summary).getByText('10%')).toBeTruthy();
+  expect(within(summary).getByText(translate('最大回撤（日收盘）','Maximum drawdown (daily close)'))).toBeTruthy();
+  expect(within(summary).getByText('25%')).toBeTruthy();
+  fireEvent.change(screen.getByLabelText(translate('初始现金','Initial cash')),{target:{value:'1000'}});
+  expect(within(summary).getByText('10%')).toBeTruthy();
+});
+
+test('switching saved runs updates return and counts first-session loss from initial capital',async()=>{
+  const gain=result('gain-run'),loss=result('loss-run');
+  gain.curve=[{date:'2024-01-03',equity:100},{date:'2024-01-05',equity:110}];
+  loss.curve=[{date:'2024-01-03',equity:80},{date:'2024-01-05',equity:90}];
+  const api=async(path:string)=>path==='/execution-catalog'?{symbols:['SPY']}:path.endsWith('/runs')?[gain,loss]:path.endsWith('/gain-run')?gain:loss;
+  render(<ProjectRuns project={project()} connections={[]} budget={2} rolesPending={false} api={api} t={t} onQuote={()=>{}} onChanged={async()=>{}}/>);
+  fireEvent.click(await screen.findByRole('button',{name:/gain-run/}));
+  let summary=await screen.findByRole('group',{name:'Run performance'});
+  expect(within(summary).getByText('10%')).toBeTruthy();
+  expect(within(summary).getByText('0%')).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:/loss-run/}));
+  await waitFor(()=>expect(within(summary).getByText('-10%')).toBeTruthy());
+  expect(within(summary).getByText('20%')).toBeTruthy();
+});
+
+test('missing frozen capital does not invent return or drawdown for an existing equity curve',async()=>{
+  const saved:any=result('legacy-run');delete saved.frozen;
+  const api=async(path:string)=>path==='/execution-catalog'?{symbols:['SPY']}:path.endsWith('/runs')?[saved]:saved;
+  render(<ProjectRuns project={project()} connections={[]} budget={2} rolesPending={false} api={api} t={t} onQuote={()=>{}} onChanged={async()=>{}}/>);
+  fireEvent.click(await screen.findByRole('button',{name:/legacy-run/}));
+  const summary=await screen.findByRole('group',{name:'Run performance'});
+  expect(within(summary).getByText('$88.00')).toBeTruthy();
+  expect(within(summary).queryByText('Total return')).toBeNull();
+  expect(within(summary).queryByText('Maximum drawdown (daily close)')).toBeNull();
+});
 
 test('code-only run starts without any model authorization or connection',async()=>{
   const requests:any[]=[];

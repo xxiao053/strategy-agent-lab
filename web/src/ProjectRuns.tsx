@@ -1,9 +1,11 @@
 import {useEffect,useRef,useState} from 'react';
 import {Curve} from './App';
+import {runMetrics} from './run-metrics';
 import ProjectDecisionEvidence from './ProjectDecisionEvidence';
 type Obj=Record<string,any>;
 type Props={project:Obj;connections:Obj[];budget:number;rolesPending:boolean;api:(path:string,body?:Obj)=>Promise<any>;t:(zh:string,en:string)=>string;onQuote:(text:string,reference:{run_id:string;decision_id:string})=>void;onChanged:()=>Promise<void>;onConfigure?:()=>void};
 const money=(n:number)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n||0);
+const percent=(n:number)=>new Intl.NumberFormat('en-US',{style:'percent',maximumFractionDigits:2}).format(n);
 function contract(build:Obj|undefined){try{return JSON.parse(build?.artifacts?.find((f:Obj)=>f.name==='execution.json')?.text||'null')}catch{return null}}
 
 export default function ProjectRuns({project,connections,budget,rolesPending,api,t,onQuote,onChanged,onConfigure}:Props){
@@ -63,6 +65,7 @@ export default function ProjectRuns({project,connections,budget,rolesPending,api
   }
   const decision=selected?.decisions?.find((d:Obj)=>d.id===decisionId);
   const fills=selected?.trades?.filter((o:Obj)=>o.decision_id===decisionId)||[];
+  const metrics=selected&&runMetrics({assumptions:selected.frozen?.assumptions,curve:selected.curve});
   return <section className="bw-runs" aria-label={t('运行与结果','Runs & results')}>
     <div className="bw-paper"><h2>{t('历史运行','Historical run')}</h2><p>{t('运行已确认方法的生成代码。行情来自本地冻结的美股与 ETF 数据；不会自动下载。','Execute generated code for an approved method against locally frozen US stock/ETF data. No automatic downloads.')}</p>
       {!builds.length&&<p className="bw-caption">{project.builds?.length?t('请重新构建已确认方法，生成 strategy-v1 执行清单。旧构建和结果仍可查看。','Rebuild an approved method to generate a strategy-v1 execution manifest. Older builds and results remain available.'):t('请先确认方法，再构建并验证，之后即可开始历史运行。','Approve your method, then build and validate it before starting a historical run.')}</p>}
@@ -91,7 +94,11 @@ export default function ProjectRuns({project,connections,budget,rolesPending,api
       {selected.error&&<p role="alert" className="bw-record-error">{selected.error}</p>}
       {selected.status==='running'&&<><progress value={selected.completed_sessions||0} max={selected.total_sessions||1}/><button disabled={selected.cancel_requested} onClick={async()=>{try{const r=await api(`${base}/${selected.id}/cancel`,{});setSelected(s=>s?{...s,...r}:s)}catch(e:any){setError(e.message)}}}>{selected.cancel_requested?t('正在停止…','Stopping…'):t('取消运行','Cancel run')}</button><p className="bw-caption">{t('取消不会抹除已完成证据或费用；正在进行的请求可能完成。','Cancellation preserves completed evidence and spend; an in-flight request may finish.')}</p></>}
       {selected.frozen&&<><p>{selected.frozen.assumptions.symbols.join(', ')} · {selected.frozen.assumptions.start} — {selected.frozen.assumptions.end}</p><p>{t('初始现金','Initial cash')} {money(selected.frozen.assumptions.initial_cash)} · {t('单边费用','Fee per side')} {(selected.frozen.assumptions.fee_rate*100).toFixed(3)}%</p><details><summary>{t('冻结来源与假设','Frozen sources and assumptions')}</summary><p>{selected.frozen.price_basis}</p>{['build_hash','market_hash','run_hash'].map(k=><p className="bw-run-hash" key={k}>{k}: {selected.frozen[k]}</p>)}<p>{selected.frozen.model?`${selected.frozen.model.provider} · ${selected.frozen.model.model}`:t('无执行模型','No execution model')}</p></details></>}
-      {!!selected.curve?.length&&<><div className="bw-run-equity"><span>{t('最新权益','Latest equity')}</span><strong>{money(selected.curve.at(-1).equity)}</strong></div><Curve curve={selected.curve}/></>}
+      {!!selected.curve?.length&&<><div className="bw-run-metrics" role="group" aria-label={t('运行表现','Run performance')}>
+        <div className="bw-run-equity"><span>{t('最新权益','Latest equity')}</span><strong>{money(selected.curve.at(-1).equity)}</strong></div>
+        {metrics&&<><div className="bw-run-equity"><span>{t('累计收益率','Total return')}</span><strong>{percent(metrics.totalReturn)}</strong></div>
+          <div className="bw-run-equity"><span>{t('最大回撤（日收盘）','Maximum drawdown (daily close)')}</span><strong>{percent(metrics.maxDrawdown)}</strong></div></>}
+      </div><Curve curve={selected.curve}/></>}
       {selected.positions&&<><h3>{t('期末未平仓','Open positions')}</h3>{Object.entries(selected.positions).length?Object.entries(selected.positions).map(([s,q])=><p key={s}>{s} · {String(q)} {t('股','shares')}</p>):<p>{t('无持仓','No positions')}</p>}</>}
       {selected.trades&&<><h3>{t('实际模拟成交','Simulated fills')}</h3>{selected.trades.length?selected.trades.map((o:Obj)=><button className="bw-run-link" key={o.id} onClick={()=>setDecisionId(o.decision_id)}>{o.action} {o.quantity} {o.symbol} · {o.date}</button>):<p>{t('没有成交','No fills')}</p>}</>}
       {selected.orders?.some((o:Obj)=>o.status!=='filled')&&<details><summary>{t('未成交与取消订单','Unfilled and cancelled orders')}</summary>{selected.orders.filter((o:Obj)=>o.status!=='filled').map((o:Obj)=><button className="bw-run-link" key={o.id} onClick={()=>setDecisionId(o.decision_id)}>{o.symbol} · {o.status} · {o.reason}</button>)}</details>}
