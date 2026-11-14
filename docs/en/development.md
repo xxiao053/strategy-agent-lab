@@ -72,7 +72,7 @@ The release command `pnpm --dir web build:showcase` requires `VITE_SHOWCASE_REPO
 
 Before publishing a showcase build:
 
-The included **Review or publish static showcase** Actions workflow is manual-only. Its default builds/tests and uploads a review artifact, not a website. After the release checks below and owner approval, configure repository Pages to use GitHub Actions and dispatch with **publish** enabled. Only that deployment job receives Pages-write authority. Source links derive from the actual repository; no model credentials are used. The workflow is prepared and locally policy-tested, not yet executed on GitHub. Its file uses JSON, a strict YAML subset.
+The included **Review or publish static showcase** Actions workflow is manual-only. Its default builds/tests and uploads a review artifact, not a website. After the release checks below and owner approval, configure repository Pages to use GitHub Actions and dispatch with **publish** enabled. Only that deployment job receives Pages-write authority. Source links derive from the actual repository; no model credentials are used. The [public workbench](https://xxiao053.github.io/strategy-agent-lab/) is deployed through this workflow; subsequent updates still require manual dispatch. Its file uses JSON, a strict YAML subset.
 
 - Load reviewed, redistributable examples without credentials, a runtime database or a running local backend. Test in a fresh browser with no saved application state.
 - Verify navigation, direct links, refresh, assets and media under the project's Pages path. Check that neither local API endpoints nor model providers receive requests.

@@ -6,7 +6,9 @@ GitHub Pages 托管只读工作台：已保存对话、方法、代码、测试�
 
 ## 托管方式与地址
 
-[GitHub Free 支持公开仓库使用 Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)。项目网址格式为 `https://<owner>.github.io/<repository>/`，无需购买域名。这是地址格式，不表示仓库或网站已经公开；自定义域名是可选项。
+在线工作台：**[xxiao053.github.io/strategy-agent-lab](https://xxiao053.github.io/strategy-agent-lab/)**；项目源码：**[GitHub 仓库](https://github.com/xxiao053/strategy-agent-lab)**。
+
+[GitHub Free 支持公开仓库使用 Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)。项目网址格式为 `https://<owner>.github.io/<repository>/`，无需购买域名；自定义域名是可选项。
 
 当前 [Pages 限额](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)包括：网站体积最多 1 GB、每月流量软限制 100 GB、部署超时 10 分钟。Pages 用于静态项目网站，不是商业交易服务或收费 SaaS 后台。本项目静态查看器不发送凭据、不调用模型；GitHub 本身会按其隐私政策记录访客 IP。
 

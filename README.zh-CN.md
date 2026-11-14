@@ -6,7 +6,7 @@
 
 从一个投资想法、自己的交易规则，或笔记和图表案例开始。构建助手会追问不清楚的地方，把你确认的方法写成策略代码并测试。你可以用历史数据运行它，检查它做了什么，再在同一段对话中继续修改。
 
-**[观看流程视频](docs/media/walkthrough.mp4)** · **[本地运行](#快速开始)** · **[查看真实案例](docs/zh-CN/demonstration.md)** · **[系统设计](docs/zh-CN/architecture.md)**
+**[在线体验](https://xxiao053.github.io/strategy-agent-lab/)** · **[本地运行](#快速开始)** · **[文档](#文档)** · **[演示视频](docs/media/walkthrough.mp4)**
 
 ![真实构建对话与已确认方法](docs/media/builder-conversation.png)
 
@@ -85,7 +85,7 @@ Windows Docker Desktop 已接受应用、工作容器及全新数据卷等分项
 
 本地应用使用操作者自己的模型凭据与费用授权，不提供作者的账户或额度。已用 OpenAI 实测所展示的流程；其他供应商适配器经过离线测试，是扩展接口，不代表已验证所有编码或图片能力。
 
-独立静态展示版复用项目查看界面和示范包，无需 Python 后台即可浏览页面、代码、结果和视频。它不能发起新对话、构建或历史运行。已准备[免费 GitHub Pages 托管流程](docs/zh-CN/github-pages.md)；目前**尚未部署公开仓库与网站**。本阶段不提供在线实时模型后台。
+独立静态展示版复用项目查看界面和示范包，无需 Python 后台即可浏览页面、代码、结果和视频。它不能发起新对话、构建或历史运行。**[打开在线工作台](https://xxiao053.github.io/strategy-agent-lab/)**，由 GitHub Pages 免费托管；预览和更新方式见[发布指南](docs/zh-CN/github-pages.md)。本阶段不提供在线实时模型后台。
 
 ## 欢迎尝试、修改，也欢迎告诉我你的想法
 

@@ -51,7 +51,7 @@ Included examples can be copied into independent unapproved local projects with 
 
 **Static showcase:** a backend-free, read-only viewer sharing the local example components. Visitors inspect real conversations, approved rules, generated files, tests, revisions, historical results and media. It cannot start new conversations or computation. Saved playback is clearly identified; no credential forms or fake live actions are displayed.
 
-GitHub Pages is the intended static host. Relative assets and hash navigation support project subpaths and refresh. The preview works without a repository URL; a release build requires the approved HTTPS repository URL. Building is not publication. Neither the repository nor the public website has been deployed.
+The [read-only workbench](https://xxiao053.github.io/strategy-agent-lab/) is hosted on GitHub Pages, with [source on GitHub](https://github.com/xxiao053/strategy-agent-lab). Relative assets and hash navigation support project subpaths and refresh. The preview works without a repository URL; a release build requires the approved HTTPS repository URL. Building a new version does not publish it; deployment is a separate, approved action.
 
 ## Demonstrations and evidence
 

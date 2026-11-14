@@ -72,7 +72,7 @@ pnpm --dir web build:showcase-preview
 
 发布展示构建前须检查：
 
-随附的 **Review or publish static showcase** Actions 工作流只能手动触发，默认仅测试／构建并上传审核产物，不发布网站。完成下列检查并获所有者批准后，在仓库 Pages 设置中选择 GitHub Actions，再手动启用 **publish**。只有该部署任务具有 Pages 写入权限；源码链接取自实际仓库，不使用模型凭据。工作流已准备并接受本地策略测试，尚未在 GitHub 执行。文件采用 YAML 的严格子集 JSON。
+随附的 **Review or publish static showcase** Actions 工作流只能手动触发，默认仅测试／构建并上传审核产物，不发布网站。完成下列检查并获所有者批准后，在仓库 Pages 设置中选择 GitHub Actions，再手动启用 **publish**。只有该部署任务具有 Pages 写入权限；源码链接取自实际仓库，不使用模型凭据。[在线工作台](https://xxiao053.github.io/strategy-agent-lab/)已通过此流程部署，后续更新仍需手动启动。文件采用 YAML 的严格子集 JSON。
 
 - 没有凭据、运行数据库或本地后端时仍能读取已审核且可分发的示范；用没有应用缓存状态的全新浏览器验收。
 - 在项目的 Pages 路径下验证导航、直达链接、刷新、资源及媒体；检查不请求本地 API 或模型供应商。

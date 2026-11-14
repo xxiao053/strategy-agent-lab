@@ -6,7 +6,7 @@
 
 Start with an investment idea, your own rules, or examples from your notes and charts. The Builder Agent asks questions to make the rules clear, then turns your approved method into strategy code and tests. Run it on historical data, inspect what it did, and refine it in the same conversation.
 
-**[Watch the walkthrough](docs/media/walkthrough.mp4)** · **[Run locally](#quick-start)** · **[Explore the examples](docs/en/demonstration.md)** · **[Architecture](docs/en/architecture.md)**
+**[Online demo](https://xxiao053.github.io/strategy-agent-lab/)** · **[Run locally](#quick-start)** · **[Documentation](#documentation)** · **[Watch the walkthrough](docs/media/walkthrough.mp4)**
 
 ![A real Builder conversation beside its approved method](docs/media/builder-conversation.png)
 
@@ -85,7 +85,7 @@ The primary generated run covers **2024-01-02–2026-11-10**, starts at $100,000
 
 The local application uses the operator's own model credentials and spending authorization; it supplies no author account or allowance. OpenAI is live-tested for the demonstrated workflows. Other provider adapters are offline-tested extension points, not verified substitutes for every coding or image capability.
 
-A separate static showcase shares the saved-project viewer and packaged examples. It supports navigation, code inspection, results and media without a Python backend. It cannot start new conversations, builds or historical runs. The [GitHub Pages workflow](docs/en/github-pages.md) is prepared for free static hosting; a public repository and website have **not yet been deployed**. No hosted live backend is planned.
+A separate static showcase shares the saved-project viewer and packaged examples. It supports navigation, code inspection, results and media without a Python backend. It cannot start new conversations, builds or historical runs. **[Open the online workbench](https://xxiao053.github.io/strategy-agent-lab/)**, hosted for free on GitHub Pages. See the [preview and publishing guide](docs/en/github-pages.md). No hosted live backend is planned.
 
 ## Try it, make it yours, and share what you learn
 

@@ -6,7 +6,9 @@ GitHub Pages hosts the read-only workbench: saved conversations, methods, code, 
 
 ## Hosting and address
 
-[GitHub Free supports Pages for public repositories](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages). A project site uses `https://<owner>.github.io/<repository>/`; no purchased domain is needed. These are address patterns, not an announcement that this repository or site is already public. A custom domain is optional.
+The published workbench is at **[xxiao053.github.io/strategy-agent-lab](https://xxiao053.github.io/strategy-agent-lab/)**; its source is on **[GitHub](https://github.com/xxiao053/strategy-agent-lab)**.
+
+[GitHub Free supports Pages for public repositories](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages). A project site uses `https://<owner>.github.io/<repository>/`; no purchased domain is needed. A custom domain is optional.
 
 The current [Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits) include a 1 GB published-site maximum, a soft 100 GB/month bandwidth limit and a 10-minute deployment timeout. Pages is intended for static project sites, not a commercial transaction service or paid SaaS backend. This project's static viewer sends no credentials and makes no model calls. GitHub itself logs visitor IP addresses under its privacy policy.
 
