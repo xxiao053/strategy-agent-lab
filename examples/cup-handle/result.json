@@ -1,0 +1,5757 @@
+{
+  "title": "Cup & Handle — LLM workflow demonstration",
+  "description": "Selected and tuned historical demonstration of the software workflow; not evidence of future returns.",
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "start": "2024-01-02",
+  "end": "2026-11-10",
+  "symbols": [
+    "AAPL",
+    "ABBV",
+    "ADBE",
+    "AMD",
+    "AMZN",
+    "AVGO",
+    "BRK-B",
+    "CAT",
+    "COST",
+    "CRM",
+    "CVX",
+    "DIA",
+    "GLD",
+    "GOOG",
+    "HD",
+    "IWM",
+    "JPM",
+    "LLY",
+    "MA",
+    "META",
+    "MSFT",
+    "NFLX",
+    "NVDA",
+    "ORCL",
+    "PLTR",
+    "QQQ",
+    "SMH",
+    "SOXX",
+    "SPY",
+    "TLT",
+    "TSLA",
+    "UNH",
+    "V",
+    "VTI",
+    "WMT",
+    "XLE",
+    "XLF",
+    "XLK",
+    "XLV",
+    "XOM"
+  ],
+  "capital": 100000,
+  "data_id": "7bc89fffd4893c0185acc75aabfbfb42e29de468087acee66c3b502bb738cb30",
+  "strategy_id": "42b633566db0fe585ed40eaa785a66094f304f161ca3a373fa4da6942c1822d4",
+  "summary": {
+    "equity": 236755.98,
+    "total_return": 1.3675598,
+    "max_drawdown": -0.29350181616584625,
+    "trades": 31,
+    "buy_fills": 32,
+    "sell_fills": 31,
+    "active_sessions": 601,
+    "mean_exposure": 0.6838442169021282,
+    "current_exposure": 0.9731951437932002,
+    "realized_pnl": 134231.85,
+    "unrealized_pnl": 2524.13,
+    "requests": 257,
+    "reused_responses": 0,
+    "estimated_cost": 0.47561370000000003,
+    "unresolved_reserve": 0,
+    "elapsed_model_seconds": 1864.8701503006741,
+    "fees": 2013.85
+  },
+  "curve": [
+    {
+      "cash": 100000,
+      "date": "2024-01-02",
+      "equity": 100000,
+      "positions": 0
+    },
+    {
+      "cash": 100000,
+      "date": "2024-01-03",
+      "equity": 100000,
+      "positions": 0
+    },
+    {
+      "cash": 100000,
+      "date": "2024-01-04",
+      "equity": 100000,
+      "positions": 0
+    },
+    {
+      "cash": 100000,
+      "date": "2024-01-05",
+      "equity": 100000,
+      "positions": 0
+    },
+    {
+      "cash": 100000,
+      "date": "2024-01-08",
+      "equity": 100000,
+      "positions": 0
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-09",
+      "equity": 101299.71,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-10",
+      "equity": 103590.24,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-11",
+      "equity": 104483.73,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-12",
+      "equity": 104271.72,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-16",
+      "equity": 107436.82,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-17",
+      "equity": 106814.02,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-18",
+      "equity": 108809.24,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-19",
+      "equity": 113322.16,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-22",
+      "equity": 113630.71,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-23",
+      "equity": 114045.28,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-24",
+      "equity": 116863.96,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-25",
+      "equity": 117346.67,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-26",
+      "equity": 116237.37,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-29",
+      "equity": 118951.94,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-30",
+      "equity": 119536.87,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-01-31",
+      "equity": 117176.3,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-02-01",
+      "equity": 120015.8,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-02-02",
+      "equity": 125946.58,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-02-05",
+      "equity": 131951.17,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-02-06",
+      "equity": 129851.83,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-02-07",
+      "equity": 133403.1,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-02-08",
+      "equity": 132536.1,
+      "positions": 1
+    },
+    {
+      "cash": 705.69,
+      "date": "2024-02-09",
+      "equity": 137253.47,
+      "positions": 1
+    },
+    {
+      "cash": 138000.09,
+      "date": "2024-02-12",
+      "equity": 138000.09,
+      "positions": 0
+    },
+    {
+      "cash": 43499.25,
+      "date": "2024-02-13",
+      "equity": 140222.9,
+      "positions": 1
+    },
+    {
+      "cash": 43499.25,
+      "date": "2024-02-14",
+      "equity": 142599.15,
+      "positions": 1
+    },
+    {
+      "cash": 43499.25,
+      "date": "2024-02-15",
+      "equity": 140933.62,
+      "positions": 1
+    },
+    {
+      "cash": 43499.25,
+      "date": "2024-02-16",
+      "equity": 140873.28,
+      "positions": 1
+    },
+    {
+      "cash": 43499.25,
+      "date": "2024-02-20",
+      "equity": 136634.39,
+      "positions": 1
+    },
+    {
+      "cash": 43499.25,
+      "date": "2024-02-21",
+      "equity": 133979.2,
+      "positions": 1
+    },
+    {
+      "cash": 43499.25,
+      "date": "2024-02-22",
+      "equity": 148818.71,
+      "positions": 1
+    },
+    {
+      "cash": 410.82,
+      "date": "2024-02-23",
+      "equity": 148754.99,
+      "positions": 2
+    },
+    {
+      "cash": 410.82,
+      "date": "2024-02-26",
+      "equity": 149543.57,
+      "positions": 2
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-02-27",
+      "equity": 148592.44,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-02-28",
+      "equity": 146976.71,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-02-29",
+      "equity": 149293.07,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-01",
+      "equity": 156794.65,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-04",
+      "equity": 160860.75,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-05",
+      "equity": 159861.88,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-06",
+      "equity": 163774.41,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-07",
+      "equity": 170971.12,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-08",
+      "equity": 160846.15,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-11",
+      "equity": 157981.52,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-12",
+      "equity": 166173.75,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-13",
+      "equity": 163678.35,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-14",
+      "equity": 159873.85,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-15",
+      "equity": 158840.64,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-18",
+      "equity": 159732.8,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-19",
+      "equity": 161023.64,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-20",
+      "equity": 163584.27,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-21",
+      "equity": 167380.86,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-22",
+      "equity": 171387.42,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-25",
+      "equity": 172279.66,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-26",
+      "equity": 168345.09,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-27",
+      "equity": 164821.79,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-03-28",
+      "equity": 165183.51,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-01",
+      "equity": 166011.54,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-02",
+      "equity": 164413.28,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-03",
+      "equity": 164564.01,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-04",
+      "equity": 158947.43,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-05",
+      "equity": 162496.83,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-08",
+      "equity": 161213.72,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-09",
+      "equity": 158762.25,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-10",
+      "equity": 160633.83,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-11",
+      "equity": 167407.08,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-12",
+      "equity": 162880.58,
+      "positions": 3
+    },
+    {
+      "cash": 108.94,
+      "date": "2024-04-15",
+      "equity": 158830.88,
+      "positions": 3
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-16",
+      "equity": 160839.69,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-17",
+      "equity": 156307.11,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-18",
+      "equity": 157159.98,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-19",
+      "equity": 145800.37,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-22",
+      "equity": 150249.8,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-23",
+      "equity": 154145.41,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-24",
+      "equity": 150463.03,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-25",
+      "equity": 154425.69,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-26",
+      "equity": 161268.81,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-29",
+      "equity": 161298.31,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-04-30",
+      "equity": 159481.25,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-05-01",
+      "equity": 154974.15,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-05-02",
+      "equity": 158696.77,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-05-03",
+      "equity": 162682.22,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-05-06",
+      "equity": 167175.91,
+      "positions": 1
+    },
+    {
+      "cash": 43616.17,
+      "date": "2024-05-07",
+      "equity": 165049.09,
+      "positions": 1
+    },
+    {
+      "cash": 163492.91,
+      "date": "2024-05-08",
+      "equity": 163492.91,
+      "positions": 0
+    },
+    {
+      "cash": 163492.91,
+      "date": "2024-05-09",
+      "equity": 163492.91,
+      "positions": 0
+    },
+    {
+      "cash": 163492.91,
+      "date": "2024-05-10",
+      "equity": 163492.91,
+      "positions": 0
+    },
+    {
+      "cash": 163492.91,
+      "date": "2024-05-13",
+      "equity": 163492.91,
+      "positions": 0
+    },
+    {
+      "cash": 163492.91,
+      "date": "2024-05-14",
+      "equity": 163492.91,
+      "positions": 0
+    },
+    {
+      "cash": 163492.91,
+      "date": "2024-05-15",
+      "equity": 163492.91,
+      "positions": 0
+    },
+    {
+      "cash": 2764.7,
+      "date": "2024-05-16",
+      "equity": 161770.54,
+      "positions": 1
+    },
+    {
+      "cash": 2764.7,
+      "date": "2024-05-17",
+      "equity": 159874.36,
+      "positions": 1
+    },
+    {
+      "cash": 2764.7,
+      "date": "2024-05-20",
+      "equity": 161984.48,
+      "positions": 1
+    },
+    {
+      "cash": 2764.7,
+      "date": "2024-05-21",
+      "equity": 160314.62,
+      "positions": 1
+    },
+    {
+      "cash": 2764.7,
+      "date": "2024-05-22",
+      "equity": 159530.92,
+      "positions": 1
+    },
+    {
+      "cash": 2764.7,
+      "date": "2024-05-23",
+      "equity": 159649.15,
+      "positions": 1
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-05-24",
+      "equity": 161314.85,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-05-28",
+      "equity": 161895.2,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-05-29",
+      "equity": 159396.8,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-05-30",
+      "equity": 156365.59,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-05-31",
+      "equity": 152345.22,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-03",
+      "equity": 151629.43,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-04",
+      "equity": 152624.14,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-05",
+      "equity": 162017.66,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-06",
+      "equity": 160664.72,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-07",
+      "equity": 161267.19,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-10",
+      "equity": 165116.59,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-11",
+      "equity": 167427.46,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-12",
+      "equity": 171393.62,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-13",
+      "equity": 192098.8,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-14",
+      "equity": 198417.5,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-17",
+      "equity": 209033.24,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-18",
+      "equity": 206113.32,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-20",
+      "equity": 198374.78,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-21",
+      "equity": 189780.75,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-24",
+      "equity": 182201.63,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-25",
+      "equity": 180981.63,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-26",
+      "equity": 182234.42,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-27",
+      "equity": 181610.59,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-06-28",
+      "equity": 183755.58,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-07-01",
+      "equity": 187730.4,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-07-02",
+      "equity": 189637.39,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-07-03",
+      "equity": 197781.2,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-07-05",
+      "equity": 194864.83,
+      "positions": 2
+    },
+    {
+      "cash": 105.21,
+      "date": "2024-07-08",
+      "equity": 199705.35,
+      "positions": 2
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-09",
+      "equity": 198297.12,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-10",
+      "equity": 199652.66,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-11",
+      "equity": 195175.45,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-12",
+      "equity": 194619.94,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-15",
+      "equity": 196138.4,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-16",
+      "equity": 193840.05,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-17",
+      "equity": 178535.9,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-18",
+      "equity": 183663.72,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-19",
+      "equity": 180012.73,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-22",
+      "equity": 184295.2,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-23",
+      "equity": 187316.25,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-24",
+      "equity": 173160.76,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-25",
+      "equity": 170770.14,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-26",
+      "equity": 173481.68,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-29",
+      "equity": 171874.9,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-30",
+      "equity": 164228.14,
+      "positions": 3
+    },
+    {
+      "cash": 21.34,
+      "date": "2024-07-31",
+      "equity": 183744.57,
+      "positions": 3
+    },
+    {
+      "cash": 177189.04,
+      "date": "2024-08-01",
+      "equity": 179808.39,
+      "positions": 2
+    },
+    {
+      "cash": 177189.04,
+      "date": "2024-08-02",
+      "equity": 179665.99,
+      "positions": 2
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-05",
+      "equity": 179469.88,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-06",
+      "equity": 179477.38,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-07",
+      "equity": 179476.57,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-08",
+      "equity": 179485.45,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-09",
+      "equity": 179487.64,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-12",
+      "equity": 179485.75,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-13",
+      "equity": 179488.78,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-14",
+      "equity": 179490.61,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-15",
+      "equity": 179491.27,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-16",
+      "equity": 179493.85,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-19",
+      "equity": 179495.11,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-20",
+      "equity": 179494.57,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-21",
+      "equity": 179495.23,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-22",
+      "equity": 179493.37,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-23",
+      "equity": 179492.95,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-26",
+      "equity": 179490.16,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-27",
+      "equity": 179490.13,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-28",
+      "equity": 179488.69,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-29",
+      "equity": 179490.61,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-08-30",
+      "equity": 179492.05,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-09-03",
+      "equity": 179489.14,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-09-04",
+      "equity": 179489.38,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-09-05",
+      "equity": 179488.09,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-09-06",
+      "equity": 179488.6,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-09-09",
+      "equity": 179501.41,
+      "positions": 1
+    },
+    {
+      "cash": 179397.61,
+      "date": "2024-09-10",
+      "equity": 179501.89,
+      "positions": 1
+    },
+    {
+      "cash": 803.51,
+      "date": "2024-09-11",
+      "equity": 179778.89,
+      "positions": 2
+    },
+    {
+      "cash": 803.51,
+      "date": "2024-09-12",
+      "equity": 184558.69,
+      "positions": 2
+    },
+    {
+      "cash": 803.51,
+      "date": "2024-09-13",
+      "equity": 185300.42,
+      "positions": 2
+    },
+    {
+      "cash": 803.51,
+      "date": "2024-09-16",
+      "equity": 194747.98,
+      "positions": 2
+    },
+    {
+      "cash": 803.51,
+      "date": "2024-09-17",
+      "equity": 191493.72,
+      "positions": 2
+    },
+    {
+      "cash": 803.51,
+      "date": "2024-09-18",
+      "equity": 188147.79,
+      "positions": 2
+    },
+    {
+      "cash": 803.51,
+      "date": "2024-09-19",
+      "equity": 191631.42,
+      "positions": 2
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-09-20",
+      "equity": 192088.58,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-09-23",
+      "equity": 189793.18,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-09-24",
+      "equity": 189632.14,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-09-25",
+      "equity": 190187.29,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-09-26",
+      "equity": 192250,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-09-27",
+      "equity": 192996.26,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-09-30",
+      "equity": 194889.91,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-01",
+      "equity": 191189.75,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-02",
+      "equity": 191791.75,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-03",
+      "equity": 190804.61,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-04",
+      "equity": 195387.18,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-07",
+      "equity": 194343.25,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-08",
+      "equity": 199369.13,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-09",
+      "equity": 203824.78,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-10",
+      "equity": 200541.68,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-11",
+      "equity": 200888.42,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-14",
+      "equity": 201290.46,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-15",
+      "equity": 198978.65,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-16",
+      "equity": 199756.27,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-17",
+      "equity": 200790.73,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-18",
+      "equity": 199666.46,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-21",
+      "equity": 198601.75,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-22",
+      "equity": 200363.74,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-23",
+      "equity": 197834.76,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-24",
+      "equity": 199434.8,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-25",
+      "equity": 198486.14,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-28",
+      "equity": 197214.63,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-29",
+      "equity": 198354.91,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-30",
+      "equity": 199631.23,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-10-31",
+      "equity": 191954.38,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-11-01",
+      "equity": 194433.69,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-11-04",
+      "equity": 193924.4,
+      "positions": 3
+    },
+    {
+      "cash": 78.23,
+      "date": "2024-11-05",
+      "equity": 196471.58,
+      "positions": 3
+    },
+    {
+      "cash": 238.39,
+      "date": "2024-11-06",
+      "equity": 207355.11,
+      "positions": 2
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-07",
+      "equity": 213222.49,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-08",
+      "equity": 216572.41,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-11",
+      "equity": 216525.32,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-12",
+      "equity": 216977.1,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-13",
+      "equity": 217042.55,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-14",
+      "equity": 214051.36,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-15",
+      "equity": 210309.21,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-18",
+      "equity": 212634.81,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-19",
+      "equity": 216271.33,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-20",
+      "equity": 218368.49,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-21",
+      "equity": 220277.24,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-22",
+      "equity": 220156.77,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-25",
+      "equity": 215211.81,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-26",
+      "equity": 217921.26,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-27",
+      "equity": 209178.21,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-11-29",
+      "equity": 211653.18,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-12-02",
+      "equity": 207788.92,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-12-03",
+      "equity": 209457.47,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-12-04",
+      "equity": 215511.07,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-12-05",
+      "equity": 213328.7,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-12-06",
+      "equity": 219595.04,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-12-09",
+      "equity": 218179.31,
+      "positions": 3
+    },
+    {
+      "cash": 3.74,
+      "date": "2024-12-10",
+      "equity": 203748.84,
+      "positions": 3
+    },
+    {
+      "cash": 1231.62,
+      "date": "2024-12-11",
+      "equity": 204736.63,
+      "positions": 2
+    },
+    {
+      "cash": 1231.62,
+      "date": "2024-12-12",
+      "equity": 201023.45,
+      "positions": 2
+    },
+    {
+      "cash": 1231.62,
+      "date": "2024-12-13",
+      "equity": 198825.1,
+      "positions": 2
+    },
+    {
+      "cash": 1231.62,
+      "date": "2024-12-16",
+      "equity": 196367.68,
+      "positions": 2
+    },
+    {
+      "cash": 268.06,
+      "date": "2024-12-17",
+      "equity": 194634.71,
+      "positions": 3
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-18",
+      "equity": 189661.62,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-19",
+      "equity": 193492.33,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-20",
+      "equity": 194499.09,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-23",
+      "equity": 193955.06,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-24",
+      "equity": 196576.78,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-26",
+      "equity": 196905.17,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-27",
+      "equity": 193786.98,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-30",
+      "equity": 191423.87,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2024-12-31",
+      "equity": 191097.14,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2025-01-02",
+      "equity": 190395.57,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2025-01-03",
+      "equity": 190725.68,
+      "positions": 4
+    },
+    {
+      "cash": 15.64,
+      "date": "2025-01-06",
+      "equity": 190026.04,
+      "positions": 4
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-07",
+      "equity": 189677.83,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-08",
+      "equity": 189679.74,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-10",
+      "equity": 189642.7,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-13",
+      "equity": 189644.95,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-14",
+      "equity": 189637.9,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-15",
+      "equity": 189661.65,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-16",
+      "equity": 189655.91,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-17",
+      "equity": 189694.47,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-21",
+      "equity": 189702.08,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-22",
+      "equity": 189730.97,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-23",
+      "equity": 189737.54,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-24",
+      "equity": 189752.16,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-27",
+      "equity": 189587.25,
+      "positions": 3
+    },
+    {
+      "cash": 188257.3,
+      "date": "2025-01-28",
+      "equity": 189616.55,
+      "positions": 3
+    },
+    {
+      "cash": 1156.7,
+      "date": "2025-01-29",
+      "equity": 187903.65,
+      "positions": 4
+    },
+    {
+      "cash": 1156.7,
+      "date": "2025-01-30",
+      "equity": 186037.38,
+      "positions": 4
+    },
+    {
+      "cash": 1156.7,
+      "date": "2025-01-31",
+      "equity": 188436.56,
+      "positions": 4
+    },
+    {
+      "cash": 2017.68,
+      "date": "2025-02-03",
+      "equity": 188201.81,
+      "positions": 3
+    },
+    {
+      "cash": 2017.68,
+      "date": "2025-02-04",
+      "equity": 191839.86,
+      "positions": 3
+    },
+    {
+      "cash": 2017.68,
+      "date": "2025-02-05",
+      "equity": 187238.42,
+      "positions": 3
+    },
+    {
+      "cash": 336.96,
+      "date": "2025-02-06",
+      "equity": 189380.69,
+      "positions": 4
+    },
+    {
+      "cash": 113.42,
+      "date": "2025-02-07",
+      "equity": 181818.84,
+      "positions": 5
+    },
+    {
+      "cash": 113.42,
+      "date": "2025-02-10",
+      "equity": 184935.89,
+      "positions": 5
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-11",
+      "equity": 184617.38,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-12",
+      "equity": 181653.57,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-13",
+      "equity": 182783.38,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-14",
+      "equity": 181413.59,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-18",
+      "equity": 179856.09,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-19",
+      "equity": 179837.28,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-20",
+      "equity": 176899.71,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-21",
+      "equity": 171957.97,
+      "positions": 4
+    },
+    {
+      "cash": 341.4,
+      "date": "2025-02-24",
+      "equity": 168921.33,
+      "positions": 4
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-02-25",
+      "equity": 167943.06,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-02-26",
+      "equity": 167976.27,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-02-27",
+      "equity": 167939.39,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-02-28",
+      "equity": 167975.88,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-03-03",
+      "equity": 167989,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-03-04",
+      "equity": 167953.3,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-03-05",
+      "equity": 168007.59,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-03-06",
+      "equity": 167928.96,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-03-07",
+      "equity": 167846.92,
+      "positions": 3
+    },
+    {
+      "cash": 165670.61,
+      "date": "2025-03-10",
+      "equity": 167742.89,
+      "positions": 3
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-11",
+      "equity": 167738.67,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-12",
+      "equity": 167741.64,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-13",
+      "equity": 167692.37,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-14",
+      "equity": 167724.38,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-17",
+      "equity": 167756.55,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-18",
+      "equity": 167746.03,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-19",
+      "equity": 167783.89,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-20",
+      "equity": 167792.41,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-21",
+      "equity": 167785.25,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-24",
+      "equity": 167843.42,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-25",
+      "equity": 167825.9,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-26",
+      "equity": 167766.74,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-27",
+      "equity": 167758.38,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-28",
+      "equity": 167747.2,
+      "positions": 2
+    },
+    {
+      "cash": 165822.02,
+      "date": "2025-03-31",
+      "equity": 167753.6,
+      "positions": 2
+    },
+    {
+      "cash": 166099.99,
+      "date": "2025-04-01",
+      "equity": 167710.45,
+      "positions": 1
+    },
+    {
+      "cash": 166099.99,
+      "date": "2025-04-02",
+      "equity": 167736.43,
+      "positions": 1
+    },
+    {
+      "cash": 166099.99,
+      "date": "2025-04-03",
+      "equity": 167678.17,
+      "positions": 1
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-04",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-07",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-08",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-09",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-10",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-11",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-14",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-15",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-16",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-17",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-21",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-22",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-23",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-24",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-25",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-28",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-29",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-04-30",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-01",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-02",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-05",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-06",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-07",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-08",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-09",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-12",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 167622.69,
+      "date": "2025-05-13",
+      "equity": 167622.69,
+      "positions": 0
+    },
+    {
+      "cash": 516.78,
+      "date": "2025-05-14",
+      "equity": 168969.69,
+      "positions": 1
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-15",
+      "equity": 166306.19,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-16",
+      "equity": 168124.97,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-19",
+      "equity": 163989.21,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-20",
+      "equity": 163033.38,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-21",
+      "equity": 156541.24,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-22",
+      "equity": 158760.4,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-23",
+      "equity": 160078.58,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-27",
+      "equity": 160205.65,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-28",
+      "equity": 160678.44,
+      "positions": 2
+    },
+    {
+      "cash": 176.1,
+      "date": "2025-05-29",
+      "equity": 158816.61,
+      "positions": 2
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-05-30",
+      "equity": 171042.15,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-02",
+      "equity": 171377.06,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-03",
+      "equity": 172844.71,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-04",
+      "equity": 168744.14,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-05",
+      "equity": 155625.47,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-06",
+      "equity": 165743.78,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-09",
+      "equity": 171374.09,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-10",
+      "equity": 172363.43,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-11",
+      "equity": 176995.16,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-12",
+      "equity": 175437.21,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-13",
+      "equity": 178300.11,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-16",
+      "equity": 183495.6,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-17",
+      "equity": 179328.51,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-18",
+      "equity": 181613.02,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-20",
+      "equity": 178169.45,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-23",
+      "equity": 181586.57,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-24",
+      "equity": 185865.22,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-25",
+      "equity": 185431.69,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-26",
+      "equity": 187177.54,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-27",
+      "equity": 169696.19,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-06-30",
+      "equity": 176910.98,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-07-01",
+      "equity": 169591.16,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-07-02",
+      "equity": 171473.41,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-07-03",
+      "equity": 174373.77,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-07-07",
+      "equity": 180510.69,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-07-08",
+      "equity": 181279.8,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-07-09",
+      "equity": 185706.23,
+      "positions": 3
+    },
+    {
+      "cash": 37.24,
+      "date": "2025-07-10",
+      "equity": 184906.21,
+      "positions": 3
+    },
+    {
+      "cash": 344.83,
+      "date": "2025-07-11",
+      "equity": 184387.16,
+      "positions": 2
+    },
+    {
+      "cash": 344.83,
+      "date": "2025-07-14",
+      "equity": 193508.99,
+      "positions": 2
+    },
+    {
+      "cash": 344.83,
+      "date": "2025-07-15",
+      "equity": 192778.05,
+      "positions": 2
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-16",
+      "equity": 195802.96,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-17",
+      "equity": 199790.78,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-18",
+      "equity": 199175.17,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-21",
+      "equity": 196935.52,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-22",
+      "equity": 193406.95,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-23",
+      "equity": 200613.2,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-24",
+      "equity": 200920.71,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-25",
+      "equity": 206027.53,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-28",
+      "equity": 204854.69,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-29",
+      "equity": 202738.85,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-30",
+      "equity": 205813.52,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-07-31",
+      "equity": 205469.29,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-01",
+      "equity": 200176.4,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-04",
+      "equity": 208461.49,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-05",
+      "equity": 224772.16,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-06",
+      "equity": 232864.3,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-07",
+      "equity": 236326.26,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-08",
+      "equity": 242488.36,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-11",
+      "equity": 236948.42,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-12",
+      "equity": 242506.13,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-13",
+      "equity": 239159.09,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-14",
+      "equity": 234817.7,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-15",
+      "equity": 229827.34,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-18",
+      "equity": 225763,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-19",
+      "equity": 204671.13,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-20",
+      "equity": 202416.62,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-21",
+      "equity": 202633.2,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-22",
+      "equity": 205956.97,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-25",
+      "equity": 203918.4,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-26",
+      "equity": 208714.67,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-27",
+      "equity": 203345.43,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-28",
+      "equity": 205158.49,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-08-29",
+      "equity": 203316.08,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-02",
+      "equity": 203803.77,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-03",
+      "equity": 200969.36,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-04",
+      "equity": 202574.29,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-05",
+      "equity": 198627.53,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-08",
+      "equity": 202498.43,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-09",
+      "equity": 210610.13,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-10",
+      "equity": 216291.87,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-11",
+      "equity": 213204.24,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-12",
+      "equity": 222359.26,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-15",
+      "equity": 222079.71,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-16",
+      "equity": 220846.12,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-17",
+      "equity": 218341.52,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-18",
+      "equity": 229525.15,
+      "positions": 3
+    },
+    {
+      "cash": 33.89,
+      "date": "2025-09-19",
+      "equity": 236538,
+      "positions": 3
+    },
+    {
+      "cash": 233858.62,
+      "date": "2025-09-22",
+      "equity": 234361.81,
+      "positions": 2
+    },
+    {
+      "cash": 2567.86,
+      "date": "2025-09-23",
+      "equity": 232818.37,
+      "positions": 3
+    },
+    {
+      "cash": 2567.86,
+      "date": "2025-09-24",
+      "equity": 230902.52,
+      "positions": 3
+    },
+    {
+      "cash": 2742.16,
+      "date": "2025-09-25",
+      "equity": 235018.31,
+      "positions": 2
+    },
+    {
+      "cash": 3062.88,
+      "date": "2025-09-26",
+      "equity": 233743.27,
+      "positions": 1
+    },
+    {
+      "cash": 3062.88,
+      "date": "2025-09-29",
+      "equity": 232813.16,
+      "positions": 1
+    },
+    {
+      "cash": 3062.88,
+      "date": "2025-09-30",
+      "equity": 232993.77,
+      "positions": 1
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-01",
+      "equity": 233870.81,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-02",
+      "equity": 235286.19,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-03",
+      "equity": 236055.4,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-06",
+      "equity": 234806.06,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-07",
+      "equity": 234650.76,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-08",
+      "equity": 236056.82,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-09",
+      "equity": 232419.6,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-10",
+      "equity": 224497.83,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-13",
+      "equity": 226653.4,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-14",
+      "equity": 226737.52,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-15",
+      "equity": 228117.4,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-16",
+      "equity": 226419.18,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-17",
+      "equity": 230824.79,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-20",
+      "equity": 239842.01,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-21",
+      "equity": 240311.89,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-22",
+      "equity": 236375.72,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-23",
+      "equity": 237390.5,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-24",
+      "equity": 240312.86,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-27",
+      "equity": 245722.34,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-28",
+      "equity": 245887.54,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-29",
+      "equity": 246488.45,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-30",
+      "equity": 248063.31,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-10-31",
+      "equity": 247001.15,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-03",
+      "equity": 245730.14,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-04",
+      "equity": 246675.22,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-05",
+      "equity": 246776.96,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-06",
+      "equity": 246472.34,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-07",
+      "equity": 245300.01,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-10",
+      "equity": 246161.03,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-11",
+      "equity": 251500.48,
+      "positions": 2
+    },
+    {
+      "cash": 22.52,
+      "date": "2025-11-12",
+      "equity": 249997.92,
+      "positions": 2
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-13",
+      "equity": 249531.96,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-14",
+      "equity": 249044.33,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-17",
+      "equity": 244574.47,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-18",
+      "equity": 244556.42,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-19",
+      "equity": 245567.78,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-20",
+      "equity": 243481.85,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-21",
+      "equity": 248213.56,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-24",
+      "equity": 252213.87,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-25",
+      "equity": 253162.01,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-26",
+      "equity": 253685.74,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-11-28",
+      "equity": 254859.66,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-01",
+      "equity": 258697.41,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-02",
+      "equity": 261487.67,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-03",
+      "equity": 259645.54,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-04",
+      "equity": 256530.21,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-05",
+      "equity": 254796.44,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-08",
+      "equity": 253992.78,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-09",
+      "equity": 253351.63,
+      "positions": 1
+    },
+    {
+      "cash": 3058.1,
+      "date": "2025-12-10",
+      "equity": 254796.44,
+      "positions": 1
+    },
+    {
+      "cash": 221.45,
+      "date": "2025-12-11",
+      "equity": 254127.13,
+      "positions": 2
+    },
+    {
+      "cash": 221.45,
+      "date": "2025-12-12",
+      "equity": 254027.8,
+      "positions": 2
+    },
+    {
+      "cash": 221.45,
+      "date": "2025-12-15",
+      "equity": 250121.44,
+      "positions": 2
+    },
+    {
+      "cash": 2571.23,
+      "date": "2025-12-16",
+      "equity": 250544.05,
+      "positions": 1
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-17",
+      "equity": 247935.51,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-18",
+      "equity": 248332.11,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-19",
+      "equity": 249657.71,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-22",
+      "equity": 247257.25,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-23",
+      "equity": 248496.56,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-24",
+      "equity": 249805.12,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-26",
+      "equity": 249383.83,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-29",
+      "equity": 249631.18,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-30",
+      "equity": 248991.07,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2025-12-31",
+      "equity": 247865.86,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-02",
+      "equity": 247040.08,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-05",
+      "equity": 243721.83,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-06",
+      "equity": 239203.56,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-07",
+      "equity": 237362.72,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-08",
+      "equity": 236219.82,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-09",
+      "equity": 236563.85,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-12",
+      "equity": 237378.24,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-13",
+      "equity": 238091.83,
+      "positions": 2
+    },
+    {
+      "cash": 127.69,
+      "date": "2026-01-14",
+      "equity": 237067.56,
+      "positions": 2
+    },
+    {
+      "cash": 235259.33,
+      "date": "2026-01-15",
+      "equity": 237452.18,
+      "positions": 1
+    },
+    {
+      "cash": 235259.33,
+      "date": "2026-01-16",
+      "equity": 237446.83,
+      "positions": 1
+    },
+    {
+      "cash": 235259.33,
+      "date": "2026-01-20",
+      "equity": 237355.58,
+      "positions": 1
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-21",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-22",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-23",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-26",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-27",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-28",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-29",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-01-30",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-02",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-03",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-04",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-05",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-06",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-09",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-10",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-11",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-12",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-13",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-17",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-18",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-19",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-20",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-23",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-24",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-25",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-26",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-02-27",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-02",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-03",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-04",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-05",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-06",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-09",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-10",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-11",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-12",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-13",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-16",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-17",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-18",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-19",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-20",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-23",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-24",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-25",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-26",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-27",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-30",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-03-31",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-01",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-02",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-06",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-07",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-08",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-09",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-10",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-13",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 237365.53,
+      "date": "2026-04-14",
+      "equity": 237365.53,
+      "positions": 0
+    },
+    {
+      "cash": 2915.44,
+      "date": "2026-04-15",
+      "equity": 240954.54,
+      "positions": 1
+    },
+    {
+      "cash": 2915.44,
+      "date": "2026-04-16",
+      "equity": 241131.34,
+      "positions": 1
+    },
+    {
+      "cash": 2915.44,
+      "date": "2026-04-17",
+      "equity": 217970.53,
+      "positions": 1
+    },
+    {
+      "cash": 214669.03,
+      "date": "2026-04-20",
+      "equity": 217352.23,
+      "positions": 1
+    },
+    {
+      "cash": 214669.03,
+      "date": "2026-04-21",
+      "equity": 217312.79,
+      "positions": 1
+    },
+    {
+      "cash": 214669.03,
+      "date": "2026-04-22",
+      "equity": 217370.87,
+      "positions": 1
+    },
+    {
+      "cash": 214669.03,
+      "date": "2026-04-23",
+      "equity": 217371.03,
+      "positions": 1
+    },
+    {
+      "cash": 214669.03,
+      "date": "2026-04-24",
+      "equity": 217407.59,
+      "positions": 1
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-04-27",
+      "equity": 224342.5,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-04-28",
+      "equity": 220825.54,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-04-29",
+      "equity": 216825.62,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-04-30",
+      "equity": 207229.07,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-01",
+      "equity": 206096.9,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-04",
+      "equity": 206098.86,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-05",
+      "equity": 204116.3,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-06",
+      "equity": 215759.86,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-07",
+      "equity": 219504.54,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-08",
+      "equity": 223292.54,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-11",
+      "equity": 227535.1,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-12",
+      "equity": 228878.3,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-13",
+      "equity": 234151.06,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-14",
+      "equity": 244244.31,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-15",
+      "equity": 233585.11,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-18",
+      "equity": 230523.43,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-19",
+      "equity": 228713.54,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-20",
+      "equity": 231630.74,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-21",
+      "equity": 227580.09,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-22",
+      "equity": 223283.78,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-26",
+      "equity": 222848.06,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-27",
+      "equity": 220542.79,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-28",
+      "equity": 222236.1,
+      "positions": 2
+    },
+    {
+      "cash": 612.14,
+      "date": "2026-05-29",
+      "equity": 218986.38,
+      "positions": 2
+    },
+    {
+      "cash": 161.59,
+      "date": "2026-06-01",
+      "equity": 232449.4,
+      "positions": 3
+    },
+    {
+      "cash": 161.59,
+      "date": "2026-06-02",
+      "equity": 230786.69,
+      "positions": 3
+    },
+    {
+      "cash": 161.59,
+      "date": "2026-06-03",
+      "equity": 222531.26,
+      "positions": 3
+    },
+    {
+      "cash": 161.59,
+      "date": "2026-06-04",
+      "equity": 226567.86,
+      "positions": 3
+    },
+    {
+      "cash": 161.59,
+      "date": "2026-06-05",
+      "equity": 212675.41,
+      "positions": 3
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-08",
+      "equity": 216265.97,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-09",
+      "equity": 215815.93,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-10",
+      "equity": 207818.77,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-11",
+      "equity": 212383.69,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-12",
+      "equity": 212722.89,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-15",
+      "equity": 220199.69,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-16",
+      "equity": 215090.81,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-17",
+      "equity": 212203.6,
+      "positions": 2
+    },
+    {
+      "cash": 563.81,
+      "date": "2026-06-18",
+      "equity": 218407.29,
+      "positions": 2
+    },
+    {
+      "cash": 3418.03,
+      "date": "2026-06-22",
+      "equity": 216241.02,
+      "positions": 1
+    },
+    {
+      "cash": 459.32,
+      "date": "2026-06-23",
+      "equity": 207452.83,
+      "positions": 2
+    },
+    {
+      "cash": 459.32,
+      "date": "2026-06-24",
+      "equity": 206422.67,
+      "positions": 2
+    },
+    {
+      "cash": 459.32,
+      "date": "2026-06-25",
+      "equity": 203285.16,
+      "positions": 2
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-06-26",
+      "equity": 200237.19,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-06-29",
+      "equity": 200344.35,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-06-30",
+      "equity": 200439.48,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-01",
+      "equity": 200219.01,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-02",
+      "equity": 200135.37,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-06",
+      "equity": 200154.54,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-07",
+      "equity": 200065.14,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-08",
+      "equity": 200089.02,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-09",
+      "equity": 200059.95,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-10",
+      "equity": 200102.01,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-13",
+      "equity": 200039.19,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-14",
+      "equity": 200044.8,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-15",
+      "equity": 199987.68,
+      "positions": 1
+    },
+    {
+      "cash": 197244.78,
+      "date": "2026-07-16",
+      "equity": 199876.29,
+      "positions": 1
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-17",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-20",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-21",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-22",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-23",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-24",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-27",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-28",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-29",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-30",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-07-31",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-03",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-04",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-05",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-06",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-07",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-10",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-11",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-12",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 199767.45,
+      "date": "2026-08-13",
+      "equity": 199767.45,
+      "positions": 0
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-14",
+      "equity": 193152.77,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-17",
+      "equity": 188012.32,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-18",
+      "equity": 193084.09,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-19",
+      "equity": 202845.04,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-20",
+      "equity": 202197.57,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-21",
+      "equity": 205866.52,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-24",
+      "equity": 205758.61,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-25",
+      "equity": 202452.64,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-26",
+      "equity": 202383.97,
+      "positions": 1
+    },
+    {
+      "cash": 670.75,
+      "date": "2026-08-27",
+      "equity": 247931.8,
+      "positions": 1
+    },
+    {
+      "cash": 93.73,
+      "date": "2026-08-28",
+      "equity": 251812.77,
+      "positions": 2
+    },
+    {
+      "cash": 93.73,
+      "date": "2026-08-31",
+      "equity": 253326.06,
+      "positions": 2
+    },
+    {
+      "cash": 93.73,
+      "date": "2026-09-01",
+      "equity": 253871.79,
+      "positions": 2
+    },
+    {
+      "cash": 93.73,
+      "date": "2026-09-02",
+      "equity": 252701.63,
+      "positions": 2
+    },
+    {
+      "cash": 93.73,
+      "date": "2026-09-03",
+      "equity": 260071.05,
+      "positions": 2
+    },
+    {
+      "cash": 93.73,
+      "date": "2026-09-04",
+      "equity": 254931.39,
+      "positions": 2
+    },
+    {
+      "cash": 93.73,
+      "date": "2026-09-08",
+      "equity": 244994.97,
+      "positions": 2
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-09",
+      "equity": 240130.43,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-10",
+      "equity": 238992.47,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-11",
+      "equity": 243622.79,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-14",
+      "equity": 255110.29,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-15",
+      "equity": 251402.11,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-16",
+      "equity": 246389.2,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-17",
+      "equity": 238845.33,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-18",
+      "equity": 234008.99,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-21",
+      "equity": 232537.49,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-22",
+      "equity": 229457.15,
+      "positions": 1
+    },
+    {
+      "cash": 609.47,
+      "date": "2026-09-23",
+      "equity": 233675.45,
+      "positions": 1
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-09-24",
+      "equity": 234312.9,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-09-25",
+      "equity": 230183.94,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-09-28",
+      "equity": 223555.62,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-09-29",
+      "equity": 221631.33,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-09-30",
+      "equity": 225810.64,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-01",
+      "equity": 232804.32,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-02",
+      "equity": 230838.45,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-05",
+      "equity": 226033.49,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-06",
+      "equity": 221332.72,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-07",
+      "equity": 220917.03,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-08",
+      "equity": 224109.45,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-09",
+      "equity": 225444.99,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-12",
+      "equity": 230143.83,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-13",
+      "equity": 234155.12,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-14",
+      "equity": 232111.17,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-15",
+      "equity": 242694.76,
+      "positions": 2
+    },
+    {
+      "cash": 41.31,
+      "date": "2026-10-16",
+      "equity": 236726.1,
+      "positions": 2
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-19",
+      "equity": 234338.74,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-20",
+      "equity": 234334.09,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-21",
+      "equity": 234361.45,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-22",
+      "equity": 234344.86,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-23",
+      "equity": 234346.54,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-26",
+      "equity": 234352.81,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-27",
+      "equity": 234352.48,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-28",
+      "equity": 234346.72,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-29",
+      "equity": 234345.55,
+      "positions": 1
+    },
+    {
+      "cash": 233756.29,
+      "date": "2026-10-30",
+      "equity": 234308.62,
+      "positions": 1
+    },
+    {
+      "cash": 5870.65,
+      "date": "2026-11-02",
+      "equity": 232856.23,
+      "positions": 2
+    },
+    {
+      "cash": 5870.65,
+      "date": "2026-11-03",
+      "equity": 230620.85,
+      "positions": 2
+    },
+    {
+      "cash": 5870.65,
+      "date": "2026-11-04",
+      "equity": 237532.46,
+      "positions": 2
+    },
+    {
+      "cash": 5870.65,
+      "date": "2026-11-05",
+      "equity": 232315.77,
+      "positions": 2
+    },
+    {
+      "cash": 6346.21,
+      "date": "2026-11-06",
+      "equity": 234733.25,
+      "positions": 1
+    },
+    {
+      "cash": 6346.21,
+      "date": "2026-11-09",
+      "equity": 236293.4,
+      "positions": 1
+    },
+    {
+      "cash": 6346.21,
+      "date": "2026-11-10",
+      "equity": 236755.98,
+      "positions": 1
+    }
+  ],
+  "trades": [
+    {
+      "candidate_id": "NVDA-2024-01-08-a2b257af30c2",
+      "entry_date": "2024-01-09",
+      "entry_price": 52.42720147705078,
+      "exit_date": "2024-02-12",
+      "exit_price": 72.56369847488403,
+      "pnl": 38000.09,
+      "quantity": 1893,
+      "reason": "target_close",
+      "stop": 47.31999969482422,
+      "symbol": "NVDA",
+      "target": 70.42201614379883
+    },
+    {
+      "candidate_id": "AVGO-2024-02-22-74341755cdbb",
+      "entry_date": "2024-02-23",
+      "entry_price": 130.90242411804198,
+      "exit_date": "2024-04-16",
+      "exit_price": 131.47222538757325,
+      "pnl": 144.3,
+      "quantity": 329,
+      "reason": "stagnation",
+      "stop": 117.91100311279297,
+      "symbol": "AVGO",
+      "target": 207.45199584960938
+    },
+    {
+      "candidate_id": "CRM-2024-02-26-b0212dc9e161",
+      "entry_date": "2024-02-27",
+      "entry_price": 301.73077656555176,
+      "exit_date": "2024-04-16",
+      "exit_price": 274.6426087799072,
+      "pnl": -27.38,
+      "quantity": 1,
+      "reason": "stagnation",
+      "stop": 264.1300048828125,
+      "symbol": "CRM",
+      "target": 395.84996032714844
+    },
+    {
+      "candidate_id": "NVDA-2024-02-12-999ff7e29d23",
+      "entry_date": "2024-02-13",
+      "entry_price": 70.43520152664185,
+      "exit_date": "2024-05-08",
+      "exit_price": 89.43826020812989,
+      "pnl": 25375.9,
+      "quantity": 1341,
+      "reason": "stagnation",
+      "stop": 47.31999969482422,
+      "symbol": "NVDA",
+      "target": 125.45499420166016
+    },
+    {
+      "candidate_id": "AVGO-2024-05-15-90e2a85051ac",
+      "entry_date": "2024-05-16",
+      "entry_price": 142.67130610656739,
+      "exit_date": "2024-08-01",
+      "exit_price": 157.42125000000001,
+      "pnl": 16439.49,
+      "quantity": 1126,
+      "reason": "stagnation",
+      "stop": 127.50700378417969,
+      "symbol": "AVGO",
+      "target": 192.9840087890625
+    },
+    {
+      "candidate_id": "SMH-2024-05-23-996125b03176",
+      "entry_date": "2024-05-24",
+      "entry_price": 241.6507637786865,
+      "exit_date": "2024-08-05",
+      "exit_price": 200.87950572967532,
+      "pnl": -450.92,
+      "quantity": 11,
+      "reason": "stop_close",
+      "stop": 222.24000549316406,
+      "symbol": "SMH",
+      "target": 372.2200012207031
+    },
+    {
+      "candidate_id": "PLTR-2024-07-08-bf679c75b77e",
+      "entry_date": "2024-07-09",
+      "entry_price": 27.94396530532837,
+      "exit_date": "2024-11-06",
+      "exit_price": 53.413278627395634,
+      "pnl": 76.29,
+      "quantity": 3,
+      "reason": "target_close",
+      "stop": 24.049999237060547,
+      "symbol": "PLTR",
+      "target": 48.89999961853027
+    },
+    {
+      "candidate_id": "TSLA-2024-09-19-9a938093c1c1",
+      "entry_date": "2024-09-20",
+      "entry_price": 241.64076427459716,
+      "exit_date": "2024-12-11",
+      "exit_price": 409.4951622009278,
+      "pnl": 502.6,
+      "quantity": 3,
+      "reason": "target_close",
+      "stop": 197.05999755859375,
+      "symbol": "TSLA",
+      "target": 394.92994689941406
+    },
+    {
+      "candidate_id": "ORCL-2024-09-10-f3b1fd3bdd60",
+      "entry_date": "2024-09-11",
+      "entry_price": 156.8583887786865,
+      "exit_date": "2025-01-07",
+      "exit_price": 165.49721183013918,
+      "pnl": 9647.56,
+      "quantity": 1138,
+      "reason": "stagnation",
+      "stop": 136.91000366210938,
+      "symbol": "ORCL",
+      "target": 214.1399688720703
+    },
+    {
+      "candidate_id": "AVGO-2024-12-16-1d583e2f3792",
+      "entry_date": "2024-12-17",
+      "entry_price": 240.7703188934326,
+      "exit_date": "2025-02-03",
+      "exit_price": 215.35227671051027,
+      "pnl": -102.58,
+      "quantity": 4,
+      "reason": "stagnation",
+      "stop": 164.02999877929688,
+      "symbol": "AVGO",
+      "target": 396.1000518798828
+    },
+    {
+      "candidate_id": "AAPL-2024-12-17-8a9b5f13cc16",
+      "entry_date": "2024-12-18",
+      "entry_price": 252.28608366394042,
+      "exit_date": "2025-02-11",
+      "exit_price": 228.08589694976808,
+      "pnl": -24.44,
+      "quantity": 1,
+      "reason": "stagnation",
+      "stop": 221.13999938964844,
+      "symbol": "AAPL",
+      "target": 385.32997131347656
+    },
+    {
+      "candidate_id": "AMZN-2025-01-28-3e2e432abc58",
+      "entry_date": "2025-01-29",
+      "entry_price": 239.13951427459716,
+      "exit_date": "2025-02-25",
+      "exit_price": 211.5241898803711,
+      "pnl": -21771.39,
+      "quantity": 782,
+      "reason": "stop_close",
+      "stop": 216.1999969482422,
+      "symbol": "AMZN",
+      "target": 388.0999755859375
+    },
+    {
+      "candidate_id": "PLTR-2025-02-06-837f17d9812d",
+      "entry_date": "2025-02-07",
+      "entry_price": 111.71583366394043,
+      "exit_date": "2025-03-11",
+      "exit_price": 75.74711116027832,
+      "pnl": -72.13,
+      "quantity": 2,
+      "reason": "stop_close",
+      "stop": 78.47000122070312,
+      "symbol": "PLTR",
+      "target": 194.00999450683594
+    },
+    {
+      "candidate_id": "NFLX-2024-11-06-5c3714bc3878",
+      "entry_date": "2024-11-07",
+      "entry_price": 78.17606953811645,
+      "exit_date": "2025-04-01",
+      "exit_price": 92.703625,
+      "pnl": 43.32,
+      "quantity": 3,
+      "reason": "stagnation",
+      "stop": 74.7770004272461,
+      "symbol": "NFLX",
+      "target": 124.35999298095703
+    },
+    {
+      "candidate_id": "LLY-2025-02-05-0105417b12c4",
+      "entry_date": "2025-02-06",
+      "entry_price": 839.9397795410156,
+      "exit_date": "2025-04-04",
+      "exit_price": 761.7289303588867,
+      "pnl": -158.02,
+      "quantity": 2,
+      "reason": "stop_close",
+      "stop": 799,
+      "symbol": "LLY",
+      "target": 1284.7400512695312
+    },
+    {
+      "candidate_id": "TSLA-2025-05-14-3cde38d96386",
+      "entry_date": "2025-05-15",
+      "entry_price": 340.51016633605957,
+      "exit_date": "2025-07-11",
+      "exit_price": 307.7360696411133,
+      "pnl": -33.09,
+      "quantity": 1,
+      "reason": "stagnation",
+      "stop": 271,
+      "symbol": "TSLA",
+      "target": 654.9900512695312
+    },
+    {
+      "candidate_id": "PLTR-2025-05-13-598c843ebbc8",
+      "entry_date": "2025-05-14",
+      "entry_price": 129.07449950408935,
+      "exit_date": "2025-09-22",
+      "exit_price": 180.7895648803711,
+      "pnl": 66718.82,
+      "quantity": 1294,
+      "reason": "stagnation",
+      "stop": 105.31999969482422,
+      "symbol": "PLTR",
+      "target": 388.5549774169922
+    },
+    {
+      "candidate_id": "NVDA-2025-05-29-6f8af93ee144",
+      "entry_date": "2025-05-30",
+      "entry_price": 138.78936122131347,
+      "exit_date": "2025-09-25",
+      "exit_price": 174.39275572967532,
+      "pnl": 35.44,
+      "quantity": 1,
+      "reason": "stagnation",
+      "stop": 129.16000366210938,
+      "symbol": "NVDA",
+      "target": 386.05001068115234
+    },
+    {
+      "candidate_id": "AMD-2025-07-15-0371e85085d5",
+      "entry_date": "2025-07-16",
+      "entry_price": 155.38765255737303,
+      "exit_date": "2025-09-26",
+      "exit_price": 160.43974427032472,
+      "pnl": 9.78,
+      "quantity": 2,
+      "reason": "stagnation",
+      "stop": 113.27999877929688,
+      "symbol": "AMD",
+      "target": 339.64998626708984
+    },
+    {
+      "candidate_id": "ABBV-2025-09-30-0eebfaccc9b8",
+      "entry_date": "2025-10-01",
+      "entry_price": 233.75681938934324,
+      "exit_date": "2025-11-13",
+      "exit_price": 233.6231354904175,
+      "pnl": -4.78,
+      "quantity": 13,
+      "reason": "stagnation",
+      "stop": 205.10000610351562,
+      "symbol": "ABBV",
+      "target": 376.50994873046875
+    },
+    {
+      "candidate_id": "AVGO-2025-12-10-4aa681f1c9de",
+      "entry_date": "2025-12-11",
+      "entry_price": 405.0324015655517,
+      "exit_date": "2025-12-16",
+      "exit_price": 335.85197901916507,
+      "pnl": -486.87,
+      "quantity": 7,
+      "reason": "stop_close",
+      "stop": 347.6600036621094,
+      "symbol": "AVGO",
+      "target": 530.0401000976562
+    },
+    {
+      "candidate_id": "AAPL-2025-09-22-d891d5ee4a23",
+      "entry_date": "2025-09-23",
+      "entry_price": 256.0079448852539,
+      "exit_date": "2026-01-15",
+      "exit_price": 260.51966889953616,
+      "pnl": 3840.88,
+      "quantity": 903,
+      "reason": "stagnation",
+      "stop": 219.25,
+      "symbol": "AAPL",
+      "target": 384.30003356933594
+    },
+    {
+      "candidate_id": "TSLA-2025-12-16-a07fc94b63e3",
+      "entry_date": "2025-12-17",
+      "entry_price": 488.46411122131343,
+      "exit_date": "2026-01-21",
+      "exit_price": 421.44917366027835,
+      "pnl": -337.34,
+      "quantity": 5,
+      "reason": "stop_close",
+      "stop": 422.1199951171875,
+      "symbol": "TSLA",
+      "target": 732.5199584960938
+    },
+    {
+      "candidate_id": "NFLX-2026-04-14-c90484476ce4",
+      "entry_date": "2026-04-15",
+      "entry_price": 106.03299335861206,
+      "exit_date": "2026-04-20",
+      "exit_price": 97.09142938995362,
+      "pnl": -19985.32,
+      "quantity": 2210,
+      "reason": "stop_close",
+      "stop": 97.44000244140625,
+      "symbol": "NFLX",
+      "target": 163.6699981689453
+    },
+    {
+      "candidate_id": "AVGO-2026-05-29-e7baf09355bf",
+      "entry_date": "2026-06-01",
+      "entry_price": 450.31504133605955,
+      "exit_date": "2026-06-08",
+      "exit_price": 402.41868511962895,
+      "pnl": -48.33,
+      "quantity": 1,
+      "reason": "stop_close",
+      "stop": 394.57000732421875,
+      "symbol": "AVGO",
+      "target": 1026.2100830078125
+    },
+    {
+      "candidate_id": "GOOG-2026-04-17-df1dd2ad700e",
+      "entry_date": "2026-04-20",
+      "entry_price": 338.72927755737305,
+      "exit_date": "2026-06-22",
+      "exit_price": 356.9564422607422,
+      "pnl": 143.04,
+      "quantity": 8,
+      "reason": "stagnation",
+      "stop": 309.4700012207031,
+      "symbol": "GOOG",
+      "target": 576.6550598144531
+    },
+    {
+      "candidate_id": "NVDA-2026-04-24-7730aad48fc0",
+      "entry_date": "2026-04-27",
+      "entry_price": 209.7548188934326,
+      "exit_date": "2026-06-26",
+      "exit_price": 193.0234351196289,
+      "pnl": -17271.43,
+      "quantity": 1020,
+      "reason": "stop_close",
+      "stop": 195.80999755859375,
+      "symbol": "NVDA",
+      "target": 384.4799499511719
+    },
+    {
+      "candidate_id": "CAT-2026-06-22-2ce1484f6adf",
+      "entry_date": "2026-06-23",
+      "entry_price": 985.742625,
+      "exit_date": "2026-07-17",
+      "exit_price": 841.3091154785157,
+      "pnl": -436.04,
+      "quantity": 3,
+      "reason": "stop_close",
+      "stop": 899.2000122070312,
+      "symbol": "CAT",
+      "target": 1269.9901733398438
+    },
+    {
+      "candidate_id": "ADBE-2026-08-27-25fa935a289a",
+      "entry_date": "2026-08-28",
+      "entry_price": 288.36411122131346,
+      "exit_date": "2026-09-09",
+      "exit_price": 258.0009398803711,
+      "pnl": -61.28,
+      "quantity": 2,
+      "reason": "stop_close",
+      "stop": 265.0400085449219,
+      "symbol": "ADBE",
+      "target": 707.3999633789062
+    },
+    {
+      "candidate_id": "CRM-2026-08-13-18ef145ab9cc",
+      "entry_date": "2026-08-14",
+      "entry_price": 202.851375,
+      "exit_date": "2026-10-19",
+      "exit_price": 238.3607557296753,
+      "pnl": 34618.28,
+      "quantity": 981,
+      "reason": "stagnation",
+      "stop": 183,
+      "symbol": "CRM",
+      "target": 436.2899475097656
+    },
+    {
+      "candidate_id": "PLTR-2026-09-23-8b745651de1c",
+      "entry_date": "2026-09-24",
+      "entry_price": 189.2945969467163,
+      "exit_date": "2026-11-06",
+      "exit_price": 158.60065267944336,
+      "pnl": -92.6,
+      "quantity": 3,
+      "reason": "stop_close",
+      "stop": 166.4199981689453,
+      "symbol": "PLTR",
+      "target": 496.73998260498047
+    }
+  ],
+  "examples": [
+    {
+      "kind": "accepted",
+      "date": "2024-01-08",
+      "symbol": "NVDA",
+      "candidates": [
+        {
+          "bottom": "2023-12-04",
+          "bottom_band_price": 46.0364990234375,
+          "bottom_dwell_fraction": 0.17857142857142858,
+          "bottom_low": 45.0099983215332,
+          "candidate_id": "NVDA-2024-01-08-a2b257af30c2",
+          "cup_depth": 0.08359806810860812,
+          "cup_sessions": 28,
+          "handle_end": "2024-01-05",
+          "handle_retrace_of_cup": 0.43451658901872237,
+          "handle_sessions": 9,
+          "handle_start": "2023-12-22",
+          "handle_volume_ratio": 0.7393231721923403,
+          "left_high": 49.11600112915039,
+          "left_rim": "2023-11-13",
+          "numeric_checks": [
+            {
+              "maximum": 120,
+              "minimum": 25,
+              "name": "cup_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 28
+            },
+            {
+              "maximum": 30,
+              "minimum": 5,
+              "name": "handle_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 9
+            },
+            {
+              "maximum": 1,
+              "minimum": 1,
+              "name": "bottom_internal",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "boolean",
+              "value": 1
+            },
+            {
+              "maximum": 0.08,
+              "minimum": 0,
+              "name": "rim_difference",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.0004275573736560194
+            },
+            {
+              "maximum": 0.5,
+              "minimum": 0.06,
+              "name": "cup_depth",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.08359806810860812
+            },
+            {
+              "maximum": null,
+              "minimum": 0.15,
+              "name": "prior_advance",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.19326551752164867
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "handle_above_midpoint",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "USD",
+              "value": 0.2569999694824219
+            },
+            {
+              "maximum": 0.35,
+              "minimum": 0,
+              "name": "handle_drop",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.03615442472237676
+            },
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "name": "breakout_extension",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "ratio",
+              "value": 0.04512263995323207
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "target_headroom",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "USD",
+              "value": 18.169017791748047
+            }
+          ],
+          "pivot": 49.99700164794922,
+          "rank": 1,
+          "right_high": 49.095001220703125,
+          "right_rim": "2023-12-21",
+          "stop": 47.31999969482422,
+          "target": 70.42201614379883,
+          "visible_start": "2023-05-19",
+          "volatility_unit": 1.3322750091552735
+        },
+        {
+          "bottom": "2023-10-31",
+          "bottom_band_price": 41.44449996948242,
+          "bottom_dwell_fraction": 0.12244897959183673,
+          "bottom_low": 39.22999954223633,
+          "candidate_id": "NVDA-2024-01-08-9edb9afec9ed",
+          "cup_depth": 0.1842039901535628,
+          "cup_sessions": 98,
+          "handle_end": "2024-01-05",
+          "handle_retrace_of_cup": 0.3490993148581152,
+          "handle_sessions": 24,
+          "handle_start": "2023-12-01",
+          "handle_volume_ratio": 0.7635610833273959,
+          "left_high": 48.0880012512207,
+          "left_rim": "2023-07-14",
+          "numeric_checks": [
+            {
+              "maximum": 120,
+              "minimum": 25,
+              "name": "cup_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 98
+            },
+            {
+              "maximum": 30,
+              "minimum": 5,
+              "name": "handle_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 24
+            },
+            {
+              "maximum": 1,
+              "minimum": 1,
+              "name": "bottom_internal",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "boolean",
+              "value": 1
+            },
+            {
+              "maximum": 0.08,
+              "minimum": 0,
+              "name": "rim_difference",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.0004574812543347479
+            },
+            {
+              "maximum": 0.5,
+              "minimum": 0.06,
+              "name": "cup_depth",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.1842039901535628
+            },
+            {
+              "maximum": null,
+              "minimum": 0.15,
+              "name": "prior_advance",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.17799233023606043
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "handle_above_midpoint",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "USD",
+              "value": 1.3509979248046875
+            },
+            {
+              "maximum": 0.35,
+              "minimum": 0,
+              "name": "handle_drop",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.06443571501745833
+            },
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "name": "breakout_extension",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "ratio",
+              "value": 0.036087477312107596
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "target_headroom",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "USD",
+              "value": 42.58000564575195
+            }
+          ],
+          "pivot": 50.43299865722656,
+          "rank": 2,
+          "right_high": 48.11000061035156,
+          "right_rim": "2023-11-30",
+          "stop": 45.0099983215332,
+          "target": 94.83300399780273,
+          "visible_start": "2023-05-19",
+          "volatility_unit": 1.3322750091552735
+        },
+        {
+          "bottom": "2023-10-31",
+          "bottom_band_price": 41.37374973297119,
+          "bottom_dwell_fraction": 0.13513513513513514,
+          "bottom_low": 39.22999954223633,
+          "candidate_id": "NVDA-2024-01-08-f394c6054aa8",
+          "cup_depth": 0.17937455722620402,
+          "cup_sessions": 74,
+          "handle_end": "2024-01-05",
+          "handle_retrace_of_cup": 0.22453283301391058,
+          "handle_sessions": 18,
+          "handle_start": "2023-12-11",
+          "handle_volume_ratio": 0.8044671277819342,
+          "left_high": 47.80500030517578,
+          "left_rim": "2023-08-25",
+          "numeric_checks": [
+            {
+              "maximum": 120,
+              "minimum": 25,
+              "name": "cup_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 74
+            },
+            {
+              "maximum": 30,
+              "minimum": 5,
+              "name": "handle_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 18
+            },
+            {
+              "maximum": 1,
+              "minimum": 1,
+              "name": "bottom_internal",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "boolean",
+              "value": 1
+            },
+            {
+              "maximum": 0.08,
+              "minimum": 0,
+              "name": "rim_difference",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.0013387548502632584
+            },
+            {
+              "maximum": 0.5,
+              "minimum": 0.06,
+              "name": "cup_depth",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.17937455722620402
+            },
+            {
+              "maximum": null,
+              "minimum": 0.15,
+              "name": "prior_advance",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.17011383773862176
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "handle_above_midpoint",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "USD",
+              "value": 2.312501907348633
+            },
+            {
+              "maximum": 0.35,
+              "minimum": 0,
+              "name": "handle_drop",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.04002847139560418
+            },
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "name": "breakout_extension",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "ratio",
+              "value": 0.036087477312107596
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "target_headroom",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "USD",
+              "value": 40.735008239746094
+            }
+          ],
+          "pivot": 50.43299865722656,
+          "rank": 3,
+          "right_high": 47.74100112915039,
+          "right_rim": "2023-12-08",
+          "stop": 45.83000183105469,
+          "target": 92.98800659179688,
+          "visible_start": "2023-05-19",
+          "volatility_unit": 1.3322750091552735
+        }
+      ],
+      "assessments": [
+        {
+          "candidate_id": "NVDA-2024-01-08-a2b257af30c2",
+          "checks": [
+            {
+              "end_date": "2023-12-21",
+              "name": "cup",
+              "reason": "Within the fixed 2023-11-13–2023-12-21 interval, price declines from the rim area into a base around the 2023-12-04 low, then recovers toward the rim; it is not mainly a sharp V.",
+              "start_date": "2023-11-13",
+              "verdict": "pass"
+            },
+            {
+              "end_date": "2024-01-05",
+              "name": "handle",
+              "reason": "The fixed 2023-12-22–2024-01-05 interval is a compact pullback/consolidation near the recovered upper rim.",
+              "start_date": "2023-12-22",
+              "verdict": "pass"
+            },
+            {
+              "end_date": "2024-01-05",
+              "name": "coherence",
+              "reason": "The handle follows directly after the cup’s rim recovery, forming one connected sequence.",
+              "start_date": "2023-11-13",
+              "verdict": "pass"
+            }
+          ],
+          "evidence": "The fixed cup region shows the November rim, a sustained late-November/early-December decline and base, and recovery by December 21; the following handle remains near the rim through January 5.",
+          "missing_information": [],
+          "verdict": "pass"
+        },
+        {
+          "candidate_id": "NVDA-2024-01-08-9edb9afec9ed",
+          "checks": [
+            {
+              "end_date": "2023-11-30",
+              "name": "cup",
+              "reason": "The fixed 2023-07-14–2023-11-30 interval declines over an extended period, bases around the 2023-10-31 low, and recovers toward the rim; this is a broad rounded/consolidating cup rather than a single sharp reversal.",
+              "start_date": "2023-07-14",
+              "verdict": "pass"
+            },
+            {
+              "end_date": "2024-01-05",
+              "name": "handle",
+              "reason": "The fixed 2023-12-01–2024-01-05 region is a relatively shallow upper consolidation following the cup recovery.",
+              "start_date": "2023-12-01",
+              "verdict": "pass"
+            },
+            {
+              "end_date": "2024-01-05",
+              "name": "coherence",
+              "reason": "The handle begins immediately after the cup’s right rim and stays attached to the recovered upper region.",
+              "start_date": "2023-07-14",
+              "verdict": "pass"
+            }
+          ],
+          "evidence": "Price falls from the July rim region to a late-October/October 31 base, then recovers to the November 30 rim area; the December–January handle is a smaller pullback near that upper region.",
+          "missing_information": [],
+          "verdict": "pass"
+        },
+        {
+          "candidate_id": "NVDA-2024-01-08-f394c6054aa8",
+          "checks": [
+            {
+              "end_date": "2023-12-08",
+              "name": "cup",
+              "reason": "Within the fixed 2023-08-25–2023-12-08 interval, price declines to a sustained late-October base around the 2023-10-31 low and recovers toward the rim; the structure is not mainly a sharp V.",
+              "start_date": "2023-08-25",
+              "verdict": "pass"
+            },
+            {
+              "end_date": "2024-01-05",
+              "name": "handle",
+              "reason": "The fixed 2023-12-11–2024-01-05 interval forms an upper consolidation with a limited pullback after recovery.",
+              "start_date": "2023-12-11",
+              "verdict": "pass"
+            },
+            {
+              "end_date": "2024-01-05",
+              "name": "coherence",
+              "reason": "The handle follows the December 8 rim recovery and remains near that upper region, so the segments form one connected pattern.",
+              "start_date": "2023-08-25",
+              "verdict": "pass"
+            }
+          ],
+          "evidence": "The cup region moves from the August rim through a broad decline and late-October base, then recovers by December 8. The following handle consolidates near the recovered rim into January 5.",
+          "missing_information": [],
+          "verdict": "pass"
+        }
+      ],
+      "validation": {
+        "accepted": true,
+        "pattern": {
+          "bottom": "2023-12-04",
+          "bottom_band_price": 46.0364990234375,
+          "bottom_dwell_fraction": 0.17857142857142858,
+          "bottom_low": 45.0099983215332,
+          "candidate_id": "NVDA-2024-01-08-a2b257af30c2",
+          "cup_depth": 0.08359806810860812,
+          "cup_sessions": 28,
+          "handle_end": "2024-01-05",
+          "handle_retrace_of_cup": 0.43451658901872237,
+          "handle_sessions": 9,
+          "handle_start": "2023-12-22",
+          "handle_volume_ratio": 0.7393231721923403,
+          "left_high": 49.11600112915039,
+          "left_rim": "2023-11-13",
+          "numeric_checks": [
+            {
+              "maximum": 120,
+              "minimum": 25,
+              "name": "cup_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 28
+            },
+            {
+              "maximum": 30,
+              "minimum": 5,
+              "name": "handle_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 9
+            },
+            {
+              "maximum": 1,
+              "minimum": 1,
+              "name": "bottom_internal",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "boolean",
+              "value": 1
+            },
+            {
+              "maximum": 0.08,
+              "minimum": 0,
+              "name": "rim_difference",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.0004275573736560194
+            },
+            {
+              "maximum": 0.5,
+              "minimum": 0.06,
+              "name": "cup_depth",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.08359806810860812
+            },
+            {
+              "maximum": null,
+              "minimum": 0.15,
+              "name": "prior_advance",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.19326551752164867
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "handle_above_midpoint",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "USD",
+              "value": 0.2569999694824219
+            },
+            {
+              "maximum": 0.35,
+              "minimum": 0,
+              "name": "handle_drop",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.03615442472237676
+            },
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "name": "breakout_extension",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "ratio",
+              "value": 0.04512263995323207
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "target_headroom",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "USD",
+              "value": 18.169017791748047
+            }
+          ],
+          "pivot": 49.99700164794922,
+          "rank": 1,
+          "right_high": 49.095001220703125,
+          "right_rim": "2023-12-21",
+          "stop": 47.31999969482422,
+          "target": 70.42201614379883,
+          "visible_start": "2023-05-19",
+          "volatility_unit": 1.3322750091552735
+        },
+        "reason": "bound_candidate_pass"
+      }
+    },
+    {
+      "kind": "rejected",
+      "date": "2024-01-24",
+      "symbol": "AVGO",
+      "candidates": [
+        {
+          "bottom": "2023-12-06",
+          "bottom_band_price": 92.27624893188477,
+          "bottom_dwell_fraction": 0.2,
+          "bottom_low": 90.30999755859375,
+          "candidate_id": "AVGO-2024-01-24-ecb49196403e",
+          "cup_depth": 0.08011209828043128,
+          "cup_sessions": 35,
+          "handle_end": "2024-01-23",
+          "handle_retrace_of_cup": 0.022709416513563008,
+          "handle_sessions": 11,
+          "handle_start": "2024-01-08",
+          "handle_volume_ratio": 0.6736405282991681,
+          "left_high": 98.17500305175781,
+          "left_rim": "2023-11-15",
+          "numeric_checks": [
+            {
+              "maximum": 120,
+              "minimum": 25,
+              "name": "cup_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 35
+            },
+            {
+              "maximum": 30,
+              "minimum": 5,
+              "name": "handle_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 11
+            },
+            {
+              "maximum": 1,
+              "minimum": 1,
+              "name": "bottom_internal",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "boolean",
+              "value": 1
+            },
+            {
+              "maximum": 0.08,
+              "minimum": 0,
+              "name": "rim_difference",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.07508015623880458
+            },
+            {
+              "maximum": 0.5,
+              "minimum": 0.06,
+              "name": "cup_depth",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.08011209828043128
+            },
+            {
+              "maximum": null,
+              "minimum": 0.15,
+              "name": "prior_advance",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.15101888206746983
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "handle_above_midpoint",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "USD",
+              "value": 10.957496643066406
+            },
+            {
+              "maximum": 0.35,
+              "minimum": 0,
+              "name": "handle_drop",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.003278197934455558
+            },
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "name": "breakout_extension",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "ratio",
+              "value": 0.018305391272192884
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "target_headroom",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "USD",
+              "value": 73.9260025024414
+            }
+          ],
+          "pivot": 123.13300323486328,
+          "rank": 1,
+          "right_high": 105.5459976196289,
+          "right_rim": "2024-01-05",
+          "stop": 105.19999694824219,
+          "target": 199.31300354003906,
+          "visible_start": "2023-06-06",
+          "volatility_unit": 2.9438005447387696
+        }
+      ],
+      "assessments": [
+        {
+          "candidate_id": "AVGO-2024-01-24-ecb49196403e",
+          "checks": [
+            {
+              "end_date": "2024-01-05",
+              "name": "cup",
+              "reason": "The fixed region has a decline and a low consolidation around Nov 30–Dec 8, but recovery is unusually abrupt: a large gap/rise on Dec 11 is followed by near-vertical advances through Dec 18. Taken together, the recovery is predominantly a sharp reversal rather than a rounded cup.",
+              "start_date": "2023-11-15",
+              "verdict": "fail"
+            },
+            {
+              "end_date": "2024-01-23",
+              "name": "handle",
+              "reason": "The fixed Jan 8–23 region forms a shallow pause/pullback near the recovered upper area before rising again. The later rising bars do not erase that earlier consolidation.",
+              "start_date": "2024-01-08",
+              "verdict": "pass"
+            },
+            {
+              "end_date": "2024-01-23",
+              "name": "coherence",
+              "reason": "The handle follows the recovery within the fixed connected sequence; there is no separate, intervening unrelated segment.",
+              "start_date": "2023-11-15",
+              "verdict": "pass"
+            }
+          ],
+          "evidence": "Reconsideration retains the prior non-pass on cup, but resolves the uncertainty against a pass: the low base is present, yet the Dec 11–18 recovery is sharply discontinuous and steep. The shallow Jan 8–23 consolidation and its attachment to the recovery support the other checks.",
+          "missing_information": [],
+          "verdict": "fail"
+        }
+      ],
+      "validation": {
+        "accepted": false,
+        "pattern": null,
+        "reason": "no_model_pass"
+      }
+    },
+    {
+      "kind": "skipped",
+      "date": "2024-10-04",
+      "symbol": "AMD",
+      "candidates": [
+        {
+          "bottom": "2024-09-06",
+          "bottom_band_price": 139.59249877929688,
+          "bottom_dwell_fraction": 0.23076923076923078,
+          "bottom_low": 132.11000061035156,
+          "candidate_id": "AMD-2024-10-04-35b3eefc8f6d",
+          "cup_depth": 0.18470744208764803,
+          "cup_sessions": 26,
+          "handle_end": "2024-10-03",
+          "handle_retrace_of_cup": 0.1579116632774735,
+          "handle_sessions": 6,
+          "handle_start": "2024-09-26",
+          "handle_volume_ratio": 0.7823045243987892,
+          "left_high": 162.0399932861328,
+          "left_rim": "2024-08-20",
+          "numeric_checks": [
+            {
+              "maximum": 120,
+              "minimum": 25,
+              "name": "cup_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 26
+            },
+            {
+              "maximum": 30,
+              "minimum": 5,
+              "name": "handle_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 6
+            },
+            {
+              "maximum": 1,
+              "minimum": 1,
+              "name": "bottom_internal",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "boolean",
+              "value": 1
+            },
+            {
+              "maximum": 0.08,
+              "minimum": 0,
+              "name": "rim_difference",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.005615920142026148
+            },
+            {
+              "maximum": 0.5,
+              "minimum": 0.06,
+              "name": "cup_depth",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.18470744208764803
+            },
+            {
+              "maximum": null,
+              "minimum": 0.15,
+              "name": "prior_advance",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.24473807345880116
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "handle_above_midpoint",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "USD",
+              "value": 11.0050048828125
+            },
+            {
+              "maximum": 0.35,
+              "minimum": 0,
+              "name": "handle_drop",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.029886438836414075
+            },
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "name": "breakout_extension",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "ratio",
+              "value": 0.012860772973937395
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "target_headroom",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "USD",
+              "value": 152.0299835205078
+            }
+          ],
+          "pivot": 168.72999572753906,
+          "rank": 1,
+          "right_high": 162.9499969482422,
+          "right_rim": "2024-09-25",
+          "stop": 158.0800018310547,
+          "target": 322.9299774169922,
+          "visible_start": "2024-02-16",
+          "volatility_unit": 5.709999465942383
+        },
+        {
+          "bottom": "2024-08-05",
+          "bottom_band_price": 135.01000213623047,
+          "bottom_dwell_fraction": 0.12941176470588237,
+          "bottom_low": 121.83000183105469,
+          "candidate_id": "AMD-2024-10-04-72eacb92bd89",
+          "cup_depth": 0.30203380291589293,
+          "cup_sessions": 85,
+          "handle_end": "2024-10-03",
+          "handle_retrace_of_cup": 0.2262538509315354,
+          "handle_sessions": 5,
+          "handle_start": "2024-09-27",
+          "handle_volume_ratio": 0.5565731529454735,
+          "left_high": 174.5500030517578,
+          "left_rim": "2024-05-28",
+          "numeric_checks": [
+            {
+              "maximum": 120,
+              "minimum": 25,
+              "name": "cup_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 85
+            },
+            {
+              "maximum": 30,
+              "minimum": 5,
+              "name": "handle_sessions",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "sessions",
+              "value": 5
+            },
+            {
+              "maximum": 1,
+              "minimum": 1,
+              "name": "bottom_internal",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "boolean",
+              "value": 1
+            },
+            {
+              "maximum": 0.08,
+              "minimum": 0,
+              "name": "rim_difference",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.03362939142565342
+            },
+            {
+              "maximum": 0.5,
+              "minimum": 0.06,
+              "name": "cup_depth",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.30203380291589293
+            },
+            {
+              "maximum": null,
+              "minimum": 0.15,
+              "name": "prior_advance",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.15933850878170897
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "handle_above_midpoint",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "USD",
+              "value": 9.889999389648438
+            },
+            {
+              "maximum": 0.35,
+              "minimum": 0,
+              "name": "handle_drop",
+              "passed": true,
+              "strict_minimum": false,
+              "unit": "ratio",
+              "value": 0.06284083059631582
+            },
+            {
+              "maximum": 0.1,
+              "minimum": 0,
+              "name": "breakout_extension",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "ratio",
+              "value": 0.012860772973937395
+            },
+            {
+              "maximum": null,
+              "minimum": 0,
+              "name": "target_headroom",
+              "passed": true,
+              "strict_minimum": true,
+              "unit": "USD",
+              "value": 232.0799560546875
+            }
+          ],
+          "pivot": 168.72999572753906,
+          "rank": 2,
+          "right_high": 168.67999267578125,
+          "right_rim": "2024-09-26",
+          "stop": 158.0800018310547,
+          "target": 402.9799499511719,
+          "visible_start": "2024-02-16",
+          "volatility_unit": 5.709999465942383
+        }
+      ],
+      "assessments": [],
+      "validation": {
+        "accepted": false,
+        "execution_note": "Skipped before model: no candidate fits available cash, sizing or position slots.",
+        "reason": "not_executable"
+      }
+    }
+  ]
+}

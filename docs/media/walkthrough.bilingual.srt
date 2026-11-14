@@ -1,0 +1,34 @@
+1
+00:00:00,000 --> 00:00:03,600
+A real project: describe the method, clarify the rules.
+真实项目：描述方法，澄清规则。
+
+2
+00:00:03,600 --> 00:00:07,100
+Read the source material in the same workbench.
+在同一个工作台中查看方法资料。
+
+3
+00:00:07,100 --> 00:00:11,600
+Inspect the generated implementation and its validation records.
+检查生成的实现和验证记录。
+
+4
+00:00:11,600 --> 00:00:17,200
+40 instruments. 718 sessions. The complete historical run.
+40 个标的、718 个交易日：完整历史运行。
+
+5
+00:00:17,200 --> 00:00:22,000
+Trace a simulated fill to the chart used for its judgment.
+从模拟成交追溯模型判断所用的证据图。
+
+6
+00:00:22,000 --> 00:00:26,300
+NVDA: the original 100-share version keeps its own result.
+NVDA：原有 100 股版本保留自己的运行结果。
+
+7
+00:00:26,300 --> 00:00:32,000
+The 50-share revision has a separate result. History is not a forecast.
+50 股修改版有独立结果；历史模拟不代表未来表现。

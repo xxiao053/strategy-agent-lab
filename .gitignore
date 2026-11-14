@@ -1,0 +1,51 @@
+# Credentials and private inputs
+.env
+.env.*
+!.env.example
+credentials/
+secrets/
+private/
+*.pem
+*.key
+
+# Local datasets and generated run artifacts; curated public fixtures require review
+/data/
+/runs/
+/artifacts/
+/cache/
+/logs/
+/materials/
+/material-tasks/
+*.log
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Web builds and local tooling
+node_modules/
+.next/
+dist/
+dist-showcase/
+dist-showcase-preview/
+build/
+coverage/
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+.playwright-cli/
+/output/
+/.superpowers/
+# Never publish local archives or ad-hoc browser sessions.
+*private-archive*/
+.playwright/
+.playwright-cli/
+~$*

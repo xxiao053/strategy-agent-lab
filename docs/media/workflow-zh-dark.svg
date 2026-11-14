@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1472" height="594" viewBox="0 0 1472 594" role="img" aria-labelledby="title desc">
+<title id="title">从用户方法到策略系统</title><desc id="desc">用户方法进入构建智能体，经过澄清确认和生成验证，产出策略程序及按需执行智能体。公共运行器提供数据、工具、账户和权限边界；结果与证据反馈到构建流程，形成新版本。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7c8d9b" stroke-width="1.5"/></marker></defs>
+<rect width="1472" height="594" rx="20" fill="#0d1117"/>
+<g style="font-family: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif">
+<rect x="24" y="179" width="194" height="178" rx="14" fill="#151b23" stroke="#34404b" stroke-width="1.4"/>
+<text x="121" y="221" fill="#e7edf2" font-size="24" font-weight="600" text-anchor="middle">你的方法与资料</text>
+<text x="121" y="269" fill="#a6b3be" font-size="18" font-weight="400" text-anchor="middle">交易想法与规则</text>
+<text x="121" y="302" fill="#a6b3be" font-size="18" font-weight="400" text-anchor="middle">笔记、文档、图表</text>
+<rect x="258" y="70" width="298" height="394" rx="18" fill="#17261f" stroke="#9bc7ad" stroke-width="1.4"/><text x="282" y="112" fill="#e7edf2" font-size="27" font-weight="600" text-anchor="start">构建智能体</text><text x="282" y="144" fill="#a6b3be" font-size="18" font-weight="400" text-anchor="start">理解方法 · 生成实现</text>
+<rect x="280" y="183" width="254" height="94" rx="12" fill="#21362a" stroke="#34404b" stroke-width="1.4"/><text x="407" y="221" fill="#e7edf2" font-size="23" font-weight="600" text-anchor="middle">澄清与确认</text><text x="407" y="251" fill="#a6b3be" font-size="17" font-weight="400" text-anchor="middle">助手追问 · 你确认规则</text>
+<path d="M 407 277 L 407 318" fill="none" stroke="#7c8d9b" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="280" y="318" width="254" height="94" rx="12" fill="#21362a" stroke="#34404b" stroke-width="1.4"/><text x="407" y="356" fill="#e7edf2" font-size="23" font-weight="600" text-anchor="middle">生成与验证</text><text x="407" y="386" fill="#a6b3be" font-size="17" font-weight="400" text-anchor="middle">编写代码、测试并保留版本</text>
+<rect x="596" y="70" width="252" height="394" rx="18" fill="#151b23" stroke="#34404b" stroke-width="1.4"/><text x="620" y="112" fill="#e7edf2" font-size="27" font-weight="600" text-anchor="start">策略项目</text><text x="620" y="144" fill="#a6b3be" font-size="18" font-weight="400" text-anchor="start">由构建智能体生成</text>
+<rect x="614" y="183" width="216" height="94" rx="12" fill="#1c242d" stroke="#34404b" stroke-width="1.4"/><text x="722" y="221" fill="#e7edf2" font-size="23" font-weight="600" text-anchor="middle">策略程序</text><text x="722" y="251" fill="#a6b3be" font-size="17" font-weight="400" text-anchor="middle">计算、信号与交易规则</text>
+<rect x="614" y="318" width="216" height="94" rx="12" fill="#1c242d" stroke="#34404b" stroke-width="1.4" stroke-dasharray="5 4"/><text x="722" y="356" fill="#e7edf2" font-size="23" font-weight="600" text-anchor="middle">执行智能体</text><text x="722" y="386" fill="#a6b3be" font-size="17" font-weight="400" text-anchor="middle">方法专属判断 · 按需生成</text>
+<rect x="888" y="70" width="302" height="394" rx="18" fill="#151b23" stroke="#34404b" stroke-width="1.4"/><text x="912" y="112" fill="#e7edf2" font-size="27" font-weight="600" text-anchor="start">公共运行器</text><text x="912" y="144" fill="#a6b3be" font-size="18" font-weight="400" text-anchor="start">执行策略 · 统一约束</text>
+<rect x="908" y="183" width="262" height="94" rx="12" fill="#1c242d" stroke="#34404b" stroke-width="1.4"/><text x="1039" y="221" fill="#e7edf2" font-size="23" font-weight="600" text-anchor="middle">历史运行</text><text x="1039" y="251" fill="#a6b3be" font-size="17" font-weight="400" text-anchor="middle">调用策略程序与执行智能体</text>
+<rect x="908" y="318" width="262" height="94" rx="14" fill="#1c242d" stroke="#34404b" stroke-width="1.4"/>
+<text x="1039" y="356" fill="#e7edf2" font-size="20" font-weight="400" text-anchor="middle">截止数据 · 受限工具</text>
+<text x="1039" y="387" fill="#a6b3be" font-size="19" font-weight="400" text-anchor="middle">账户记账 · 权限与费用</text>
+<rect x="1230" y="179" width="218" height="178" rx="14" fill="#151b23" stroke="#34404b" stroke-width="1.4"/>
+<text x="1339" y="221" fill="#e7edf2" font-size="23" font-weight="600" text-anchor="middle">可检查的结果</text>
+<text x="1339" y="269" fill="#a6b3be" font-size="19" font-weight="400" text-anchor="middle">历史表现与交易</text>
+<text x="1339" y="302" fill="#a6b3be" font-size="19" font-weight="400" text-anchor="middle">逐次决策与依据</text>
+<path d="M 218 268 L 250 268" fill="none" stroke="#7c8d9b" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 556 268 L 588 268" fill="none" stroke="#7c8d9b" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 848 268 L 880 268" fill="none" stroke="#7c8d9b" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 1190 268 L 1222 268" fill="none" stroke="#7c8d9b" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 1339 357 L 1339 510 Q 1339 526 1323 526 L 423 526 Q 407 526 407 510 L 407 472" fill="none" stroke="#7c8d9b" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<rect x="592" y="505" width="570" height="42" rx="21" fill="#0d1117"/>
+<text x="877" y="532" fill="#a6b3be" font-size="20" font-weight="400" text-anchor="middle">查看结果，反馈修改；保留新旧版本</text>
+</g></svg>

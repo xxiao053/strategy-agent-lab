@@ -1,0 +1,42 @@
+import React from 'react';
+import {afterEach,expect,test,vi} from 'vitest';
+import {cleanup,fireEvent,render,screen} from '@testing-library/react';
+import ProjectMaterials from './ProjectMaterials';
+import ConnectionSettings from './ModelSettings';
+import ProjectDecisionEvidence from './ProjectDecisionEvidence';
+afterEach(()=>{cleanup();vi.unstubAllGlobals()});
+const t=(_:string,en:string)=>en;
+test('normalization preview identifies actual sent image and explicit I1 selection',async()=>{
+  const item={id:'m1',name:'example.png',sha256:'original',locations:1,image:{sha256:'normalized',width:1024,height:512},units:[{location:'I1',text:'Visual source'}]};
+  const api=vi.fn(async(path:string)=>path.endsWith('/m1')?item:[item]);const quote=vi.fn();
+  render(<ProjectMaterials pid="p1" api={api} t={t} disabled={false} onQuote={quote}/>);
+  fireEvent.click(await screen.findByRole('button',{name:'example.png'}));
+  const preview=await screen.findByAltText('Normalized image: example.png');
+  expect(preview.getAttribute('src')).toBe('/api/workspace/projects/p1/materials/m1/images/normalized');
+  expect(screen.getByText(/1024 × 512/)).toBeTruthy();
+  const provenance=screen.getByText('Source details').closest('details');
+  expect(provenance?.hasAttribute('open')).toBe(false);
+  expect(provenance?.textContent).toContain('original');
+  expect(provenance?.textContent).toContain('normalized');
+  const attach=screen.getByRole('button',{name:'Reference selected locations in chat'});
+  expect(attach.compareDocumentPosition(preview)&Node.DOCUMENT_POSITION_FOLLOWING).not.toBe(0);
+  fireEvent.click(screen.getByRole('checkbox',{name:'I1'}));
+  fireEvent.click(screen.getByRole('button',{name:'Reference selected locations in chat'}));
+  expect(quote).toHaveBeenCalledWith([{id:'m1',sha256:'original',name:'example.png',locations:['I1']}]);
+  expect((screen.getByLabelText('Import material') as HTMLInputElement).accept).toContain('.png');
+});
+test('existing saved connection image opt-in needs no key re-entry or inference',async()=>{
+  const api=vi.fn(async(_path:string,_body?:Record<string,any>)=>({persistent:false}));const saved=vi.fn(async()=>{});
+  render(<ConnectionSettings connections={[{id:'c1',provider:'openai',model:'selected',name:'Saved',configured:true}]} providers={[{id:'openai',label:'OpenAI'}]} t={t} onSaved={saved} onError={()=>{}} api={api}/>);
+  expect(await screen.findByText('Image inputs disabled')).toBeTruthy();
+  fireEvent.click(screen.getByLabelText('I confirm this selected model accepts images and bills image input as tokens at the configured input rate.'));
+  fireEvent.click(screen.getByRole('button',{name:'Enable image inputs'}));
+  await vi.waitFor(()=>expect(api).toHaveBeenCalledWith('/connections/c1/images',{enabled:true,billing_profile:'token-v1'}));
+  expect(api.mock.calls.some(([path])=>path.includes('/check'))).toBe(false);
+});
+test('saved execution evidence shows provenance-linked image without model request',()=>{
+  const image={sha256:'digest',source:{symbol:'SPY',cutoff:'2024-01-03',start:'2024-01-02',end:'2024-01-03',bar_count:2}};
+  render(<ProjectDecisionEvidence pid="p1" run={{id:'r1'}} decision={{id:'d1',cutoff:'2024-01-03',proposal:{symbol:'SPY'},images:[image]}} t={t}/>);
+  expect(screen.getByAltText('Saved judgment chart: SPY, as of 2024-01-03').getAttribute('src')).toBe('/api/workspace/projects/p1/runs/r1/images/digest');
+  expect(screen.getByText(/pixels are not sent/)).toBeTruthy();
+});

@@ -1,0 +1,38 @@
+name: strategy-agent-lab
+services:
+  controller:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: strategy-agent-lab-controller:0.1.0
+    ports:
+      - "127.0.0.1:8765:8765"
+    environment:
+      LAB_DATA_ROOT: /data
+      LAB_EXECUTION_BACKEND: docker
+    volumes:
+      - "${LAB_DATA_PATH:-lab-data}:/data"
+      # Trusted controller only. This grants Docker-host authority, never task authority.
+      - /var/run/docker.sock:/var/run/docker.sock
+    read_only: true
+    tmpfs:
+      - /tmp:size=536870912,nosuid,nodev
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 2g
+    pids_limit: 256
+    restart: "no"
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/workspace/projects',timeout=5).close()"]
+      interval: 5s
+      timeout: 6s
+      retries: 12
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    image: strategy-agent-lab-worker:0.1.0
+    profiles: [build-only]
+    network_mode: none
+volumes:
+  lab-data:

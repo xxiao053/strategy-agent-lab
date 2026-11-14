@@ -1,0 +1,1958 @@
+{
+  "schema": "saved-builder-example-v1",
+  "id": "nvda-revision",
+  "title": "NVDA · revising a method from 100 to 50 shares",
+  "selection": "reviewed_subset_not_first_attempt_or_total_cost",
+  "messages": [
+    {
+      "id": "message-1",
+      "role": "assistant",
+      "text": "Hello. I’ll help turn your investment method into a project you can run, inspect and revise. Start with a concrete trade example or a note; you don’t need a complete specification. We’ll clarify the market, decisions, exits and sizing as we go. Anything undecided can remain an open question.\n\nWhat would you like to build first?"
+    },
+    {
+      "id": "message-2",
+      "role": "user",
+      "text": "我想把上传的杯柄交易方法做成一个能运行、能解释每次判断的项目。请先读两份材料，帮我整理代码负责什么、模型负责什么，以及入场、退出和仓位规则。数值参考是可以复用的计算函数，不是已经完成的策略。先用材料中约定的 NVDA 历史区间和每次固定 100 股；不要为了提高收益改规则。若存在影响执行的歧义，请先问我最关键的一两个问题，不要现在就开始构建。"
+    },
+    {
+      "id": "message-3",
+      "role": "user",
+      "text": "补充明确一下数值参数：市场筛选和候选几何检查中的 breakout_buffer 都取 0，两个位置都要求严格高于对应突破价，不是大于等于。其余规则以这两份材料为准，固定 100 股、170 根可见日线和 169 根预热历史不变。请继续用中文整理完整的方法草稿，说明还存不存在影响运行的缺口；这一步仍只澄清，不开始构建。"
+    },
+    {
+      "id": "message-4",
+      "role": "assistant",
+      "text": "已按你的补充把两个位置的 breakout_buffer 设为 0，并采用严格大于突破价；这是方法草稿，不代表已批准或开始构建。下面按代码与模型职责、筛选、候选形态、入场、持仓退出和执行记录整理。参考文件只提供可复用的数值函数，不是完整策略；候选排序和账户状态仍需按方法说明实现。尚有影响运行的缺口，见末尾问题。"
+    },
+    {
+      "id": "message-5",
+      "role": "user",
+      "text": "Please continue in English. To resolve those two questions: (1) use the frozen Yahoo chart OHLC and volume exactly as provided, in the snapshot's split-adjusted share units; do not apply split factors again and do not use adjclose. Dividends and capital gains are not credited or reinvested. This is price return, not total return or point-in-time as-traded share quantities; later snapshot splits can rescale earlier quotes, and that limitation must be stated. The fixed 100 shares use those same snapshot share units. (2) Each decision sees a rolling window of up to 170 sessions including the current completed session: 160 for candidate search plus ten earlier bars for the earliest left-rim advance calculation. Require 169 earlier sessions before the first decision on 2024-01-02; never freeze the visible window at the run start. All other rules and the 2024-02-15 end date remain unchanged. Please update the complete method draft without starting construction. If these resolve the execution-critical gaps, say that it is ready for my explicit approval; do not invent further trading rules."
+    },
+    {
+      "id": "message-6",
+      "role": "assistant",
+      "text": "Updated the complete method draft in English with your two clarifications. The execution-critical gaps raised earlier are resolved. This remains a draft—not an approved version—and I have not started construction. It is ready for your explicit approval."
+    },
+    {
+      "id": "message-9",
+      "role": "assistant",
+      "text": "The supplied image shows NVDA daily candles and volume through 2023-12-29, with a plotted window beginning 2023-07-12; it has no pattern markers. It is pre-run context, not a labeled pattern or forecast. No exact anchors or verdict are inferred. This remains an implementation repair, not strategy optimization; no construction or tests have been performed."
+    },
+    {
+      "id": "message-10",
+      "role": "user",
+      "text": "请用中文回答。我看了这次已完成运行的买入记录。请保持已确认的杯柄方法、全部数值条件、候选排序、模型的三个形态判断标准、退出规则、成交时点和费用规则不变，只把每次固定买入数量从 100 股改为 50 股；卖出时仍卖出该笔实际持有的全部股份。请形成新方法版本供我确认，不覆盖已经完成的 100 股版本、代码或运行结果。这是仓位规则的修改，不要为了复制上一轮模型结论或收益而改动其他条件。"
+    },
+    {
+      "id": "message-11",
+      "role": "assistant",
+      "text": "已形成待确认的新方法版本草稿：只将每次固定买入数量从100股改为50股；卖出仍按该笔实际持有数量全部卖出。其他方法规则保持不变。此草稿尚未获批准，也不会覆盖已完成的100股版本、代码或运行结果。选定运行证据显示，2024-01-09的买入提案对应次日2024-01-10、每股53.61600112915039美元的100股成交；但本次提供的代码和方法内容均有截断，且NVDA仅提供17/170根日线，不能据此全面审查原运行或确认其他细节。未重跑代码或测试。"
+    },
+    {
+      "id": "message-12",
+      "role": "user",
+      "text": "确认：固定买入50股，卖出全部实际持仓，其他规则和已完成记录均保持不变。可负担性仍必须包含买入费用并使用分币舍入。原100股的舍入数值仅作为独立算术回归案例，不是新版本交易数量。请整理成可以点击批准的方法草稿；这项选择已经确认，不再是待决问题。"
+    },
+    {
+      "id": "message-14",
+      "role": "assistant",
+      "text": "新版本草稿已整理，供你明确批准。固定买入量为50股，卖出全部实际持仓；其他投资规则以及已完成的100股版本、代码和运行结果均不变。可负担性包含买入费用并按分币舍入。此前要求的实现修复与回归验证仍属实现要求，不是策略优化；本对话未进行构建或测试。批准后才可将此草稿作为新方法版本。"
+    },
+    {
+      "id": "message-15",
+      "role": "user",
+      "text": "所有方法选择已经确认，无新增条件：固定买入50股、卖出实际全部持仓，其他规则不变。请保留完整草稿，结束澄清环节。我会通过工作台的独立批准按钮完成审批；不要再把点击批准这件事列为缺失的方法规则或阻塞问题，也不要自行批准。"
+    },
+    {
+      "id": "message-16",
+      "role": "assistant",
+      "text": "澄清环节已结束，完整的50股新版本草稿已保留，现已准备好供你通过工作台的独立按钮批准。我不会自行批准，也没有开始构建、修复代码或运行测试。所附图表显示NVDA日线与成交量，标注范围为2023-07-12至2023-12-29（120/170根可见日线），没有形态标记；它是运行前背景，不据此推断精确价位、锚点或形态结论。"
+    }
+  ],
+  "materials": [
+    {
+      "id": "material-1",
+      "name": "acceptance-method-notes.txt",
+      "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+      "units": [
+        {
+          "location": "L1",
+          "text": "Cup with handle — daily long-only method"
+        },
+        {
+          "location": "L2",
+          "text": ""
+        },
+        {
+          "location": "L3",
+          "text": "Purpose"
+        },
+        {
+          "location": "L4",
+          "text": "Implement an inspectable example of my method. Program code owns arithmetic, candidate selection, position state and exits. A model judges the shape only after the numeric checks pass."
+        },
+        {
+          "location": "L5",
+          "text": ""
+        },
+        {
+          "location": "L6",
+          "text": "Market and execution"
+        },
+        {
+          "location": "L7",
+          "text": "Use daily US stock data. The initial illustrative run is NVDA from 2024-01-02 to 2024-02-15, with USD 10,000 initial cash and a fee of 0.0005 on each buy or sell. Signals use a completed day's close and orders fill at the next available session's open. Long only, one position per symbol, no adding to an existing position. Version 1 buys exactly 100 shares if affordable; otherwise cancel without resizing. Account bookkeeping and fills belong to the platform. Keep positions at the end, marked to market, without an invented forced sale."
+        },
+        {
+          "location": "L8",
+          "text": ""
+        },
+        {
+          "location": "L9",
+          "text": "This daily example uses fixed shares and close-based exits. It does not use risk-based sizing, intraday stops, slippage, an additional gap policy or a second model reviewer."
+        },
+        {
+          "location": "L10",
+          "text": ""
+        },
+        {
+          "location": "L11",
+          "text": "Numeric entry screen"
+        },
+        {
+          "location": "L12",
+          "text": "Use only the current close and earlier OHLCV bars. Close must exceed the 20-session close average multiplied by 0.97. That average must exceed the 20-session average ending five sessions earlier multiplied by 1.005. Close must strictly exceed the highest high of the prior 40 sessions, excluding today. Today's volume must be at least 1.2 times the prior ten sessions' mean volume; a zero prior mean fails."
+        },
+        {
+          "location": "L13",
+          "text": ""
+        },
+        {
+          "location": "L14",
+          "text": "Candidate geometry"
+        },
+        {
+          "location": "L15",
+          "text": "Search the last 160 sessions for left and right rims with an internal minimum-low bottom. Keep ten additional earlier sessions visible to calculate the advance before any eligible left rim. The numeric reference file specifies the precise inclusive indices and deterministic ranking; those calculations may be reused and adapted, not silently changed."
+        },
+        {
+          "location": "L16",
+          "text": ""
+        },
+        {
+          "location": "L17",
+          "text": "Cup span including rims: 25 to 120 sessions. Handle span excluding right rim and signal day: 5 to 30 sessions. Relative rim-high difference: at most 0.08. Cup depth from left-rim high to bottom low: 0.06 to 0.50. Left-rim high divided by the close ten sessions earlier minus one: at least 0.15. Handle low must stay at or above bottom low plus half of the left-rim-to-bottom depth. Handle decline from right-rim high: between zero and 0.35. Pivot is the maximum high from right rim through the day before the signal. Signal close must be strictly above pivot and at most 1.10 times pivot. Initial stop reference is the minimum low strictly between right rim and signal day. Target is pivot plus 5 times (right-rim high minus bottom low). Signal close must also be strictly below that target."
+        },
+        {
+          "location": "L18",
+          "text": ""
+        },
+        {
+          "location": "L19",
+          "text": "Rank valid candidates by smallest relative rim-high difference, then longest cup span, then earliest right rim, then earliest left rim. Overlap reduction uses bottom distance at most three sessions and cup intersection/union at least 0.75, retaining at most three candidates. For this project assess only the first ranked candidate; do not silently try another candidate if it fails model judgment. Volatility facts, if retained from the reference, use mean true range over 40 sessions."
+        },
+        {
+          "location": "L20",
+          "text": ""
+        },
+        {
+          "location": "L21",
+          "text": "Model judgment"
+        },
+        {
+          "location": "L22",
+          "text": "Trigger only for a numerically eligible, affordable entry with no existing position. Judge the fixed selected candidate, not the whole chart's direction. The model must not choose new anchors, alter numeric rules, set sizing or modify the account."
+        },
+        {
+          "location": "L23",
+          "text": ""
+        },
+        {
+          "location": "L24",
+          "text": "Cup: a connected decline, rounded base or sustained consolidation, and recovery; not mainly an immediate sharp V reversal. Handle: a smaller, shallow consolidation attached near the recovered upper rim. Coherence: one connected cup and handle rather than unrelated segments spliced together. A single steep portion, gap or handle longer than twenty sessions is not by itself a semantic failure if the approved numeric rules and connected structure hold. Cite dated visible evidence. All three criteria must pass for entry. A failure rejects the entry; unclear evidence returns insufficient evidence and skips it. Invalid output, unavailable tools or transport errors stop visibly, not as a strategy rejection."
+        },
+        {
+          "location": "L25",
+          "text": ""
+        },
+        {
+          "location": "L26",
+          "text": "Available evidence is the cutoff-limited OHLCV history, the selected candidate's anchors and facts, and optional read_bars / price_facts tools within that history. The method does not require an image or outside web search. Put the approved shape criteria, trigger, tool allowance and uncertainty behavior in the project execution manifest."
+        },
+        {
+          "location": "L27",
+          "text": ""
+        },
+        {
+          "location": "L28",
+          "text": "Position state and exits"
+        },
+        {
+          "location": "L29",
+          "text": "Retain the selected candidate's original anchors, stop reference and target in strategy state, but regard actual account positions and previous fill/cancellation records as authoritative. An entry proposal is not a fill. Discard pending entry state when it is rejected or cancelled; do not hold a phantom position. While actually holding, sell the entire position when the completed day's close is below the original handle-low stop reference or at/above the original target. Do not move the target or stop and do not request model approval for exits. An exit fills next session open. A final-day signal without a following session remains unfilled."
+        },
+        {
+          "location": "L30",
+          "text": ""
+        },
+        {
+          "location": "L31",
+          "text": "Teaching sources"
+        },
+        {
+          "location": "L32",
+          "text": "These are structural teaching references, not future market labels or expected trade results:"
+        },
+        {
+          "location": "L33",
+          "text": "https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/cup-with-handle"
+        },
+        {
+          "location": "L34",
+          "text": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/cup-with-handle"
+        },
+        {
+          "location": "L35",
+          "text": "Paraphrased positive: a decline settles into a sustained low base, recovers, then forms a smaller attached upper pullback. Negative: a down-and-immediate-up reversal without a sustained base, or a much later pullback after an unrelated advance grafted onto an old cup. These teaching distinctions do not override the numerical rules above."
+        },
+        {
+          "location": "L36",
+          "text": ""
+        },
+        {
+          "location": "L37",
+          "text": "Please ask about contradictions or missing execution-critical details before approving the method. Implementation repairs must preserve approved rules. A later change of entry shares is a new approved version, not a rewrite of the earlier project result."
+        }
+      ]
+    },
+    {
+      "id": "material-2",
+      "name": "acceptance-numeric-reference.txt",
+      "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+      "units": [
+        {
+          "location": "L1",
+          "text": "Cup numeric reference"
+        },
+        {
+          "location": "L2",
+          "text": ""
+        },
+        {
+          "location": "L3",
+          "text": "Source: this project, lab/strategy.py. Selected existing numeric functions only."
+        },
+        {
+          "location": "L4",
+          "text": "Original source SHA-256: 396019906890a1297bb7a968a3b7623ba466be5f32820ab93c87e924f77e6dfb"
+        },
+        {
+          "location": "L5",
+          "text": "No historical results, model answers, account engine or completed strategy entrypoint are included."
+        },
+        {
+          "location": "L6",
+          "text": "This is reusable reference source, not a finished strategy-v1 implementation. Adapt the OHLCV"
+        },
+        {
+          "location": "L7",
+          "text": "and parameter access to the approved method, preserve its arithmetic/ranking, and implement"
+        },
+        {
+          "location": "L8",
+          "text": "the decision/state/actual-fill reconciliation separately. All dependencies shown are stdlib."
+        },
+        {
+          "location": "L9",
+          "text": "The 160-session cup window additionally needs ten earlier bars for prior advance at the"
+        },
+        {
+          "location": "L10",
+          "text": "oldest eligible left rim; request 170 visible bars and adequate prior warmup."
+        },
+        {
+          "location": "L11",
+          "text": ""
+        },
+        {
+          "location": "L12",
+          "text": "```python"
+        },
+        {
+          "location": "L13",
+          "text": "import hashlib"
+        },
+        {
+          "location": "L14",
+          "text": "import json"
+        },
+        {
+          "location": "L15",
+          "text": ""
+        },
+        {
+          "location": "L16",
+          "text": ""
+        },
+        {
+          "location": "L17",
+          "text": "def required_history(s):"
+        },
+        {
+          "location": "L18",
+          "text": "    \"\"\"Prior bars needed at a decision close, including ATR's previous close.\"\"\""
+        },
+        {
+          "location": "L19",
+          "text": "    return max(s.history_window-1, s.trend_period+s.trend_slope_sessions-1,"
+        },
+        {
+          "location": "L20",
+          "text": "               s.breakout_lookback, s.volume_lookback, s.volatility_period)"
+        },
+        {
+          "location": "L21",
+          "text": ""
+        },
+        {
+          "location": "L22",
+          "text": ""
+        },
+        {
+          "location": "L23",
+          "text": "def screen(bars, i, s):"
+        },
+        {
+          "location": "L24",
+          "text": "    if i < required_history(s):"
+        },
+        {
+          "location": "L25",
+          "text": "        return {'pass': False, 'reason': 'warmup'}"
+        },
+        {
+          "location": "L26",
+          "text": "    c = bars[i].close"
+        },
+        {
+          "location": "L27",
+          "text": "    sma = sum(b.close for b in bars[i-s.trend_period+1:i+1]) / s.trend_period"
+        },
+        {
+          "location": "L28",
+          "text": "    old_sma = sum(b.close for b in bars[i-s.trend_slope_sessions-s.trend_period+1:i-s.trend_slope_sessions+1]) / s.trend_period"
+        },
+        {
+          "location": "L29",
+          "text": "    high = max(b.high for b in bars[i-s.breakout_lookback:i])"
+        },
+        {
+          "location": "L30",
+          "text": "    volume = sum(b.volume for b in bars[i-s.volume_lookback:i]) / s.volume_lookback"
+        },
+        {
+          "location": "L31",
+          "text": "    return {'pass': c > sma*(1+s.trend_buffer) and sma>old_sma*(1+s.trend_slope_min) and c > high*(1+s.breakout_buffer) and volume > 0 and bars[i].volume >= s.volume_multiple * volume,"
+        },
+        {
+          "location": "L32",
+          "text": "            'close': c, 'trend_sma': sma, 'trend_sma_prior': old_sma, 'breakout_prior_high': high,"
+        },
+        {
+          "location": "L33",
+          "text": "            'periods': {'trend': s.trend_period, 'trend_shift': s.trend_slope_sessions,"
+        },
+        {
+          "location": "L34",
+          "text": "                        'breakout': s.breakout_lookback, 'volume': s.volume_lookback},"
+        },
+        {
+          "location": "L35",
+          "text": "            'volume_ratio': bars[i].volume / volume if volume else 0}"
+        },
+        {
+          "location": "L36",
+          "text": ""
+        },
+        {
+          "location": "L37",
+          "text": ""
+        },
+        {
+          "location": "L38",
+          "text": "def hard_checks(bars, t, l, r, s):"
+        },
+        {
+          "location": "L39",
+          "text": "    if not max(s.prior_advance_lookback, t-s.history_window+1) <= l < r < t:"
+        },
+        {
+          "location": "L40",
+          "text": "        return None"
+        },
+        {
+          "location": "L41",
+          "text": "    b = min(range(l, r+1), key=lambda j: bars[j].low)"
+        },
+        {
+          "location": "L42",
+          "text": "    if not l < b < r or not s.cup_min <= r-l+1 <= s.cup_max or not s.handle_min <= t-r-1 <= s.handle_max:"
+        },
+        {
+          "location": "L43",
+          "text": "        return None"
+        },
+        {
+          "location": "L44",
+          "text": "    L, R, B = bars[l].high, bars[r].high, bars[b].low"
+        },
+        {
+          "location": "L45",
+          "text": "    S = min(x.low for x in bars[r+1:t])"
+        },
+        {
+          "location": "L46",
+          "text": "    P = max(x.high for x in bars[r:t])"
+        },
+        {
+          "location": "L47",
+          "text": "    if (abs(R-L)/L > s.rim_tolerance or not s.depth_min <= (L-B)/L <= s.depth_max or"
+        },
+        {
+          "location": "L48",
+          "text": "        L / bars[l-s.prior_advance_lookback].close - 1 < s.prior_advance or S < B+s.handle_midpoint_fraction*(L-B) or"
+        },
+        {
+          "location": "L49",
+          "text": "        not 0 <= (R-S)/R <= s.handle_max_drop or not P*(1+s.breakout_buffer) < bars[t].close <= (1+s.max_breakout_extension)*P):"
+        },
+        {
+          "location": "L50",
+          "text": "        return None"
+        },
+        {
+          "location": "L51",
+          "text": "    # Reject before ranking/inference: a signal already at its objective has no entry headroom."
+        },
+        {
+          "location": "L52",
+          "text": "    target=P+s.target_multiple*(R-B)"
+        },
+        {
+          "location": "L53",
+          "text": "    if not S < bars[t].close < target:"
+        },
+        {
+          "location": "L54",
+          "text": "        return None"
+        },
+        {
+          "location": "L55",
+          "text": "    return {'left_rim': bars[l].date, 'right_rim': bars[r].date, 'bottom': bars[b].date,"
+        },
+        {
+          "location": "L56",
+          "text": "            'stop': S, 'pivot': P, 'target':target,'cup_depth': (L-B)/L, 'cup_sessions': r-l+1, 'handle_sessions': t-r-1}"
+        },
+        {
+          "location": "L57",
+          "text": ""
+        },
+        {
+          "location": "L58",
+          "text": ""
+        },
+        {
+          "location": "L59",
+          "text": "def feasible_anchors(bars, i, s):"
+        },
+        {
+          "location": "L60",
+          "text": "    pairs = []"
+        },
+        {
+          "location": "L61",
+          "text": "    for r in range(max(0, i-s.handle_max-1), i-s.handle_min):"
+        },
+        {
+          "location": "L62",
+          "text": "        for l in range(max(s.prior_advance_lookback, i-s.history_window+1, r-s.cup_max+1), r-s.cup_min+2):"
+        },
+        {
+          "location": "L63",
+          "text": "            check = hard_checks(bars, i, l, r, s)"
+        },
+        {
+          "location": "L64",
+          "text": "            if check:"
+        },
+        {
+          "location": "L65",
+          "text": "                pairs.append(check)"
+        },
+        {
+          "location": "L66",
+          "text": "    # Deterministic code-only baseline: longest cup, then earliest right/left rim."
+        },
+        {
+          "location": "L67",
+          "text": "    return sorted(pairs, key=lambda x: (-x['cup_sessions'], x['right_rim'], x['left_rim']))"
+        },
+        {
+          "location": "L68",
+          "text": ""
+        },
+        {
+          "location": "L69",
+          "text": ""
+        },
+        {
+          "location": "L70",
+          "text": "def diagnose_anchors(bars,t,l,r,s):"
+        },
+        {
+          "location": "L71",
+          "text": "    \"\"\"Explain the existing hard checks for inspection; never changes a run's execution or saved state.\"\"\""
+        },
+        {
+          "location": "L72",
+          "text": "    if not max(s.prior_advance_lookback,t-s.history_window+1)<=l<r<t:"
+        },
+        {
+          "location": "L73",
+          "text": "        return [dict(name='anchor_order',value=False,passed=False)]"
+        },
+        {
+          "location": "L74",
+          "text": "    b=min(range(l,r+1),key=lambda j:bars[j].low)"
+        },
+        {
+          "location": "L75",
+          "text": "    L,R,B=bars[l].high,bars[r].high,bars[b].low"
+        },
+        {
+          "location": "L76",
+          "text": "    handle=bars[r+1:t]"
+        },
+        {
+          "location": "L77",
+          "text": "    if not handle:return [dict(name='handle_sessions',value=0,minimum=s.handle_min,maximum=s.handle_max,passed=False,unit='sessions')]"
+        },
+        {
+          "location": "L78",
+          "text": "    S=min(x.low for x in handle);P=max(x.high for x in bars[r:t])"
+        },
+        {
+          "location": "L79",
+          "text": "    checks=[]"
+        },
+        {
+          "location": "L80",
+          "text": "    def add(name,value,minimum=None,maximum=None,unit='ratio',strict=False):"
+        },
+        {
+          "location": "L81",
+          "text": "        passed=(minimum is None or (value>minimum if strict else value>=minimum)) and (maximum is None or value<=maximum)"
+        },
+        {
+          "location": "L82",
+          "text": "        checks.append(dict(name=name,value=value,minimum=minimum,maximum=maximum,passed=passed,unit=unit,strict_minimum=strict))"
+        },
+        {
+          "location": "L83",
+          "text": "    add('cup_sessions',r-l+1,s.cup_min,s.cup_max,'sessions')"
+        },
+        {
+          "location": "L84",
+          "text": "    add('handle_sessions',t-r-1,s.handle_min,s.handle_max,'sessions')"
+        },
+        {
+          "location": "L85",
+          "text": "    add('bottom_internal',int(l<b<r),1,1,'boolean')"
+        },
+        {
+          "location": "L86",
+          "text": "    add('rim_difference',abs(R-L)/L,0,s.rim_tolerance)"
+        },
+        {
+          "location": "L87",
+          "text": "    add('cup_depth',(L-B)/L,s.depth_min,s.depth_max)"
+        },
+        {
+          "location": "L88",
+          "text": "    add('prior_advance',L/bars[l-s.prior_advance_lookback].close-1,s.prior_advance)"
+        },
+        {
+          "location": "L89",
+          "text": "    add('handle_above_midpoint',S-(B+s.handle_midpoint_fraction*(L-B)),0,None,'USD')"
+        },
+        {
+          "location": "L90",
+          "text": "    add('handle_drop',(R-S)/R,0,s.handle_max_drop)"
+        },
+        {
+          "location": "L91",
+          "text": "    add('breakout_extension',bars[t].close/P-1,s.breakout_buffer,s.max_breakout_extension,strict=True)"
+        },
+        {
+          "location": "L92",
+          "text": "    add('target_headroom',P+s.target_multiple*(R-B)-bars[t].close,0,None,'USD',strict=True)"
+        },
+        {
+          "location": "L93",
+          "text": "    return checks"
+        },
+        {
+          "location": "L94",
+          "text": ""
+        },
+        {
+          "location": "L95",
+          "text": ""
+        },
+        {
+          "location": "L96",
+          "text": "def mean_true_range(bars,i,period=20):"
+        },
+        {
+          "location": "L97",
+          "text": "    if i<period or i>=len(bars):"
+        },
+        {
+          "location": "L98",
+          "text": "        raise ValueError('Volatility requires covered prior sessions')"
+        },
+        {
+          "location": "L99",
+          "text": "    value=sum(max(bars[j].high-bars[j].low,abs(bars[j].high-bars[j-1].close),"
+        },
+        {
+          "location": "L100",
+          "text": "                  abs(bars[j].low-bars[j-1].close)) for j in range(i-period+1,i+1))/period"
+        },
+        {
+          "location": "L101",
+          "text": "    if value<=0:raise ValueError('Volatility unit must be positive')"
+        },
+        {
+          "location": "L102",
+          "text": "    return value"
+        },
+        {
+          "location": "L103",
+          "text": ""
+        },
+        {
+          "location": "L104",
+          "text": ""
+        },
+        {
+          "location": "L105",
+          "text": "def shortlist(bars,i,s,symbol):"
+        },
+        {
+          "location": "L106",
+          "text": "    \"\"\"Pure prefix-only geometry selection; no model anchors or future return ranking.\"\"\""
+        },
+        {
+          "location": "L107",
+          "text": "    dates={b.date:j for j,b in enumerate(bars[:i+1])}"
+        },
+        {
+          "location": "L108",
+          "text": "    pairs=feasible_anchors(bars,i,s)"
+        },
+        {
+          "location": "L109",
+          "text": "    pairs.sort(key=lambda p:(abs(bars[dates[p['right_rim']]].high-bars[dates[p['left_rim']]].high)/bars[dates[p['left_rim']]].high,"
+        },
+        {
+          "location": "L110",
+          "text": "                             -p['cup_sessions'],p['right_rim'],p['left_rim']))"
+        },
+        {
+          "location": "L111",
+          "text": "    selected=[]"
+        },
+        {
+          "location": "L112",
+          "text": "    for p in pairs:"
+        },
+        {
+          "location": "L113",
+          "text": "        l,r,b=[dates[p[k]] for k in ['left_rim','right_rim','bottom']]"
+        },
+        {
+          "location": "L114",
+          "text": "        duplicate=False"
+        },
+        {
+          "location": "L115",
+          "text": "        for q in selected:"
+        },
+        {
+          "location": "L116",
+          "text": "            ql,qr,qb=[dates[q[k]] for k in ['left_rim','right_rim','bottom']]"
+        },
+        {
+          "location": "L117",
+          "text": "            overlap=max(0,min(r,qr)-max(l,ql)+1)/(max(r,qr)-min(l,ql)+1)"
+        },
+        {
+          "location": "L118",
+          "text": "            if abs(b-qb)<=s.bottom_merge_sessions and overlap>=s.candidate_overlap:"
+        },
+        {
+          "location": "L119",
+          "text": "                duplicate=True;break"
+        },
+        {
+          "location": "L120",
+          "text": "        if duplicate:continue"
+        },
+        {
+          "location": "L121",
+          "text": "        L,R,B=bars[l].high,bars[r].high,bars[b].low"
+        },
+        {
+          "location": "L122",
+          "text": "        cup=bars[l:r+1];handle=bars[r+1:i]"
+        },
+        {
+          "location": "L123",
+          "text": "        p=dict(p,volatility_unit=mean_true_range(bars,i,s.volatility_period),"
+        },
+        {
+          "location": "L124",
+          "text": "               visible_start=bars[max(0,i-s.history_window+1)].date,"
+        },
+        {
+          "location": "L125",
+          "text": "               handle_start=handle[0].date,handle_end=handle[-1].date,"
+        },
+        {
+          "location": "L126",
+          "text": "               left_high=L,right_high=R,bottom_low=B,"
+        },
+        {
+          "location": "L127",
+          "text": "               bottom_band_price=B+.25*(L-B),"
+        },
+        {
+          "location": "L128",
+          "text": "               bottom_dwell_fraction=sum(x.low<=B+.25*(L-B) for x in cup)/len(cup),"
+        },
+        {
+          "location": "L129",
+          "text": "               handle_retrace_of_cup=(R-p['stop'])/(R-B),"
+        },
+        {
+          "location": "L130",
+          "text": "               handle_volume_ratio=(sum(x.volume for x in handle)/len(handle))/(sum(x.volume for x in cup)/len(cup)) if sum(x.volume for x in cup)>0 else None,"
+        },
+        {
+          "location": "L131",
+          "text": "               numeric_checks=diagnose_anchors(bars,i,l,r,s))"
+        },
+        {
+          "location": "L132",
+          "text": "        digest=hashlib.sha256(json.dumps([symbol,bars[i].date,p],sort_keys=True).encode()).hexdigest()[:12]"
+        },
+        {
+          "location": "L133",
+          "text": "        p.update(candidate_id=f'{symbol}-{bars[i].date}-{digest}',rank=len(selected)+1)"
+        },
+        {
+          "location": "L134",
+          "text": "        selected.append(p)"
+        },
+        {
+          "location": "L135",
+          "text": "        if len(selected)>=s.max_candidates:break"
+        },
+        {
+          "location": "L136",
+          "text": "    return selected"
+        },
+        {
+          "location": "L137",
+          "text": "```"
+        }
+      ]
+    },
+    {
+      "id": "material-3",
+      "name": "nvda-visual-source-2023-12-29.png",
+      "sha256": "890f10235ff5297a22d35ee5fc98a11111a3d578851f8f6e95844f1a69e31ee2",
+      "units": [
+        {
+          "location": "I1",
+          "text": "Visual source I1. No OCR or quotations extracted. Coding uses only the approved visual interpretation and rules."
+        }
+      ]
+    }
+  ],
+  "versions": [
+    {
+      "number": 2,
+      "scope": "Clarification and implementation-repair requirements for the illustrative NVDA daily run, 2024-01-02–2024-02-15. Preserve the approved investment method and exactly 100 shares per entry; this draft does not itself approve a changed version or authorize construction.",
+      "rules": [
+        {
+          "topic": "Data, account and warmup",
+          "rule": "Use frozen Yahoo chart OHLCV in the snapshot’s split-adjusted share units; do not readjust, use adjclose, credit dividends or reinvest capital gains. This is price return, not total return or point-in-time as-traded quantities; later splits may rescale earlier quotes. Use USD 10,000 initial cash and 0.0005 fee per buy/sell. Decisions use a rolling window of up to 170 sessions including the completed current session: 160 candidate-search sessions plus ten earlier bars for prior advance. Require 169 earlier sessions before the first decision; do not freeze the window at run start. Insufficient warmup means no valid signal.",
+          "source": "Conversation: prior method clarification and implementation-repair request; acceptance notes L7; numeric reference L9-L10, L105-L108.",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L7",
+              "end": "L7"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L9",
+              "end": "L10"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L105",
+              "end": "L108"
+            }
+          ]
+        },
+        {
+          "topic": "Code, model and market screen",
+          "rule": "Code owns arithmetic, numeric checks, candidate selection/ranking, position state and exits; actual platform account/order/fill records are authoritative. The model judges only the fixed selected candidate after numeric eligibility, affordability and flat-account checks; it cannot select anchors, alter rules, size or edit the account. Market screen: close > 20-session close SMA × 0.97; that SMA > its value for the 20 sessions ending five sessions earlier × 1.005; close strictly exceeds prior 40-session high excluding today; volume ≥ 1.2 × prior ten-session mean, which must be >0. Both breakout_buffer values are 0 and require strict exceedance.",
+          "source": "Conversation: method and breakout clarification; acceptance notes L4, L12, L22.",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L4",
+              "end": "L4"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L12",
+              "end": "L12"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L22",
+              "end": "L22"
+            }
+          ]
+        },
+        {
+          "topic": "Candidate geometry",
+          "rule": "Bottom is minimum-low bar from left through right rim and strictly internal. Cup span inclusive: 25–120 sessions; handle span excluding right rim and signal day: 5–30. Rim-high difference / left-rim high ≤0.08; depth (left-rim high−bottom low)/left-rim high =0.06–0.50; left-rim high / close ten sessions earlier −1 ≥0.15. Handle low ≥ bottom low + half the left-rim-to-bottom depth; decline from right-rim high is 0–0.35. Pivot is maximum high from right rim through prior session; stop is minimum low strictly after right rim and before signal; target = pivot + 5 × (right-rim high−bottom low). Signal close > pivot, ≤1.10×pivot, <target and >stop.",
+          "source": "Conversation: method clarification; acceptance notes L15-L17; numeric reference L38-L56.",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L15",
+              "end": "L17"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L38",
+              "end": "L56"
+            }
+          ]
+        },
+        {
+          "topic": "Ranking and model judgment",
+          "rule": "Rank by smallest relative rim difference, longest cup, earliest right rim, earliest left rim. Duplicates: bottom dates ≤3 sessions apart and cup intersection/union ≥0.75; retain at most three, assess only the top-ranked candidate. For that candidate judge connected decline, rounded base or sustained consolidation and recovery (not mainly sharp V); smaller shallow handle attached near recovered upper rim; and coherent connected cup-and-handle, not spliced unrelated segments. A steep portion, gap or handle >20 sessions alone is not failure. All three criteria must pass; cite dated evidence. Unclear means insufficient evidence and skip. Invalid output, unavailable tools or transport errors stop visibly, not as rejection.",
+          "source": "Acceptance notes L19, L22-L26; numeric reference L105-L120.",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L19",
+              "end": "L26"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L105",
+              "end": "L120"
+            }
+          ]
+        },
+        {
+          "topic": "Runtime visual input",
+          "rule": "Use chart_and_text: trusted platform chart limited to the decision cutoff, together with numeric facts and permitted read_bars/price_facts tools. Keep all 170 visible numeric sessions; chart states its plotted date window. Do not use uploaded examples or future bars for runtime judgment. If relevant structure lies outside the plotted chart window or cannot be judged reliably, return insufficient evidence and skip; do not claim visual inspection.",
+          "source": "Conversation: implementation/input clarification; visual source I1 is pre-run example only.",
+          "material_refs": [
+            {
+              "id": "material-3",
+              "sha256": "890f10235ff5297a22d35ee5fc98a11111a3d578851f8f6e95844f1a69e31ee2",
+              "start": "I1",
+              "end": "I1"
+            }
+          ]
+        },
+        {
+          "topic": "Entry and fills",
+          "rule": "Propose entry only after screen, geometry and all model criteria pass, with no position and exactly 100 shares affordable including buy fee; otherwise cancel, never resize. Long only, one position per symbol, no adding. Signals use completed close; fill at next available session open. Proposal is not fill; rejected/cancelled entry must not create phantom position.",
+          "source": "Acceptance notes L7, L22, L29; conversation implementation clarification.",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L7",
+              "end": "L7"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L22",
+              "end": "L22"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L29",
+              "end": "L29"
+            }
+          ]
+        },
+        {
+          "topic": "Exits and accounting constraints",
+          "rule": "Retain original anchors, stop and target. While actually holding, sell the entire actual position if completed close < original stop or ≥ original target; do not move levels or seek model approval. Exit fills next available open; final-day signal without following session remains unfilled. At period end retain position and mark to market, no forced sale. No risk sizing, intraday stops, slippage, separate gap policy or second model reviewer. Optional volatility facts use 40-session mean true range; they do not alter trading rules.",
+          "source": "Acceptance notes L7, L9, L19, L29; conversation method clarification.",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L7",
+              "end": "L9"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L19",
+              "end": "L19"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L29",
+              "end": "L29"
+            }
+          ]
+        },
+        {
+          "topic": "Implementation repairs and required regressions",
+          "rule": "Implementation repair only; preserve method, 100-share size and all thresholds, ranking, exceptions, fills, exits and accounting assumptions. Fix inclusive candidate-loop bounds so 25- and 120-session cups are included, 24 and 121 excluded, through the actual candidate/decision path. Fix prior SMA to include exactly i−24 through i−5 (20 closes); regression: with preceding closes 100 and current 102, current SMA 100.1 must not pass >100×1.005; correct any test endorsing the erroneous 19-close result. Reconcile pending entries next session against authoritative account/order evidence: clear rejected/insufficient-evidence proposals when flat and no fill; handle cancelled buys, confirmed fills, and clear original anchors after confirmed full exit. Affordability uses common account ROUND_HALF_UP cent rounding for gross and fee: cash 10000, 100 shares at 99.95004 gives gross 9995.00 + fee 5.00, exactly affordable. Add focused regressions for all these cases.",
+          "source": "Conversation: implementation-review repair request; numeric reference L38-L42, L59-L67.",
+          "material_refs": [
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L38",
+              "end": "L42"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L59",
+              "end": "L67"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "scope": "待批准的新方法版本：只把固定买入数量从100股改为50股，卖出该笔实际持仓的全部股份。其余方法条件及实现修复要求保持不变。既有100股版本、其代码及已完成运行结果保持原样；本对话未执行构建或测试。",
+      "rules": [
+        {
+          "topic": "数据、账户与预热",
+          "rule": "使用冻结的Yahoo图表OHLCV及快照拆股调整后的股数单位；不再次调整、不用adjclose、不计入或再投资股息和资本利得。这是价格回报，不是总回报或点时实际股数；后续拆股可能重标此前报价。初始现金10,000美元，每次买卖费用率0.0005。每次决策使用包含当前已完成交易日的滚动窗口，最多170根：160根用于候选搜索，另留10根计算最早左杯沿的前期涨幅。首次决策前须有169根历史日线；窗口不固定于运行开始日。",
+          "source": "对话：message-5；材料：acceptance-method-notes.txt L7；acceptance-numeric-reference.txt L9-L10、L105-L108。",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L7",
+              "end": "L7"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L9",
+              "end": "L10"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L105",
+              "end": "L108"
+            }
+          ]
+        },
+        {
+          "topic": "代码、模型与市场筛选",
+          "rule": "代码负责算术、筛选、候选排序、持仓状态和退出；平台账户、订单及成交记录为准。模型只评估固定选出的候选，不选锚点、不改数值、不决定仓位或修改账户。市场筛选：收盘价>20日收盘均值×0.97；该均值>向前五个交易日对应的20日均值×1.005；收盘价严格高于此前40日最高价；当日成交量≥此前10日均量×1.2，且此前均量>0。两处breakout_buffer均为0并要求严格突破。",
+          "source": "对话：message-3；材料：acceptance-method-notes.txt L4、L12、L22。",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L4",
+              "end": "L4"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L12",
+              "end": "L12"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L22",
+              "end": "L22"
+            }
+          ]
+        },
+        {
+          "topic": "杯柄数值几何",
+          "rule": "底部为左右杯沿之间最低价且严格位于两沿之间。杯长含两沿25–120日；柄长不含右沿及信号日，为5–30日。两沿高差/左沿高≤0.08；深度(左沿高−底部低)/左沿高为0.06–0.50；左沿高/左沿前第10日收盘价−1≥0.15。柄低≥底部低+半个左沿至底部深度；柄回撤率为0–0.35。枢轴为右沿至信号日前一日最高价；止损参考为右沿后、信号日前的最低价；目标=枢轴+5×(右沿高−底部低)。信号收盘价须严格高于枢轴、不高于其1.10倍、低于目标且高于止损参考。",
+          "source": "材料：acceptance-method-notes.txt L15-L17；acceptance-numeric-reference.txt L38-L56。",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L15",
+              "end": "L17"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L38",
+              "end": "L56"
+            }
+          ]
+        },
+        {
+          "topic": "候选排序与模型形态判断",
+          "rule": "候选按两沿相对高差最小、杯最长、右沿最早、左沿最早排序；去重条件为底部相距≤3日且杯区间交并比≥0.75，最多保留3个，本项目只评估排名第一者。模型判断三项：杯为连贯下跌、圆弧底或持续整理后恢复，而非主要为急V反转；柄为靠近恢复后上沿、较小且浅的整理；整体为连贯杯柄而非拼接无关片段。单独出现陡段、缺口或超过20日的柄不构成失败。三项均须通过并引用可见日期；不清楚则记为证据不足并跳过。无效输出、工具不可用或传输错误应明确停止，不视为策略拒绝。",
+          "source": "材料：acceptance-method-notes.txt L19、L22-L26；acceptance-numeric-reference.txt L105-L120。",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L19",
+              "end": "L26"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L105",
+              "end": "L120"
+            }
+          ]
+        },
+        {
+          "topic": "运行时视觉输入",
+          "rule": "形态判断使用可信平台提供的截止日限定图表与数值信息(chart_and_text)，可用工具仅为该历史范围内的read_bars/price_facts。图表须注明绘制日期范围，保留170根可见数值日线，不使用上传示例或未来日线。若相关结构未绘出或无法可靠判断，报告证据不足并跳过，不声称已检查未展示结构。上传的I1是运行前示例，不用于运行时判断或作为有效形态标签。",
+          "source": "对话：message-7；视觉材料I1。",
+          "material_refs": [
+            {
+              "id": "material-3",
+              "sha256": "890f10235ff5297a22d35ee5fc98a11111a3d578851f8f6e95844f1a69e31ee2",
+              "start": "I1",
+              "end": "I1"
+            }
+          ]
+        },
+        {
+          "topic": "入场、仓位与成交",
+          "rule": "仅当市场筛选、数值候选及三项模型判断均通过、账户无该标的持仓且买入可负担时提出入场。固定买入50股；可负担性须包含费用并按分币舍入，不足则取消、不调整数量。仅做多、每标的一笔持仓、不加仓。以完成日收盘价产生信号，下一可用交易日开盘成交；提案不等于成交，须依据平台实际记录更新持仓。",
+          "source": "对话：message-10、message-12；材料：acceptance-method-notes.txt L7、L22。",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L7",
+              "end": "L7"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L22",
+              "end": "L22"
+            }
+          ]
+        },
+        {
+          "topic": "持仓、退出与其他限制",
+          "rule": "保存原始锚点、止损参考和目标。实际持仓时，若完成日收盘价低于原柄低止损参考或达到/超过原目标，则卖出该笔实际持有的全部股份；不移动价位、不请求模型批准。下一可用交易日开盘成交。最后一日信号若无后续交易日则不成交；期末持仓按市值标记，不强制平仓。保持无风险定额仓位、无盘中止损、无滑点、无额外跳空处理规则、无第二模型复核；可选波动事实如保留则使用40日平均真实波幅，不改变交易规则。",
+          "source": "材料：acceptance-method-notes.txt L7、L9、L19、L29；对话：message-10、message-12。",
+          "material_refs": [
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L7",
+              "end": "L9"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L19",
+              "end": "L19"
+            },
+            {
+              "id": "material-1",
+              "sha256": "deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e",
+              "start": "L29",
+              "end": "L29"
+            }
+          ]
+        },
+        {
+          "topic": "实现修复与回归验证要求（非策略优化）",
+          "rule": "实现时保留原方法条件并采用本版本50股数量。修复候选循环边界：25及120日杯包含、24及121日排除，并通过实际候选/决策路径验证。前期均值须精确包含i−24至i−5共20个收盘价；先前收盘价均为100、当前均值为100.1时，不得通过严格大于100×1.005的条件，并纠正认可19日均值错误的测试。按真实账户和订单证据处理待成交状态：无成交且账户仍空仓时清理拒绝或证据不足的提案；处理取消买单、确认成交，并在实际全额退出后清除原锚点。可负担性对总额和费用采用ROUND_HALF_UP分币舍入；100股、单价99.95004美元的10,000美元现金算例（总额9,995.00加费用5.00）仅是独立算术回归案例，不是本版本交易数量。为上述边界、均值、状态对账和舍入情形添加专项回归测试。对话工具未执行修复或测试。",
+          "source": "对话：message-7、message-12；材料：acceptance-numeric-reference.txt L38-L42、L59-L67。",
+          "material_refs": [
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L38",
+              "end": "L42"
+            },
+            {
+              "id": "material-2",
+              "sha256": "635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2",
+              "start": "L59",
+              "end": "L67"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "builds": [
+    {
+      "id": "build-v2-1",
+      "version": 2,
+      "status": "completed",
+      "original_build_hash": "3543e0ae6e7f405c58b46f32c0bb722df1308ebe111c6d33e7f1e3b67eaaa056",
+      "verification_only": true,
+      "files": [
+        {
+          "name": "demo.py",
+          "text": "import json\nfrom pathlib import Path\n\nfrom strategy import decide\n\n\ndef main():\n    bars = []\n    for index in range(170):\n        close = 100 + index * 0.05\n        bars.append({\n            \"date\": f\"2024-01-{index + 1:02d}\", \"open\": close,\n            \"high\": close + 0.2, \"low\": close - 0.2,\n            \"close\": close, \"volume\": 1000,\n        })\n    bars[120].update({\"high\": 100, \"low\": 99})\n    bars[132].update({\"close\": 75, \"high\": 76, \"low\": 70})\n    bars[145].update({\"close\": 98, \"high\": 98, \"low\": 97})\n    bars[110].update({\"close\": 80, \"high\": 80.1, \"low\": 79.9})\n    for index in range(146, 151):\n        bars[index].update({\"close\": 96, \"high\": 98, \"low\": 90})\n    for index in range(151, 165):\n        bars[index].update({\"open\": 100, \"close\": 100, \"high\": 100.2, \"low\": 99.8})\n    for index in range(165, 169):\n        bars[index].update({\"open\": 109.8, \"close\": 109.8, \"high\": 109.9, \"low\": 109.6})\n    bars[-1].update({\"open\": 109, \"high\": 110, \"low\": 109, \"close\": 110, \"volume\": 1500})\n    context = {\n        \"schema\": \"strategy-v1\", \"cutoff\": bars[-1][\"date\"],\n        \"bars\": {\"SYNTH\": bars},\n        \"account\": {\"cash\": 10000, \"equity\": 10000, \"positions\": {}},\n        \"state\": {}, \"previous_orders\": [],\n    }\n    decisions = decide(context)\n    transactions = []\n    for proposal in decisions[\"proposals\"]:\n        if proposal[\"action\"] == \"buy\":\n            transactions.append({\n                \"symbol\": proposal[\"symbol\"], \"action\": \"buy\",\n                \"shares\": proposal[\"sizing\"][\"shares\"], \"fill\": \"not simulated: no next session\",\n            })\n    output = {\n        \"label\": \"SYNTHETIC EXAMPLE — not real market data or investment performance evidence\",\n        \"inputs\": {\"symbol\": \"SYNTH\", \"sessions\": len(bars), \"cutoff\": context[\"cutoff\"]},\n        \"decisions\": decisions,\n        \"simulated_transactions\": transactions,\n    }\n    text = json.dumps(output, indent=2, sort_keys=True)\n    print(text)\n    Path(\"result.json\").write_text(text + \"\\n\", encoding=\"utf-8\")\n\n\nif __name__ == \"__main__\":\n    main()",
+          "sha256": "3057ad8f3545a3b029a11d7918974e28f36a531cc65e7e4d27e68b667e5c1f67",
+          "original_sha256": "3057ad8f3545a3b029a11d7918974e28f36a531cc65e7e4d27e68b667e5c1f67"
+        },
+        {
+          "name": "execution.json",
+          "text": "{\n  \"schema\": \"strategy-v1\",\n  \"entrypoint\": \"strategy.py:decide\",\n  \"warmup_bars\": 169,\n  \"history_bars\": 170,\n  \"responsibilities\": {\n    \"code\": \"Approved market screen, numeric cup-and-handle candidate search and ranking, account checks, fixed 100-share sizing, fill reconciliation, state, and close-based exits\",\n    \"model\": \"Judge the selected candidate's cup-and-handle shape only after numeric eligibility, affordability, and flat-account checks\"\n  },\n  \"judgment\": {\n    \"criteria\": \"For the fixed selected candidate assess (1) a connected decline, rounded base or sustained consolidation, and recovery, not mainly an immediate sharp V; (2) a smaller shallow consolidation attached near the recovered upper rim; and (3) one coherent connected cup and handle, not spliced unrelated segments. All three must pass. A steep portion, gap, or handle longer than 20 sessions alone is not failure. Cite dated visible evidence.\",\n    \"trigger\": \"Only for the top-ranked, numerically eligible candidate when the symbol has no position and exactly 100 shares are affordable including the buy fee.\",\n    \"tools\": [\"read_bars\", \"price_facts\"],\n    \"uncertainty\": \"skip\",\n    \"input_mode\": \"chart_and_text\"\n  }\n}",
+          "sha256": "9ac4dfe7bb8fbb9737c3a5af894ceb6c779c03a009501b67b0c33257792070ad",
+          "original_sha256": "9ac4dfe7bb8fbb9737c3a5af894ceb6c779c03a009501b67b0c33257792070ad"
+        },
+        {
+          "name": "method.json",
+          "text": "{\n  \"scope\": \"Clarification and implementation-repair requirements for the illustrative NVDA daily run, 2024-01-02–2024-02-15. Preserve the approved investment method and exactly 100 shares per entry; this draft does not itself approve a changed version or authorize construction.\",\n  \"rules\": [\n    {\n      \"topic\": \"Data, account and warmup\",\n      \"rule\": \"Use frozen Yahoo chart OHLCV in the snapshot’s split-adjusted share units; do not readjust, use adjclose, credit dividends or reinvest capital gains. This is price return, not total return or point-in-time as-traded quantities; later splits may rescale earlier quotes. Use USD 10,000 initial cash and 0.0005 fee per buy/sell. Decisions use a rolling window of up to 170 sessions including the completed current session: 160 candidate-search sessions plus ten earlier bars for prior advance. Require 169 earlier sessions before the first decision; do not freeze the window at run start. Insufficient warmup means no valid signal.\",\n      \"source\": \"Conversation: prior method clarification and implementation-repair request; acceptance notes L7; numeric reference L9-L10, L105-L108.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L7\",\n          \"end\": \"L7\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L9\",\n          \"end\": \"L10\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L105\",\n          \"end\": \"L108\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"Code, model and market screen\",\n      \"rule\": \"Code owns arithmetic, numeric checks, candidate selection/ranking, position state and exits; actual platform account/order/fill records are authoritative. The model judges only the fixed selected candidate after numeric eligibility, affordability and flat-account checks; it cannot select anchors, alter rules, size or edit the account. Market screen: close > 20-session close SMA × 0.97; that SMA > its value for the 20 sessions ending five sessions earlier × 1.005; close strictly exceeds prior 40-session high excluding today; volume ≥ 1.2 × prior ten-session mean, which must be >0. Both breakout_buffer values are 0 and require strict exceedance.\",\n      \"source\": \"Conversation: method and breakout clarification; acceptance notes L4, L12, L22.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L4\",\n          \"end\": \"L4\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L12\",\n          \"end\": \"L12\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L22\",\n          \"end\": \"L22\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"Candidate geometry\",\n      \"rule\": \"Bottom is minimum-low bar from left through right rim and strictly internal. Cup span inclusive: 25–120 sessions; handle span excluding right rim and signal day: 5–30. Rim-high difference / left-rim high ≤0.08; depth (left-rim high−bottom low)/left-rim high =0.06–0.50; left-rim high / close ten sessions earlier −1 ≥0.15. Handle low ≥ bottom low + half the left-rim-to-bottom depth; decline from right-rim high is 0–0.35. Pivot is maximum high from right rim through prior session; stop is minimum low strictly after right rim and before signal; target = pivot + 5 × (right-rim high−bottom low). Signal close > pivot, ≤1.10×pivot, <target and >stop.\",\n      \"source\": \"Conversation: method clarification; acceptance notes L15-L17; numeric reference L38-L56.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L15\",\n          \"end\": \"L17\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L38\",\n          \"end\": \"L56\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"Ranking and model judgment\",\n      \"rule\": \"Rank by smallest relative rim difference, longest cup, earliest right rim, earliest left rim. Duplicates: bottom dates ≤3 sessions apart and cup intersection/union ≥0.75; retain at most three, assess only the top-ranked candidate. For that candidate judge connected decline, rounded base or sustained consolidation and recovery (not mainly sharp V); smaller shallow handle attached near recovered upper rim; and coherent connected cup-and-handle, not spliced unrelated segments. A steep portion, gap or handle >20 sessions alone is not failure. All three criteria must pass; cite dated evidence. Unclear means insufficient evidence and skip. Invalid output, unavailable tools or transport errors stop visibly, not as rejection.\",\n      \"source\": \"Acceptance notes L19, L22-L26; numeric reference L105-L120.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L19\",\n          \"end\": \"L26\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L105\",\n          \"end\": \"L120\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"Runtime visual input\",\n      \"rule\": \"Use chart_and_text: trusted platform chart limited to the decision cutoff, together with numeric facts and permitted read_bars/price_facts tools. Keep all 170 visible numeric sessions; chart states its plotted date window. Do not use uploaded examples or future bars for runtime judgment. If relevant structure lies outside the plotted chart window or cannot be judged reliably, return insufficient evidence and skip; do not claim visual inspection.\",\n      \"source\": \"Conversation: implementation/input clarification; visual source I1 is pre-run example only.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-3\",\n          \"sha256\": \"890f10235ff5297a22d35ee5fc98a11111a3d578851f8f6e95844f1a69e31ee2\",\n          \"start\": \"I1\",\n          \"end\": \"I1\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"Entry and fills\",\n      \"rule\": \"Propose entry only after screen, geometry and all model criteria pass, with no position and exactly 100 shares affordable including buy fee; otherwise cancel, never resize. Long only, one position per symbol, no adding. Signals use completed close; fill at next available session open. Proposal is not fill; rejected/cancelled entry must not create phantom position.\",\n      \"source\": \"Acceptance notes L7, L22, L29; conversation implementation clarification.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L7\",\n          \"end\": \"L7\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L22\",\n          \"end\": \"L22\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L29\",\n          \"end\": \"L29\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"Exits and accounting constraints\",\n      \"rule\": \"Retain original anchors, stop and target. While actually holding, sell the entire actual position if completed close < original stop or ≥ original target; do not move levels or seek model approval. Exit fills next available open; final-day signal without following session remains unfilled. At period end retain position and mark to market, no forced sale. No risk sizing, intraday stops, slippage, separate gap policy or second model reviewer. Optional volatility facts use 40-session mean true range; they do not alter trading rules.\",\n      \"source\": \"Acceptance notes L7, L9, L19, L29; conversation method clarification.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L7\",\n          \"end\": \"L9\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L19\",\n          \"end\": \"L19\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L29\",\n          \"end\": \"L29\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"Implementation repairs and required regressions\",\n      \"rule\": \"Implementation repair only; preserve method, 100-share size and all thresholds, ranking, exceptions, fills, exits and accounting assumptions. Fix inclusive candidate-loop bounds so 25- and 120-session cups are included, 24 and 121 excluded, through the actual candidate/decision path. Fix prior SMA to include exactly i−24 through i−5 (20 closes); regression: with preceding closes 100 and current 102, current SMA 100.1 must not pass >100×1.005; correct any test endorsing the erroneous 19-close result. Reconcile pending entries next session against authoritative account/order evidence: clear rejected/insufficient-evidence proposals when flat and no fill; handle cancelled buys, confirmed fills, and clear original anchors after confirmed full exit. Affordability uses common account ROUND_HALF_UP cent rounding for gross and fee: cash 10000, 100 shares at 99.95004 gives gross 9995.00 + fee 5.00, exactly affordable. Add focused regressions for all these cases.\",\n      \"source\": \"Conversation: implementation-review repair request; numeric reference L38-L42, L59-L67.\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L38\",\n          \"end\": \"L42\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L59\",\n          \"end\": \"L67\"\n        }\n      ]\n    }\n  ],\n  \"questions\": [],\n  \"material_sources\": [\n    {\n      \"id\": \"material-1\",\n      \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n      \"name\": \"acceptance-method-notes.txt\",\n      \"units\": [\n        {\n          \"location\": \"L1\",\n          \"text\": \"Cup with handle — daily long-only method\"\n        },\n        {\n          \"location\": \"L2\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L3\",\n          \"text\": \"Purpose\"\n        },\n        {\n          \"location\": \"L4\",\n          \"text\": \"Implement an inspectable example of my method. Program code owns arithmetic, candidate selection, position state and exits. A model judges the shape only after the numeric checks pass.\"\n        },\n        {\n          \"location\": \"L5\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L6\",\n          \"text\": \"Market and execution\"\n        },\n        {\n          \"location\": \"L7\",\n          \"text\": \"Use daily US stock data. The initial illustrative run is NVDA from 2024-01-02 to 2024-02-15, with USD 10,000 initial cash and a fee of 0.0005 on each buy or sell. Signals use a completed day's close and orders fill at the next available session's open. Long only, one position per symbol, no adding to an existing position. Version 1 buys exactly 100 shares if affordable; otherwise cancel without resizing. Account bookkeeping and fills belong to the platform. Keep positions at the end, marked to market, without an invented forced sale.\"\n        },\n        {\n          \"location\": \"L8\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L9\",\n          \"text\": \"This daily example uses fixed shares and close-based exits. It does not use risk-based sizing, intraday stops, slippage, an additional gap policy or a second model reviewer.\"\n        },\n        {\n          \"location\": \"L10\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L11\",\n          \"text\": \"Numeric entry screen\"\n        },\n        {\n          \"location\": \"L12\",\n          \"text\": \"Use only the current close and earlier OHLCV bars. Close must exceed the 20-session close average multiplied by 0.97. That average must exceed the 20-session average ending five sessions earlier multiplied by 1.005. Close must strictly exceed the highest high of the prior 40 sessions, excluding today. Today's volume must be at least 1.2 times the prior ten sessions' mean volume; a zero prior mean fails.\"\n        },\n        {\n          \"location\": \"L13\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L14\",\n          \"text\": \"Candidate geometry\"\n        },\n        {\n          \"location\": \"L15\",\n          \"text\": \"Search the last 160 sessions for left and right rims with an internal minimum-low bottom. Keep ten additional earlier sessions visible to calculate the advance before any eligible left rim. The numeric reference file specifies the precise inclusive indices and deterministic ranking; those calculations may be reused and adapted, not silently changed.\"\n        },\n        {\n          \"location\": \"L16\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L17\",\n          \"text\": \"Cup span including rims: 25 to 120 sessions. Handle span excluding right rim and signal day: 5 to 30 sessions. Relative rim-high difference: at most 0.08. Cup depth from left-rim high to bottom low: 0.06 to 0.50. Left-rim high divided by the close ten sessions earlier minus one: at least 0.15. Handle low must stay at or above bottom low plus half of the left-rim-to-bottom depth. Handle decline from right-rim high: between zero and 0.35. Pivot is the maximum high from right rim through the day before the signal. Signal close must be strictly above pivot and at most 1.10 times pivot. Initial stop reference is the minimum low strictly between right rim and signal day. Target is pivot plus 5 times (right-rim high minus bottom low). Signal close must also be strictly below that target.\"\n        },\n        {\n          \"location\": \"L18\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L19\",\n          \"text\": \"Rank valid candidates by smallest relative rim-high difference, then longest cup span, then earliest right rim, then earliest left rim. Overlap reduction uses bottom distance at most three sessions and cup intersection/union at least 0.75, retaining at most three candidates. For this project assess only the first ranked candidate; do not silently try another candidate if it fails model judgment. Volatility facts, if retained from the reference, use mean true range over 40 sessions.\"\n        },\n        {\n          \"location\": \"L20\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L21\",\n          \"text\": \"Model judgment\"\n        },\n        {\n          \"location\": \"L22\",\n          \"text\": \"Trigger only for a numerically eligible, affordable entry with no existing position. Judge the fixed selected candidate, not the whole chart's direction. The model must not choose new anchors, alter numeric rules, set sizing or modify the account.\"\n        },\n        {\n          \"location\": \"L23\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L24\",\n          \"text\": \"Cup: a connected decline, rounded base or sustained consolidation, and recovery; not mainly an immediate sharp V reversal. Handle: a smaller, shallow consolidation attached near the recovered upper rim. Coherence: one connected cup and handle rather than unrelated segments spliced together. A single steep portion, gap or handle longer than twenty sessions is not by itself a semantic failure if the approved numeric rules and connected structure hold. Cite dated visible evidence. All three criteria must pass for entry. A failure rejects the entry; unclear evidence returns insufficient evidence and skips it. Invalid output, unavailable tools or transport errors stop visibly, not as a strategy rejection.\"\n        },\n        {\n          \"location\": \"L25\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L26\",\n          \"text\": \"Available evidence is the cutoff-limited OHLCV history, the selected candidate's anchors and facts, and optional read_bars / price_facts tools within that history. The method does not require an image or outside web search. Put the approved shape criteria, trigger, tool allowance and uncertainty behavior in the project execution manifest.\"\n        },\n        {\n          \"location\": \"L27\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L28\",\n          \"text\": \"Position state and exits\"\n        },\n        {\n          \"location\": \"L29\",\n          \"text\": \"Retain the selected candidate's original anchors, stop reference and target in strategy state, but regard actual account positions and previous fill/cancellation records as authoritative. An entry proposal is not a fill. Discard pending entry state when it is rejected or cancelled; do not hold a phantom position. While actually holding, sell the entire position when the completed day's close is below the original handle-low stop reference or at/above the original target. Do not move the target or stop and do not request model approval for exits. An exit fills next session open. A final-day signal without a following session remains unfilled.\"\n        },\n        {\n          \"location\": \"L30\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L31\",\n          \"text\": \"Teaching sources\"\n        },\n        {\n          \"location\": \"L32\",\n          \"text\": \"These are structural teaching references, not future market labels or expected trade results:\"\n        },\n        {\n          \"location\": \"L33\",\n          \"text\": \"https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/cup-with-handle\"\n        },\n        {\n          \"location\": \"L34\",\n          \"text\": \"https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/cup-with-handle\"\n        },\n        {\n          \"location\": \"L35\",\n          \"text\": \"Paraphrased positive: a decline settles into a sustained low base, recovers, then forms a smaller attached upper pullback. Negative: a down-and-immediate-up reversal without a sustained base, or a much later pullback after an unrelated advance grafted onto an old cup. These teaching distinctions do not override the numerical rules above.\"\n        },\n        {\n          \"location\": \"L36\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L37\",\n          \"text\": \"Please ask about contradictions or missing execution-critical details before approving the method. Implementation repairs must preserve approved rules. A later change of entry shares is a new approved version, not a rewrite of the earlier project result.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"material-2\",\n      \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n      \"name\": \"acceptance-numeric-reference.txt\",\n      \"units\": [\n        {\n          \"location\": \"L1\",\n          \"text\": \"Cup numeric reference\"\n        },\n        {\n          \"location\": \"L2\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L3\",\n          \"text\": \"Source: this project, lab/strategy.py. Selected existing numeric functions only.\"\n        },\n        {\n          \"location\": \"L4\",\n          \"text\": \"Original source SHA-256: 396019906890a1297bb7a968a3b7623ba466be5f32820ab93c87e924f77e6dfb\"\n        },\n        {\n          \"location\": \"L5\",\n          \"text\": \"No historical results, model answers, account engine or completed strategy entrypoint are included.\"\n        },\n        {\n          \"location\": \"L6\",\n          \"text\": \"This is reusable reference source, not a finished strategy-v1 implementation. Adapt the OHLCV\"\n        },\n        {\n          \"location\": \"L7\",\n          \"text\": \"and parameter access to the approved method, preserve its arithmetic/ranking, and implement\"\n        },\n        {\n          \"location\": \"L8\",\n          \"text\": \"the decision/state/actual-fill reconciliation separately. All dependencies shown are stdlib.\"\n        },\n        {\n          \"location\": \"L9\",\n          \"text\": \"The 160-session cup window additionally needs ten earlier bars for prior advance at the\"\n        },\n        {\n          \"location\": \"L10\",\n          \"text\": \"oldest eligible left rim; request 170 visible bars and adequate prior warmup.\"\n        },\n        {\n          \"location\": \"L11\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L12\",\n          \"text\": \"```python\"\n        },\n        {\n          \"location\": \"L13\",\n          \"text\": \"import hashlib\"\n        },\n        {\n          \"location\": \"L14\",\n          \"text\": \"import json\"\n        },\n        {\n          \"location\": \"L15\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L16\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L17\",\n          \"text\": \"def required_history(s):\"\n        },\n        {\n          \"location\": \"L18\",\n          \"text\": \"    \\\"\\\"\\\"Prior bars needed at a decision close, including ATR's previous close.\\\"\\\"\\\"\"\n        },\n        {\n          \"location\": \"L19\",\n          \"text\": \"    return max(s.history_window-1, s.trend_period+s.trend_slope_sessions-1,\"\n        },\n        {\n          \"location\": \"L20\",\n          \"text\": \"               s.breakout_lookback, s.volume_lookback, s.volatility_period)\"\n        },\n        {\n          \"location\": \"L21\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L22\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L23\",\n          \"text\": \"def screen(bars, i, s):\"\n        },\n        {\n          \"location\": \"L24\",\n          \"text\": \"    if i < required_history(s):\"\n        },\n        {\n          \"location\": \"L25\",\n          \"text\": \"        return {'pass': False, 'reason': 'warmup'}\"\n        },\n        {\n          \"location\": \"L26\",\n          \"text\": \"    c = bars[i].close\"\n        },\n        {\n          \"location\": \"L27\",\n          \"text\": \"    sma = sum(b.close for b in bars[i-s.trend_period+1:i+1]) / s.trend_period\"\n        },\n        {\n          \"location\": \"L28\",\n          \"text\": \"    old_sma = sum(b.close for b in bars[i-s.trend_slope_sessions-s.trend_period+1:i-s.trend_slope_sessions+1]) / s.trend_period\"\n        },\n        {\n          \"location\": \"L29\",\n          \"text\": \"    high = max(b.high for b in bars[i-s.breakout_lookback:i])\"\n        },\n        {\n          \"location\": \"L30\",\n          \"text\": \"    volume = sum(b.volume for b in bars[i-s.volume_lookback:i]) / s.volume_lookback\"\n        },\n        {\n          \"location\": \"L31\",\n          \"text\": \"    return {'pass': c > sma*(1+s.trend_buffer) and sma>old_sma*(1+s.trend_slope_min) and c > high*(1+s.breakout_buffer) and volume > 0 and bars[i].volume >= s.volume_multiple * volume,\"\n        },\n        {\n          \"location\": \"L32\",\n          \"text\": \"            'close': c, 'trend_sma': sma, 'trend_sma_prior': old_sma, 'breakout_prior_high': high,\"\n        },\n        {\n          \"location\": \"L33\",\n          \"text\": \"            'periods': {'trend': s.trend_period, 'trend_shift': s.trend_slope_sessions,\"\n        },\n        {\n          \"location\": \"L34\",\n          \"text\": \"                        'breakout': s.breakout_lookback, 'volume': s.volume_lookback},\"\n        },\n        {\n          \"location\": \"L35\",\n          \"text\": \"            'volume_ratio': bars[i].volume / volume if volume else 0}\"\n        },\n        {\n          \"location\": \"L36\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L37\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L38\",\n          \"text\": \"def hard_checks(bars, t, l, r, s):\"\n        },\n        {\n          \"location\": \"L39\",\n          \"text\": \"    if not max(s.prior_advance_lookback, t-s.history_window+1) <= l < r < t:\"\n        },\n        {\n          \"location\": \"L40\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L41\",\n          \"text\": \"    b = min(range(l, r+1), key=lambda j: bars[j].low)\"\n        },\n        {\n          \"location\": \"L42\",\n          \"text\": \"    if not l < b < r or not s.cup_min <= r-l+1 <= s.cup_max or not s.handle_min <= t-r-1 <= s.handle_max:\"\n        },\n        {\n          \"location\": \"L43\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L44\",\n          \"text\": \"    L, R, B = bars[l].high, bars[r].high, bars[b].low\"\n        },\n        {\n          \"location\": \"L45\",\n          \"text\": \"    S = min(x.low for x in bars[r+1:t])\"\n        },\n        {\n          \"location\": \"L46\",\n          \"text\": \"    P = max(x.high for x in bars[r:t])\"\n        },\n        {\n          \"location\": \"L47\",\n          \"text\": \"    if (abs(R-L)/L > s.rim_tolerance or not s.depth_min <= (L-B)/L <= s.depth_max or\"\n        },\n        {\n          \"location\": \"L48\",\n          \"text\": \"        L / bars[l-s.prior_advance_lookback].close - 1 < s.prior_advance or S < B+s.handle_midpoint_fraction*(L-B) or\"\n        },\n        {\n          \"location\": \"L49\",\n          \"text\": \"        not 0 <= (R-S)/R <= s.handle_max_drop or not P*(1+s.breakout_buffer) < bars[t].close <= (1+s.max_breakout_extension)*P):\"\n        },\n        {\n          \"location\": \"L50\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L51\",\n          \"text\": \"    # Reject before ranking/inference: a signal already at its objective has no entry headroom.\"\n        },\n        {\n          \"location\": \"L52\",\n          \"text\": \"    target=P+s.target_multiple*(R-B)\"\n        },\n        {\n          \"location\": \"L53\",\n          \"text\": \"    if not S < bars[t].close < target:\"\n        },\n        {\n          \"location\": \"L54\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L55\",\n          \"text\": \"    return {'left_rim': bars[l].date, 'right_rim': bars[r].date, 'bottom': bars[b].date,\"\n        },\n        {\n          \"location\": \"L56\",\n          \"text\": \"            'stop': S, 'pivot': P, 'target':target,'cup_depth': (L-B)/L, 'cup_sessions': r-l+1, 'handle_sessions': t-r-1}\"\n        },\n        {\n          \"location\": \"L57\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L58\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L59\",\n          \"text\": \"def feasible_anchors(bars, i, s):\"\n        },\n        {\n          \"location\": \"L60\",\n          \"text\": \"    pairs = []\"\n        },\n        {\n          \"location\": \"L61\",\n          \"text\": \"    for r in range(max(0, i-s.handle_max-1), i-s.handle_min):\"\n        },\n        {\n          \"location\": \"L62\",\n          \"text\": \"        for l in range(max(s.prior_advance_lookback, i-s.history_window+1, r-s.cup_max+1), r-s.cup_min+2):\"\n        },\n        {\n          \"location\": \"L63\",\n          \"text\": \"            check = hard_checks(bars, i, l, r, s)\"\n        },\n        {\n          \"location\": \"L64\",\n          \"text\": \"            if check:\"\n        },\n        {\n          \"location\": \"L65\",\n          \"text\": \"                pairs.append(check)\"\n        },\n        {\n          \"location\": \"L66\",\n          \"text\": \"    # Deterministic code-only baseline: longest cup, then earliest right/left rim.\"\n        },\n        {\n          \"location\": \"L67\",\n          \"text\": \"    return sorted(pairs, key=lambda x: (-x['cup_sessions'], x['right_rim'], x['left_rim']))\"\n        },\n        {\n          \"location\": \"L68\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L69\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L70\",\n          \"text\": \"def diagnose_anchors(bars,t,l,r,s):\"\n        },\n        {\n          \"location\": \"L71\",\n          \"text\": \"    \\\"\\\"\\\"Explain the existing hard checks for inspection; never changes a run's execution or saved state.\\\"\\\"\\\"\"\n        },\n        {\n          \"location\": \"L72\",\n          \"text\": \"    if not max(s.prior_advance_lookback,t-s.history_window+1)<=l<r<t:\"\n        },\n        {\n          \"location\": \"L73\",\n          \"text\": \"        return [dict(name='anchor_order',value=False,passed=False)]\"\n        },\n        {\n          \"location\": \"L74\",\n          \"text\": \"    b=min(range(l,r+1),key=lambda j:bars[j].low)\"\n        },\n        {\n          \"location\": \"L75\",\n          \"text\": \"    L,R,B=bars[l].high,bars[r].high,bars[b].low\"\n        },\n        {\n          \"location\": \"L76\",\n          \"text\": \"    handle=bars[r+1:t]\"\n        },\n        {\n          \"location\": \"L77\",\n          \"text\": \"    if not handle:return [dict(name='handle_sessions',value=0,minimum=s.handle_min,maximum=s.handle_max,passed=False,unit='sessions')]\"\n        },\n        {\n          \"location\": \"L78\",\n          \"text\": \"    S=min(x.low for x in handle);P=max(x.high for x in bars[r:t])\"\n        },\n        {\n          \"location\": \"L79\",\n          \"text\": \"    checks=[]\"\n        },\n        {\n          \"location\": \"L80\",\n          \"text\": \"    def add(name,value,minimum=None,maximum=None,unit='ratio',strict=False):\"\n        },\n        {\n          \"location\": \"L81\",\n          \"text\": \"        passed=(minimum is None or (value>minimum if strict else value>=minimum)) and (maximum is None or value<=maximum)\"\n        },\n        {\n          \"location\": \"L82\",\n          \"text\": \"        checks.append(dict(name=name,value=value,minimum=minimum,maximum=maximum,passed=passed,unit=unit,strict_minimum=strict))\"\n        },\n        {\n          \"location\": \"L83\",\n          \"text\": \"    add('cup_sessions',r-l+1,s.cup_min,s.cup_max,'sessions')\"\n        },\n        {\n          \"location\": \"L84\",\n          \"text\": \"    add('handle_sessions',t-r-1,s.handle_min,s.handle_max,'sessions')\"\n        },\n        {\n          \"location\": \"L85\",\n          \"text\": \"    add('bottom_internal',int(l<b<r),1,1,'boolean')\"\n        },\n        {\n          \"location\": \"L86\",\n          \"text\": \"    add('rim_difference',abs(R-L)/L,0,s.rim_tolerance)\"\n        },\n        {\n          \"location\": \"L87\",\n          \"text\": \"    add('cup_depth',(L-B)/L,s.depth_min,s.depth_max)\"\n        },\n        {\n          \"location\": \"L88\",\n          \"text\": \"    add('prior_advance',L/bars[l-s.prior_advance_lookback].close-1,s.prior_advance)\"\n        },\n        {\n          \"location\": \"L89\",\n          \"text\": \"    add('handle_above_midpoint',S-(B+s.handle_midpoint_fraction*(L-B)),0,None,'USD')\"\n        },\n        {\n          \"location\": \"L90\",\n          \"text\": \"    add('handle_drop',(R-S)/R,0,s.handle_max_drop)\"\n        },\n        {\n          \"location\": \"L91\",\n          \"text\": \"    add('breakout_extension',bars[t].close/P-1,s.breakout_buffer,s.max_breakout_extension,strict=True)\"\n        },\n        {\n          \"location\": \"L92\",\n          \"text\": \"    add('target_headroom',P+s.target_multiple*(R-B)-bars[t].close,0,None,'USD',strict=True)\"\n        },\n        {\n          \"location\": \"L93\",\n          \"text\": \"    return checks\"\n        },\n        {\n          \"location\": \"L94\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L95\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L96\",\n          \"text\": \"def mean_true_range(bars,i,period=20):\"\n        },\n        {\n          \"location\": \"L97\",\n          \"text\": \"    if i<period or i>=len(bars):\"\n        },\n        {\n          \"location\": \"L98\",\n          \"text\": \"        raise ValueError('Volatility requires covered prior sessions')\"\n        },\n        {\n          \"location\": \"L99\",\n          \"text\": \"    value=sum(max(bars[j].high-bars[j].low,abs(bars[j].high-bars[j-1].close),\"\n        },\n        {\n          \"location\": \"L100\",\n          \"text\": \"                  abs(bars[j].low-bars[j-1].close)) for j in range(i-period+1,i+1))/period\"\n        },\n        {\n          \"location\": \"L101\",\n          \"text\": \"    if value<=0:raise ValueError('Volatility unit must be positive')\"\n        },\n        {\n          \"location\": \"L102\",\n          \"text\": \"    return value\"\n        },\n        {\n          \"location\": \"L103\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L104\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L105\",\n          \"text\": \"def shortlist(bars,i,s,symbol):\"\n        },\n        {\n          \"location\": \"L106\",\n          \"text\": \"    \\\"\\\"\\\"Pure prefix-only geometry selection; no model anchors or future return ranking.\\\"\\\"\\\"\"\n        },\n        {\n          \"location\": \"L107\",\n          \"text\": \"    dates={b.date:j for j,b in enumerate(bars[:i+1])}\"\n        },\n        {\n          \"location\": \"L108\",\n          \"text\": \"    pairs=feasible_anchors(bars,i,s)\"\n        },\n        {\n          \"location\": \"L109\",\n          \"text\": \"    pairs.sort(key=lambda p:(abs(bars[dates[p['right_rim']]].high-bars[dates[p['left_rim']]].high)/bars[dates[p['left_rim']]].high,\"\n        },\n        {\n          \"location\": \"L110\",\n          \"text\": \"                             -p['cup_sessions'],p['right_rim'],p['left_rim']))\"\n        },\n        {\n          \"location\": \"L111\",\n          \"text\": \"    selected=[]\"\n        },\n        {\n          \"location\": \"L112\",\n          \"text\": \"    for p in pairs:\"\n        },\n        {\n          \"location\": \"L113\",\n          \"text\": \"        l,r,b=[dates[p[k]] for k in ['left_rim','right_rim','bottom']]\"\n        },\n        {\n          \"location\": \"L114\",\n          \"text\": \"        duplicate=False\"\n        },\n        {\n          \"location\": \"L115\",\n          \"text\": \"        for q in selected:\"\n        },\n        {\n          \"location\": \"L116\",\n          \"text\": \"            ql,qr,qb=[dates[q[k]] for k in ['left_rim','right_rim','bottom']]\"\n        },\n        {\n          \"location\": \"L117\",\n          \"text\": \"            overlap=max(0,min(r,qr)-max(l,ql)+1)/(max(r,qr)-min(l,ql)+1)\"\n        },\n        {\n          \"location\": \"L118\",\n          \"text\": \"            if abs(b-qb)<=s.bottom_merge_sessions and overlap>=s.candidate_overlap:\"\n        },\n        {\n          \"location\": \"L119\",\n          \"text\": \"                duplicate=True;break\"\n        },\n        {\n          \"location\": \"L120\",\n          \"text\": \"        if duplicate:continue\"\n        },\n        {\n          \"location\": \"L121\",\n          \"text\": \"        L,R,B=bars[l].high,bars[r].high,bars[b].low\"\n        },\n        {\n          \"location\": \"L122\",\n          \"text\": \"        cup=bars[l:r+1];handle=bars[r+1:i]\"\n        },\n        {\n          \"location\": \"L123\",\n          \"text\": \"        p=dict(p,volatility_unit=mean_true_range(bars,i,s.volatility_period),\"\n        },\n        {\n          \"location\": \"L124\",\n          \"text\": \"               visible_start=bars[max(0,i-s.history_window+1)].date,\"\n        },\n        {\n          \"location\": \"L125\",\n          \"text\": \"               handle_start=handle[0].date,handle_end=handle[-1].date,\"\n        },\n        {\n          \"location\": \"L126\",\n          \"text\": \"               left_high=L,right_high=R,bottom_low=B,\"\n        },\n        {\n          \"location\": \"L127\",\n          \"text\": \"               bottom_band_price=B+.25*(L-B),\"\n        },\n        {\n          \"location\": \"L128\",\n          \"text\": \"               bottom_dwell_fraction=sum(x.low<=B+.25*(L-B) for x in cup)/len(cup),\"\n        },\n        {\n          \"location\": \"L129\",\n          \"text\": \"               handle_retrace_of_cup=(R-p['stop'])/(R-B),\"\n        },\n        {\n          \"location\": \"L130\",\n          \"text\": \"               handle_volume_ratio=(sum(x.volume for x in handle)/len(handle))/(sum(x.volume for x in cup)/len(cup)) if sum(x.volume for x in cup)>0 else None,\"\n        },\n        {\n          \"location\": \"L131\",\n          \"text\": \"               numeric_checks=diagnose_anchors(bars,i,l,r,s))\"\n        },\n        {\n          \"location\": \"L132\",\n          \"text\": \"        digest=hashlib.sha256(json.dumps([symbol,bars[i].date,p],sort_keys=True).encode()).hexdigest()[:12]\"\n        },\n        {\n          \"location\": \"L133\",\n          \"text\": \"        p.update(candidate_id=f'{symbol}-{bars[i].date}-{digest}',rank=len(selected)+1)\"\n        },\n        {\n          \"location\": \"L134\",\n          \"text\": \"        selected.append(p)\"\n        },\n        {\n          \"location\": \"L135\",\n          \"text\": \"        if len(selected)>=s.max_candidates:break\"\n        },\n        {\n          \"location\": \"L136\",\n          \"text\": \"    return selected\"\n        },\n        {\n          \"location\": \"L137\",\n          \"text\": \"```\"\n        }\n      ]\n    },\n    {\n      \"id\": \"material-3\",\n      \"sha256\": \"890f10235ff5297a22d35ee5fc98a11111a3d578851f8f6e95844f1a69e31ee2\",\n      \"name\": \"nvda-visual-source-2023-12-29.png\",\n      \"image\": {\n        \"sha256\": \"dbd0939813d93d2bb94564d4f17ebfc0679585d99511c010fc640a5e2ef1ecfb\",\n        \"bytes\": 23444,\n        \"width\": 1024,\n        \"height\": 640,\n        \"original_width\": 1024,\n        \"original_height\": 640,\n        \"normalization\": \"rgb-png-v1\",\n        \"orientation_applied\": true,\n        \"alpha_background\": \"white\",\n        \"metadata_removed\": true\n      },\n      \"units\": [\n        {\n          \"location\": \"I1\",\n          \"text\": \"Visual source I1. No OCR or quotations extracted. Coding uses only the approved visual interpretation and rules.\"\n        }\n      ]\n    }\n  ]\n}",
+          "sha256": "25749b827a43ba74390ffab7585e7eaed3c39667c08937f888b01ab970b4d898",
+          "original_sha256": "a17255b42d6b83c3f0d8c7fcda8e79ee495a24f4fa104988e82d2e4ed8c11199"
+        },
+        {
+          "name": "README.md",
+          "text": "# Approved cup-with-handle strategy\n\nThis is a Python standard-library implementation of the approved strategy for daily US stocks/ETFs. It evaluates a rolling maximum of 170 visible bars (169 prior sessions required), uses split-adjusted OHLCV as supplied, and never accesses future bars. `execution.json` declares the strategy-v1 interface and model judgment contract.\n\nCode applies the numeric screen, inclusive cup-span search (25–120 sessions), candidate ranking/deduplication, fixed 100-share sizing, account checks, fill-state reconciliation and close-based exits. The model judges only the single top-ranked eligible candidate using all three approved shape criteria; it must cite visible dates. Insufficient evidence skips. Unavailable tools, invalid judgment output or transport failure must stop visibly; they are not a rejection or no-trade result. Permitted judgment tools are `read_bars` and `price_facts`; numeric visual chart input is not required by this method.\n\nThe platform remains authoritative for actual positions, order outcomes, fills, cash and fees. Pending proposals are not fills. The strategy retains original stop/target anchors, clears pending state after observed rejected/cancelled orders, and sells the entire actual holding only on a completed-close stop breach or target hit. No forced end-of-period liquidation is generated. Entry affordability uses cent rounding with `ROUND_HALF_UP` for gross and fee and never resizes.\n\nImplementation references: approved market/entry/exit requirements and model rubric, material `material-1` locations L7, L12, L15–L29; numeric arithmetic, inclusive ranges, prior-SMA indexing and ranking, material `material-2` locations L27–L31, L38–L67, L105–L120.\n\nRun checks with `python -m unittest -v`; run `python demo.py` to emit the deterministic, explicitly synthetic example and save the same JSON to `result.json`. The demo shows the entry decision but has no following session, so it does not claim an executed fill. This project is an illustrative strategy implementation, not investment advice, live trading, or evidence of performance.",
+          "sha256": "1c5828989fe0040095542952ba93c8122887cdcfb97017060154e6407ad44dab",
+          "original_sha256": "6cb3dabfe2d6a11060f3eaa09d62a2cf358b7ae078e419bdea1e94c4d5f9f1bb"
+        },
+        {
+          "name": "result.json",
+          "text": "{\n  \"decisions\": {\n    \"proposals\": [],\n    \"state\": {}\n  },\n  \"inputs\": {\n    \"cutoff\": \"2024-01-170\",\n    \"sessions\": 170,\n    \"symbol\": \"SYNTH\"\n  },\n  \"label\": \"SYNTHETIC EXAMPLE \\u2014 not real market data or investment performance evidence\",\n  \"simulated_transactions\": []\n}\n",
+          "sha256": "3bdcf4a91d67c52af82413d54d6cc2e3477dbac03396632f3f484fff8ff8c85c",
+          "original_sha256": "3bdcf4a91d67c52af82413d54d6cc2e3477dbac03396632f3f484fff8ff8c85c"
+        },
+        {
+          "name": "strategy.py",
+          "text": "\"\"\"Approved numeric cup-with-handle strategy; see README for provenance.\"\"\"\n\nfrom decimal import Decimal, ROUND_HALF_UP\n\nSHARES = 100\nFEE_RATE = Decimal(\"0.0005\")\n\n\ndef _candidate(bars, index, left, right):\n    cup_size = right - left + 1\n    handle_size = index - right - 1\n    if not (left < right < index and 25 <= cup_size <= 120 and 5 <= handle_size <= 30):\n        return None\n    bottom = min(range(left, right + 1), key=lambda item: bars[item][\"low\"])\n    if not left < bottom < right:\n        return None\n    left_high, right_high, bottom_low = (\n        bars[left][\"high\"], bars[right][\"high\"], bars[bottom][\"low\"]\n    )\n    stop = min(item[\"low\"] for item in bars[right + 1:index])\n    pivot = max(item[\"high\"] for item in bars[right:index])\n    if left_high <= 0 or right_high <= 0 or left < 10:\n        return None\n    rim_difference = abs(right_high - left_high) / left_high\n    depth = (left_high - bottom_low) / left_high\n    if not (\n        rim_difference <= 0.08 and 0.06 <= depth <= 0.50\n        and left_high / bars[left - 10][\"close\"] - 1 >= 0.15\n        and stop >= bottom_low + 0.5 * (left_high - bottom_low)\n        and 0 <= (right_high - stop) / right_high <= 0.35\n    ):\n        return None\n    target = pivot + 5 * (right_high - bottom_low)\n    close = bars[index][\"close\"]\n    if not (pivot < close <= 1.10 * pivot and close < target and close > stop):\n        return None\n    return {\n        \"left\": left, \"right\": right, \"bottom\": bottom, \"stop\": stop,\n        \"pivot\": pivot, \"target\": target, \"rim_difference\": rim_difference,\n        \"cup_sessions\": cup_size,\n    }\n\n\ndef _candidates(bars, index):\n    found = []\n    first_left = max(10, index - 159)\n    for right in range(max(first_left + 24, index - 31), index - 5):\n        for left in range(max(first_left, right - 119), right - 24 + 1):\n            item = _candidate(bars, index, left, right)\n            if item:\n                found.append(item)\n    found.sort(key=lambda item: (\n        item[\"rim_difference\"], -item[\"cup_sessions\"], item[\"right\"], item[\"left\"]\n    ))\n    selected = []\n    for item in found:\n        duplicate = False\n        for prior in selected:\n            intersection = max(\n                0, min(item[\"right\"], prior[\"right\"]) - max(item[\"left\"], prior[\"left\"]) + 1\n            )\n            union = max(item[\"right\"], prior[\"right\"]) - min(item[\"left\"], prior[\"left\"]) + 1\n            if abs(item[\"bottom\"] - prior[\"bottom\"]) <= 3 and intersection / union >= 0.75:\n                duplicate = True\n                break\n        if not duplicate:\n            selected.append(item)\n            if len(selected) == 3:\n                break\n    return selected\n\n\ndef _market_screen(bars, index):\n    if index < 169:\n        return False\n    average = sum(item[\"close\"] for item in bars[index - 19:index + 1]) / 20\n    earlier = sum(item[\"close\"] for item in bars[index - 24:index - 4]) / 20\n    prior_high = max(item[\"high\"] for item in bars[index - 40:index])\n    prior_volume = sum(item[\"volume\"] for item in bars[index - 10:index]) / 10\n    return (\n        bars[index][\"close\"] > average * 0.97\n        and average > earlier * 1.005\n        and bars[index][\"close\"] > prior_high\n        and prior_volume > 0\n        and bars[index][\"volume\"] >= 1.2 * prior_volume\n    )\n\n\ndef _money(value):\n    return Decimal(str(value)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)\n\n\ndef _reconcile(symbol, state, held, previous_orders):\n    saved = state.get(symbol)\n    if not isinstance(saved, dict):\n        return None\n    matching = [\n        order for order in previous_orders\n        if order.get(\"symbol\") == symbol and order.get(\"signal_date\") == saved.get(\"signal_date\")\n    ]\n    if matching and matching[-1].get(\"action\") == \"sell\" and matching[-1].get(\"status\") == \"filled\" and held == 0:\n        state.pop(symbol, None)\n        return None\n    if held > 0:\n        if saved.get(\"pending\") and matching and matching[-1].get(\"status\") == \"filled\":\n            saved[\"pending\"] = False\n            saved[\"filled\"] = True\n        return saved\n    if saved.get(\"pending\"):\n        if matching:\n            state.pop(symbol, None)\n        return None\n    if saved.get(\"filled\"):\n        state.pop(symbol, None)\n        return None\n    return saved\n\n\ndef decide(context):\n    \"\"\"Return proposals and bounded method-owned state for one close.\"\"\"\n    state = dict(context.get(\"state\") or {})\n    proposals = []\n    positions = context[\"account\"].get(\"positions\", {})\n    cash = _money(context[\"account\"].get(\"cash\", 0))\n    previous_orders = context.get(\"previous_orders\", [])\n    for symbol, series in context.get(\"bars\", {}).items():\n        bars = series[-170:]\n        if not bars:\n            continue\n        held = int(positions.get(symbol, 0))\n        saved = _reconcile(symbol, state, held, previous_orders)\n        if held > 0:\n            if not isinstance(saved, dict) or \"stop\" not in saved or \"target\" not in saved:\n                continue\n            close = bars[-1][\"close\"]\n            if close < saved[\"stop\"] or close >= saved[\"target\"]:\n                proposals.append({\n                    \"symbol\": symbol, \"action\": \"sell\",\n                    \"explanation\": \"Approved close exit: original stop breached or target reached.\",\n                    \"sizing\": {\"shares\": held}, \"judgment\": None,\n                })\n            continue\n        if isinstance(saved, dict) and saved.get(\"pending\"):\n            continue\n        index = len(bars) - 1\n        if index < 169 or not _market_screen(bars, index):\n            continue\n        candidates = _candidates(bars, index)\n        if not candidates:\n            continue\n        candidate = candidates[0]\n        price = Decimal(str(bars[index][\"close\"]))\n        gross = _money(price * SHARES)\n        fee = _money(gross * FEE_RATE)\n        if cash < gross + fee:\n            continue\n        left, right = candidate[\"left\"], candidate[\"right\"]\n        judgment = (\n            f\"Assess only candidate dated {bars[left]['date']}–{bars[right]['date']}; \"\n            f\"bottom {bars[candidate['bottom']]['date']}, handle through {bars[index-1]['date']}. \"\n            f\"Numeric stop={candidate['stop']:.4f}, target={candidate['target']:.4f}. \"\n            \"Apply all three approved shape criteria and cite visible dates.\"\n        )\n        proposals.append({\n            \"symbol\": symbol, \"action\": \"buy\",\n            \"explanation\": \"Approved numeric market screen and first-ranked cup-and-handle candidate passed.\",\n            \"sizing\": {\"shares\": SHARES}, \"judgment\": judgment,\n        })\n        state[symbol] = {\n            \"pending\": True, \"signal_date\": bars[index][\"date\"],\n            \"action\": \"buy\",\n            \"stop\": candidate[\"stop\"], \"target\": candidate[\"target\"],\n            \"left_rim\": bars[left][\"date\"], \"right_rim\": bars[right][\"date\"],\n            \"bottom\": bars[candidate[\"bottom\"]][\"date\"],\n        }\n    return {\"proposals\": proposals, \"state\": state}",
+          "sha256": "03a06a376567c8acf3c76422c840c04f000b38ebc355bcb79d027a83c6bdabed",
+          "original_sha256": "03a06a376567c8acf3c76422c840c04f000b38ebc355bcb79d027a83c6bdabed"
+        },
+        {
+          "name": "test_strategy.py",
+          "text": "import unittest\nfrom decimal import Decimal\n\nfrom strategy import _candidate, _market_screen, decide\n\n\ndef bar(index, close=100, high=None, low=None, volume=1000):\n    return {\n        \"date\": f\"2024-01-{index + 1:02d}\", \"open\": close,\n        \"high\": high if high is not None else close + 0.1,\n        \"low\": low if low is not None else close - 0.1,\n        \"close\": close, \"volume\": volume,\n    }\n\n\nclass StrategyTests(unittest.TestCase):\n    def test_warmup_and_correct_prior_sma_window(self):\n        data = [bar(index) for index in range(170)]\n        self.assertFalse(_market_screen(data, 168))\n        data = [bar(index, close=100, high=100.1) for index in range(170)]\n        for index in range(151, 165):\n            data[index] = bar(index, close=102, high=102.1)\n        data[-1] = bar(169, close=102, high=102.1, volume=1200)\n        self.assertFalse(_market_screen(data, 169))\n\n    def test_geometry_and_strict_breakout_boundary(self):\n        data = [bar(index) for index in range(170)]\n        left, right, signal = 20, 50, 60\n        data[left] = bar(left, 100, 100, 99)\n        data[right] = bar(right, 98, 98, 97)\n        data[35] = bar(35, 75, 76, 70)\n        data[10] = bar(10, 80, 80.1, 79.9)\n        for index in range(right + 1, signal):\n            data[index] = bar(index, 96, 98, 90)\n        data[signal] = bar(signal, 101, 102, 100)\n        self.assertIsNotNone(_candidate(data, signal, left, right))\n        data[signal] = bar(signal, 98, 102, 100)\n        self.assertIsNone(_candidate(data, signal, left, right))\n\n    def test_inclusive_cup_size_endpoints(self):\n        for cup_size in (25, 120):\n            left = 20\n            right = left + cup_size - 1\n            signal = right + 6\n            data = [bar(index) for index in range(signal + 1)]\n            data[left] = bar(left, 100, 100, 99)\n            data[right] = bar(right, 98, 98, 97)\n            data[(left + right) // 2] = bar((left + right) // 2, 75, 76, 70)\n            data[left - 10] = bar(left - 10, 80, 80.1, 79.9)\n            for index in range(right + 1, signal):\n                data[index] = bar(index, 96, 98, 90)\n            data[signal] = bar(signal, 101, 102, 100)\n            self.assertIsNotNone(_candidate(data, signal, left, right))\n        self.assertIsNone(_candidate(data, signal, 20, 140))\n\n    def test_exit_sells_actual_position(self):\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(0, 80)]},\n            \"account\": {\"cash\": 0, \"positions\": {\"XYZ\": 7}},\n            \"state\": {\"XYZ\": {\"stop\": 90, \"target\": 200}},\n            \"previous_orders\": [],\n        })\n        self.assertEqual(result[\"proposals\"][0][\"action\"], \"sell\")\n        self.assertEqual(result[\"proposals\"][0][\"sizing\"][\"shares\"], 7)\n\n    def test_unaffordable_entry_does_not_mutate_account(self):\n        account = {\"cash\": 1, \"positions\": {}}\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(index) for index in range(170)]},\n            \"account\": account, \"state\": {}, \"previous_orders\": [],\n        })\n        self.assertEqual(result[\"proposals\"], [])\n        self.assertEqual(account[\"cash\"], 1)\n\n    def test_eligible_entry_proposes_exactly_100_shares(self):\n        data = [bar(index, close=100 + index * 0.05) for index in range(170)]\n        data[120] = bar(120, 100, 100, 99)\n        data[132] = bar(132, 75, 76, 70)\n        data[145] = bar(145, 98, 98, 97)\n        data[110] = bar(110, 80, 80.1, 79.9)\n        for index in range(146, 151):\n            data[index] = bar(index, 96, 98, 90)\n        for index in range(151, 165):\n            data[index] = bar(index, 100)\n        for index in range(165, 169):\n            data[index] = bar(index, 109.8)\n        data[169] = bar(169, 110, 110, 109, 1500)\n        result = decide({\n            \"bars\": {\"XYZ\": data},\n            \"account\": {\"cash\": 12000, \"positions\": {}},\n            \"state\": {}, \"previous_orders\": [],\n        })\n        self.assertEqual(result[\"proposals\"][0][\"action\"], \"buy\")\n        self.assertEqual(result[\"proposals\"][0][\"sizing\"][\"shares\"], 100)\n        self.assertIsNotNone(result[\"proposals\"][0][\"judgment\"])\n\n    def test_pending_proposal_clears_on_rejection(self):\n        pending = {\"pending\": True, \"signal_date\": \"2024-01-01\", \"stop\": 90, \"target\": 150}\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(0)]},\n            \"account\": {\"cash\": 0, \"positions\": {}},\n            \"state\": {\"XYZ\": pending},\n            \"previous_orders\": [{\"symbol\": \"XYZ\", \"signal_date\": \"2024-01-01\", \"status\": \"rejected\"}],\n        })\n        self.assertNotIn(\"XYZ\", result[\"state\"])\n\n    def test_rounded_exact_affordability(self):\n        from strategy import _money\n        gross = _money(100 * 99.95004)\n        fee = _money(gross * Decimal(\"0.0005\"))\n        self.assertEqual(gross + fee, _money(10000))\n\n\nif __name__ == \"__main__\":\n    unittest.main()",
+          "sha256": "5ed26e98ff23f10143750c3f607e6ee225230de880c7b1d81317ce6320bdab92",
+          "original_sha256": "5ed26e98ff23f10143750c3f607e6ee225230de880c7b1d81317ce6320bdab92"
+        }
+      ],
+      "validation": {
+        "tests_passed": true,
+        "test_evidence": "generated_self_report",
+        "test_output": "LAB_TEST_RESULT:{\"executed\": 8, \"passed\": true}\n........\n----------------------------------------------------------------------\nRan 8 tests in 0.016s\n\nOK\n",
+        "demo_output": "{\n  \"decisions\": {\n    \"proposals\": [],\n    \"state\": {}\n  },\n  \"inputs\": {\n    \"cutoff\": \"2024-01-170\",\n    \"sessions\": 170,\n    \"symbol\": \"SYNTH\"\n  },\n  \"label\": \"SYNTHETIC EXAMPLE \\u2014 not real market data or investment performance evidence\",\n  \"simulated_transactions\": []\n}\n",
+        "demo_error": ""
+      }
+    },
+    {
+      "id": "build-v3-2",
+      "version": 3,
+      "status": "completed",
+      "original_build_hash": "a018d69d85c70073e4d10f37dde87181500bdb52968acb8cc031a2e5985860cf",
+      "verification_only": true,
+      "files": [
+        {
+          "name": "demo.py",
+          "text": "import json\nfrom datetime import date, timedelta\nfrom pathlib import Path\n\nfrom strategy import decide\n\n\ndef main():\n    bars = []\n    for index in range(170):\n        close = 100 + index * 0.05\n        bars.append({\n            \"date\": (date(2024, 1, 2) + timedelta(days=index)).isoformat(), \"open\": close,\n            \"high\": close + 0.2, \"low\": close - 0.2,\n            \"close\": close, \"volume\": 1000,\n        })\n    bars[120].update({\"high\": 100, \"low\": 99})\n    bars[132].update({\"close\": 75, \"high\": 76, \"low\": 70})\n    bars[145].update({\"close\": 98, \"high\": 98, \"low\": 97})\n    bars[110].update({\"close\": 80, \"high\": 80.1, \"low\": 79.9})\n    for index in range(146, 151):\n        bars[index].update({\"close\": 96, \"high\": 98, \"low\": 90})\n    for index in range(151, 165):\n        bars[index].update({\"open\": 100, \"close\": 100, \"high\": 100.2, \"low\": 99.8})\n    for index in range(165, 169):\n        bars[index].update({\"open\": 109.8, \"close\": 109.8, \"high\": 109.9, \"low\": 109.6})\n    bars[-1].update({\"open\": 109, \"high\": 110, \"low\": 109, \"close\": 110, \"volume\": 1500})\n    context = {\n        \"schema\": \"strategy-v1\", \"cutoff\": bars[-1][\"date\"],\n        \"bars\": {\"SYNTH\": bars},\n        \"account\": {\"cash\": 10000, \"equity\": 10000, \"positions\": {}},\n        \"state\": {}, \"previous_orders\": [],\n    }\n    decisions = decide(context)\n    transactions = []\n    for proposal in decisions[\"proposals\"]:\n        if proposal[\"action\"] == \"buy\":\n            transactions.append({\n                \"symbol\": proposal[\"symbol\"], \"action\": \"buy\",\n                \"shares\": proposal[\"sizing\"][\"shares\"], \"fill\": \"not simulated: no next session\",\n            })\n    output = {\n        \"label\": \"SYNTHETIC EXAMPLE — not real market data or investment performance evidence\",\n        \"inputs\": {\"symbol\": \"SYNTH\", \"sessions\": len(bars), \"cutoff\": context[\"cutoff\"]},\n        \"decisions\": decisions,\n        \"simulated_transactions\": transactions,\n    }\n    text = json.dumps(output, indent=2, sort_keys=True)\n    print(text)\n    Path(\"result.json\").write_text(text + \"\\n\", encoding=\"utf-8\")\n\n\nif __name__ == \"__main__\":\n    main()",
+          "sha256": "2ba51b58c62f65f4c3dbdf19db27a1d3239d6ac0ba86f07a76c725efa1aaa594",
+          "original_sha256": "2ba51b58c62f65f4c3dbdf19db27a1d3239d6ac0ba86f07a76c725efa1aaa594"
+        },
+        {
+          "name": "execution.json",
+          "text": "{\n  \"schema\": \"strategy-v1\",\n  \"entrypoint\": \"strategy.py:decide\",\n  \"warmup_bars\": 169,\n  \"history_bars\": 170,\n  \"responsibilities\": {\n    \"code\": \"Approved market screen, numeric cup-and-handle candidate search and ranking, account checks, fixed 50-share sizing, fill reconciliation, state, and close-based exits\",\n    \"model\": \"Judge the selected candidate's cup-and-handle shape only after numeric eligibility, affordability, and flat-account checks\"\n  },\n  \"judgment\": {\n    \"criteria\": \"For the fixed selected candidate assess (1) a connected decline, rounded base or sustained consolidation, and recovery, not mainly an immediate sharp V; (2) a smaller shallow consolidation attached near the recovered upper rim; and (3) one coherent connected cup and handle, not spliced unrelated segments. All three must pass. A steep portion, gap, or handle longer than 20 sessions alone is not failure. Cite dated visible evidence.\",\n    \"trigger\": \"Only for the top-ranked, numerically eligible candidate when the symbol has no position and exactly 50 shares are affordable including the buy fee.\",\n    \"tools\": [\"read_bars\", \"price_facts\"],\n    \"uncertainty\": \"skip\",\n    \"input_mode\": \"chart_and_text\"\n  }\n}",
+          "sha256": "548373f250e4b90bf9f6a4aa22c1e8001129e35c9f3375143bdf48c8a1a6eb84",
+          "original_sha256": "548373f250e4b90bf9f6a4aa22c1e8001129e35c9f3375143bdf48c8a1a6eb84"
+        },
+        {
+          "name": "method.json",
+          "text": "{\n  \"scope\": \"待批准的新方法版本：只把固定买入数量从100股改为50股，卖出该笔实际持仓的全部股份。其余方法条件及实现修复要求保持不变。既有100股版本、其代码及已完成运行结果保持原样；本对话未执行构建或测试。\",\n  \"rules\": [\n    {\n      \"topic\": \"数据、账户与预热\",\n      \"rule\": \"使用冻结的Yahoo图表OHLCV及快照拆股调整后的股数单位；不再次调整、不用adjclose、不计入或再投资股息和资本利得。这是价格回报，不是总回报或点时实际股数；后续拆股可能重标此前报价。初始现金10,000美元，每次买卖费用率0.0005。每次决策使用包含当前已完成交易日的滚动窗口，最多170根：160根用于候选搜索，另留10根计算最早左杯沿的前期涨幅。首次决策前须有169根历史日线；窗口不固定于运行开始日。\",\n      \"source\": \"对话：message-5；材料：acceptance-method-notes.txt L7；acceptance-numeric-reference.txt L9-L10、L105-L108。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L7\",\n          \"end\": \"L7\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L9\",\n          \"end\": \"L10\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L105\",\n          \"end\": \"L108\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"代码、模型与市场筛选\",\n      \"rule\": \"代码负责算术、筛选、候选排序、持仓状态和退出；平台账户、订单及成交记录为准。模型只评估固定选出的候选，不选锚点、不改数值、不决定仓位或修改账户。市场筛选：收盘价>20日收盘均值×0.97；该均值>向前五个交易日对应的20日均值×1.005；收盘价严格高于此前40日最高价；当日成交量≥此前10日均量×1.2，且此前均量>0。两处breakout_buffer均为0并要求严格突破。\",\n      \"source\": \"对话：message-3；材料：acceptance-method-notes.txt L4、L12、L22。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L4\",\n          \"end\": \"L4\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L12\",\n          \"end\": \"L12\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L22\",\n          \"end\": \"L22\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"杯柄数值几何\",\n      \"rule\": \"底部为左右杯沿之间最低价且严格位于两沿之间。杯长含两沿25–120日；柄长不含右沿及信号日，为5–30日。两沿高差/左沿高≤0.08；深度(左沿高−底部低)/左沿高为0.06–0.50；左沿高/左沿前第10日收盘价−1≥0.15。柄低≥底部低+半个左沿至底部深度；柄回撤率为0–0.35。枢轴为右沿至信号日前一日最高价；止损参考为右沿后、信号日前的最低价；目标=枢轴+5×(右沿高−底部低)。信号收盘价须严格高于枢轴、不高于其1.10倍、低于目标且高于止损参考。\",\n      \"source\": \"材料：acceptance-method-notes.txt L15-L17；acceptance-numeric-reference.txt L38-L56。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L15\",\n          \"end\": \"L17\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L38\",\n          \"end\": \"L56\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"候选排序与模型形态判断\",\n      \"rule\": \"候选按两沿相对高差最小、杯最长、右沿最早、左沿最早排序；去重条件为底部相距≤3日且杯区间交并比≥0.75，最多保留3个，本项目只评估排名第一者。模型判断三项：杯为连贯下跌、圆弧底或持续整理后恢复，而非主要为急V反转；柄为靠近恢复后上沿、较小且浅的整理；整体为连贯杯柄而非拼接无关片段。单独出现陡段、缺口或超过20日的柄不构成失败。三项均须通过并引用可见日期；不清楚则记为证据不足并跳过。无效输出、工具不可用或传输错误应明确停止，不视为策略拒绝。\",\n      \"source\": \"材料：acceptance-method-notes.txt L19、L22-L26；acceptance-numeric-reference.txt L105-L120。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L19\",\n          \"end\": \"L26\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L105\",\n          \"end\": \"L120\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"运行时视觉输入\",\n      \"rule\": \"形态判断使用可信平台提供的截止日限定图表与数值信息(chart_and_text)，可用工具仅为该历史范围内的read_bars/price_facts。图表须注明绘制日期范围，保留170根可见数值日线，不使用上传示例或未来日线。若相关结构未绘出或无法可靠判断，报告证据不足并跳过，不声称已检查未展示结构。上传的I1是运行前示例，不用于运行时判断或作为有效形态标签。\",\n      \"source\": \"对话：message-7；视觉材料I1。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-3\",\n          \"sha256\": \"890f10235ff5297a22d35ee5fc98a11111a3d578851f8f6e95844f1a69e31ee2\",\n          \"start\": \"I1\",\n          \"end\": \"I1\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"入场、仓位与成交\",\n      \"rule\": \"仅当市场筛选、数值候选及三项模型判断均通过、账户无该标的持仓且买入可负担时提出入场。固定买入50股；可负担性须包含费用并按分币舍入，不足则取消、不调整数量。仅做多、每标的一笔持仓、不加仓。以完成日收盘价产生信号，下一可用交易日开盘成交；提案不等于成交，须依据平台实际记录更新持仓。\",\n      \"source\": \"对话：message-10、message-12；材料：acceptance-method-notes.txt L7、L22。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L7\",\n          \"end\": \"L7\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L22\",\n          \"end\": \"L22\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"持仓、退出与其他限制\",\n      \"rule\": \"保存原始锚点、止损参考和目标。实际持仓时，若完成日收盘价低于原柄低止损参考或达到/超过原目标，则卖出该笔实际持有的全部股份；不移动价位、不请求模型批准。下一可用交易日开盘成交。最后一日信号若无后续交易日则不成交；期末持仓按市值标记，不强制平仓。保持无风险定额仓位、无盘中止损、无滑点、无额外跳空处理规则、无第二模型复核；可选波动事实如保留则使用40日平均真实波幅，不改变交易规则。\",\n      \"source\": \"材料：acceptance-method-notes.txt L7、L9、L19、L29；对话：message-10、message-12。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L7\",\n          \"end\": \"L9\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L19\",\n          \"end\": \"L19\"\n        },\n        {\n          \"id\": \"material-1\",\n          \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n          \"start\": \"L29\",\n          \"end\": \"L29\"\n        }\n      ]\n    },\n    {\n      \"topic\": \"实现修复与回归验证要求（非策略优化）\",\n      \"rule\": \"实现时保留原方法条件并采用本版本50股数量。修复候选循环边界：25及120日杯包含、24及121日排除，并通过实际候选/决策路径验证。前期均值须精确包含i−24至i−5共20个收盘价；先前收盘价均为100、当前均值为100.1时，不得通过严格大于100×1.005的条件，并纠正认可19日均值错误的测试。按真实账户和订单证据处理待成交状态：无成交且账户仍空仓时清理拒绝或证据不足的提案；处理取消买单、确认成交，并在实际全额退出后清除原锚点。可负担性对总额和费用采用ROUND_HALF_UP分币舍入；100股、单价99.95004美元的10,000美元现金算例（总额9,995.00加费用5.00）仅是独立算术回归案例，不是本版本交易数量。为上述边界、均值、状态对账和舍入情形添加专项回归测试。对话工具未执行修复或测试。\",\n      \"source\": \"对话：message-7、message-12；材料：acceptance-numeric-reference.txt L38-L42、L59-L67。\",\n      \"material_refs\": [\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L38\",\n          \"end\": \"L42\"\n        },\n        {\n          \"id\": \"material-2\",\n          \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n          \"start\": \"L59\",\n          \"end\": \"L67\"\n        }\n      ]\n    }\n  ],\n  \"questions\": [],\n  \"material_sources\": [\n    {\n      \"id\": \"material-1\",\n      \"name\": \"acceptance-method-notes.txt\",\n      \"sha256\": \"deb96833c93e601fbe1af485830df9058e393b90a136750b85cc742182f1895e\",\n      \"units\": [\n        {\n          \"location\": \"L1\",\n          \"text\": \"Cup with handle — daily long-only method\"\n        },\n        {\n          \"location\": \"L2\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L3\",\n          \"text\": \"Purpose\"\n        },\n        {\n          \"location\": \"L4\",\n          \"text\": \"Implement an inspectable example of my method. Program code owns arithmetic, candidate selection, position state and exits. A model judges the shape only after the numeric checks pass.\"\n        },\n        {\n          \"location\": \"L5\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L6\",\n          \"text\": \"Market and execution\"\n        },\n        {\n          \"location\": \"L7\",\n          \"text\": \"Use daily US stock data. The initial illustrative run is NVDA from 2024-01-02 to 2024-02-15, with USD 10,000 initial cash and a fee of 0.0005 on each buy or sell. Signals use a completed day's close and orders fill at the next available session's open. Long only, one position per symbol, no adding to an existing position. Version 1 buys exactly 100 shares if affordable; otherwise cancel without resizing. Account bookkeeping and fills belong to the platform. Keep positions at the end, marked to market, without an invented forced sale.\"\n        },\n        {\n          \"location\": \"L8\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L9\",\n          \"text\": \"This daily example uses fixed shares and close-based exits. It does not use risk-based sizing, intraday stops, slippage, an additional gap policy or a second model reviewer.\"\n        },\n        {\n          \"location\": \"L10\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L11\",\n          \"text\": \"Numeric entry screen\"\n        },\n        {\n          \"location\": \"L12\",\n          \"text\": \"Use only the current close and earlier OHLCV bars. Close must exceed the 20-session close average multiplied by 0.97. That average must exceed the 20-session average ending five sessions earlier multiplied by 1.005. Close must strictly exceed the highest high of the prior 40 sessions, excluding today. Today's volume must be at least 1.2 times the prior ten sessions' mean volume; a zero prior mean fails.\"\n        },\n        {\n          \"location\": \"L13\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L14\",\n          \"text\": \"Candidate geometry\"\n        },\n        {\n          \"location\": \"L15\",\n          \"text\": \"Search the last 160 sessions for left and right rims with an internal minimum-low bottom. Keep ten additional earlier sessions visible to calculate the advance before any eligible left rim. The numeric reference file specifies the precise inclusive indices and deterministic ranking; those calculations may be reused and adapted, not silently changed.\"\n        },\n        {\n          \"location\": \"L16\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L17\",\n          \"text\": \"Cup span including rims: 25 to 120 sessions. Handle span excluding right rim and signal day: 5 to 30 sessions. Relative rim-high difference: at most 0.08. Cup depth from left-rim high to bottom low: 0.06 to 0.50. Left-rim high divided by the close ten sessions earlier minus one: at least 0.15. Handle low must stay at or above bottom low plus half of the left-rim-to-bottom depth. Handle decline from right-rim high: between zero and 0.35. Pivot is the maximum high from right rim through the day before the signal. Signal close must be strictly above pivot and at most 1.10 times pivot. Initial stop reference is the minimum low strictly between right rim and signal day. Target is pivot plus 5 times (right-rim high minus bottom low). Signal close must also be strictly below that target.\"\n        },\n        {\n          \"location\": \"L18\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L19\",\n          \"text\": \"Rank valid candidates by smallest relative rim-high difference, then longest cup span, then earliest right rim, then earliest left rim. Overlap reduction uses bottom distance at most three sessions and cup intersection/union at least 0.75, retaining at most three candidates. For this project assess only the first ranked candidate; do not silently try another candidate if it fails model judgment. Volatility facts, if retained from the reference, use mean true range over 40 sessions.\"\n        },\n        {\n          \"location\": \"L20\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L21\",\n          \"text\": \"Model judgment\"\n        },\n        {\n          \"location\": \"L22\",\n          \"text\": \"Trigger only for a numerically eligible, affordable entry with no existing position. Judge the fixed selected candidate, not the whole chart's direction. The model must not choose new anchors, alter numeric rules, set sizing or modify the account.\"\n        },\n        {\n          \"location\": \"L23\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L24\",\n          \"text\": \"Cup: a connected decline, rounded base or sustained consolidation, and recovery; not mainly an immediate sharp V reversal. Handle: a smaller, shallow consolidation attached near the recovered upper rim. Coherence: one connected cup and handle rather than unrelated segments spliced together. A single steep portion, gap or handle longer than twenty sessions is not by itself a semantic failure if the approved numeric rules and connected structure hold. Cite dated visible evidence. All three criteria must pass for entry. A failure rejects the entry; unclear evidence returns insufficient evidence and skips it. Invalid output, unavailable tools or transport errors stop visibly, not as a strategy rejection.\"\n        },\n        {\n          \"location\": \"L25\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L26\",\n          \"text\": \"Available evidence is the cutoff-limited OHLCV history, the selected candidate's anchors and facts, and optional read_bars / price_facts tools within that history. The method does not require an image or outside web search. Put the approved shape criteria, trigger, tool allowance and uncertainty behavior in the project execution manifest.\"\n        },\n        {\n          \"location\": \"L27\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L28\",\n          \"text\": \"Position state and exits\"\n        },\n        {\n          \"location\": \"L29\",\n          \"text\": \"Retain the selected candidate's original anchors, stop reference and target in strategy state, but regard actual account positions and previous fill/cancellation records as authoritative. An entry proposal is not a fill. Discard pending entry state when it is rejected or cancelled; do not hold a phantom position. While actually holding, sell the entire position when the completed day's close is below the original handle-low stop reference or at/above the original target. Do not move the target or stop and do not request model approval for exits. An exit fills next session open. A final-day signal without a following session remains unfilled.\"\n        },\n        {\n          \"location\": \"L30\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L31\",\n          \"text\": \"Teaching sources\"\n        },\n        {\n          \"location\": \"L32\",\n          \"text\": \"These are structural teaching references, not future market labels or expected trade results:\"\n        },\n        {\n          \"location\": \"L33\",\n          \"text\": \"https://chartschool.stockcharts.com/table-of-contents/chart-analysis/chart-patterns/cup-with-handle\"\n        },\n        {\n          \"location\": \"L34\",\n          \"text\": \"https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/cup-with-handle\"\n        },\n        {\n          \"location\": \"L35\",\n          \"text\": \"Paraphrased positive: a decline settles into a sustained low base, recovers, then forms a smaller attached upper pullback. Negative: a down-and-immediate-up reversal without a sustained base, or a much later pullback after an unrelated advance grafted onto an old cup. These teaching distinctions do not override the numerical rules above.\"\n        },\n        {\n          \"location\": \"L36\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L37\",\n          \"text\": \"Please ask about contradictions or missing execution-critical details before approving the method. Implementation repairs must preserve approved rules. A later change of entry shares is a new approved version, not a rewrite of the earlier project result.\"\n        }\n      ]\n    },\n    {\n      \"id\": \"material-2\",\n      \"name\": \"acceptance-numeric-reference.txt\",\n      \"sha256\": \"635301c5214739bdcc11f223e4a8c9a58f78d0e3838970ec8e7b86dfd8bfb9d2\",\n      \"units\": [\n        {\n          \"location\": \"L1\",\n          \"text\": \"Cup numeric reference\"\n        },\n        {\n          \"location\": \"L2\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L3\",\n          \"text\": \"Source: this project, lab/strategy.py. Selected existing numeric functions only.\"\n        },\n        {\n          \"location\": \"L4\",\n          \"text\": \"Original source SHA-256: 396019906890a1297bb7a968a3b7623ba466be5f32820ab93c87e924f77e6dfb\"\n        },\n        {\n          \"location\": \"L5\",\n          \"text\": \"No historical results, model answers, account engine or completed strategy entrypoint are included.\"\n        },\n        {\n          \"location\": \"L6\",\n          \"text\": \"This is reusable reference source, not a finished strategy-v1 implementation. Adapt the OHLCV\"\n        },\n        {\n          \"location\": \"L7\",\n          \"text\": \"and parameter access to the approved method, preserve its arithmetic/ranking, and implement\"\n        },\n        {\n          \"location\": \"L8\",\n          \"text\": \"the decision/state/actual-fill reconciliation separately. All dependencies shown are stdlib.\"\n        },\n        {\n          \"location\": \"L9\",\n          \"text\": \"The 160-session cup window additionally needs ten earlier bars for prior advance at the\"\n        },\n        {\n          \"location\": \"L10\",\n          \"text\": \"oldest eligible left rim; request 170 visible bars and adequate prior warmup.\"\n        },\n        {\n          \"location\": \"L11\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L12\",\n          \"text\": \"```python\"\n        },\n        {\n          \"location\": \"L13\",\n          \"text\": \"import hashlib\"\n        },\n        {\n          \"location\": \"L14\",\n          \"text\": \"import json\"\n        },\n        {\n          \"location\": \"L15\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L16\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L17\",\n          \"text\": \"def required_history(s):\"\n        },\n        {\n          \"location\": \"L18\",\n          \"text\": \"    \\\"\\\"\\\"Prior bars needed at a decision close, including ATR's previous close.\\\"\\\"\\\"\"\n        },\n        {\n          \"location\": \"L19\",\n          \"text\": \"    return max(s.history_window-1, s.trend_period+s.trend_slope_sessions-1,\"\n        },\n        {\n          \"location\": \"L20\",\n          \"text\": \"               s.breakout_lookback, s.volume_lookback, s.volatility_period)\"\n        },\n        {\n          \"location\": \"L21\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L22\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L23\",\n          \"text\": \"def screen(bars, i, s):\"\n        },\n        {\n          \"location\": \"L24\",\n          \"text\": \"    if i < required_history(s):\"\n        },\n        {\n          \"location\": \"L25\",\n          \"text\": \"        return {'pass': False, 'reason': 'warmup'}\"\n        },\n        {\n          \"location\": \"L26\",\n          \"text\": \"    c = bars[i].close\"\n        },\n        {\n          \"location\": \"L27\",\n          \"text\": \"    sma = sum(b.close for b in bars[i-s.trend_period+1:i+1]) / s.trend_period\"\n        },\n        {\n          \"location\": \"L28\",\n          \"text\": \"    old_sma = sum(b.close for b in bars[i-s.trend_slope_sessions-s.trend_period+1:i-s.trend_slope_sessions+1]) / s.trend_period\"\n        },\n        {\n          \"location\": \"L29\",\n          \"text\": \"    high = max(b.high for b in bars[i-s.breakout_lookback:i])\"\n        },\n        {\n          \"location\": \"L30\",\n          \"text\": \"    volume = sum(b.volume for b in bars[i-s.volume_lookback:i]) / s.volume_lookback\"\n        },\n        {\n          \"location\": \"L31\",\n          \"text\": \"    return {'pass': c > sma*(1+s.trend_buffer) and sma>old_sma*(1+s.trend_slope_min) and c > high*(1+s.breakout_buffer) and volume > 0 and bars[i].volume >= s.volume_multiple * volume,\"\n        },\n        {\n          \"location\": \"L32\",\n          \"text\": \"            'close': c, 'trend_sma': sma, 'trend_sma_prior': old_sma, 'breakout_prior_high': high,\"\n        },\n        {\n          \"location\": \"L33\",\n          \"text\": \"            'periods': {'trend': s.trend_period, 'trend_shift': s.trend_slope_sessions,\"\n        },\n        {\n          \"location\": \"L34\",\n          \"text\": \"                        'breakout': s.breakout_lookback, 'volume': s.volume_lookback},\"\n        },\n        {\n          \"location\": \"L35\",\n          \"text\": \"            'volume_ratio': bars[i].volume / volume if volume else 0}\"\n        },\n        {\n          \"location\": \"L36\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L37\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L38\",\n          \"text\": \"def hard_checks(bars, t, l, r, s):\"\n        },\n        {\n          \"location\": \"L39\",\n          \"text\": \"    if not max(s.prior_advance_lookback, t-s.history_window+1) <= l < r < t:\"\n        },\n        {\n          \"location\": \"L40\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L41\",\n          \"text\": \"    b = min(range(l, r+1), key=lambda j: bars[j].low)\"\n        },\n        {\n          \"location\": \"L42\",\n          \"text\": \"    if not l < b < r or not s.cup_min <= r-l+1 <= s.cup_max or not s.handle_min <= t-r-1 <= s.handle_max:\"\n        },\n        {\n          \"location\": \"L43\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L44\",\n          \"text\": \"    L, R, B = bars[l].high, bars[r].high, bars[b].low\"\n        },\n        {\n          \"location\": \"L45\",\n          \"text\": \"    S = min(x.low for x in bars[r+1:t])\"\n        },\n        {\n          \"location\": \"L46\",\n          \"text\": \"    P = max(x.high for x in bars[r:t])\"\n        },\n        {\n          \"location\": \"L47\",\n          \"text\": \"    if (abs(R-L)/L > s.rim_tolerance or not s.depth_min <= (L-B)/L <= s.depth_max or\"\n        },\n        {\n          \"location\": \"L48\",\n          \"text\": \"        L / bars[l-s.prior_advance_lookback].close - 1 < s.prior_advance or S < B+s.handle_midpoint_fraction*(L-B) or\"\n        },\n        {\n          \"location\": \"L49\",\n          \"text\": \"        not 0 <= (R-S)/R <= s.handle_max_drop or not P*(1+s.breakout_buffer) < bars[t].close <= (1+s.max_breakout_extension)*P):\"\n        },\n        {\n          \"location\": \"L50\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L51\",\n          \"text\": \"    # Reject before ranking/inference: a signal already at its objective has no entry headroom.\"\n        },\n        {\n          \"location\": \"L52\",\n          \"text\": \"    target=P+s.target_multiple*(R-B)\"\n        },\n        {\n          \"location\": \"L53\",\n          \"text\": \"    if not S < bars[t].close < target:\"\n        },\n        {\n          \"location\": \"L54\",\n          \"text\": \"        return None\"\n        },\n        {\n          \"location\": \"L55\",\n          \"text\": \"    return {'left_rim': bars[l].date, 'right_rim': bars[r].date, 'bottom': bars[b].date,\"\n        },\n        {\n          \"location\": \"L56\",\n          \"text\": \"            'stop': S, 'pivot': P, 'target':target,'cup_depth': (L-B)/L, 'cup_sessions': r-l+1, 'handle_sessions': t-r-1}\"\n        },\n        {\n          \"location\": \"L57\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L58\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L59\",\n          \"text\": \"def feasible_anchors(bars, i, s):\"\n        },\n        {\n          \"location\": \"L60\",\n          \"text\": \"    pairs = []\"\n        },\n        {\n          \"location\": \"L61\",\n          \"text\": \"    for r in range(max(0, i-s.handle_max-1), i-s.handle_min):\"\n        },\n        {\n          \"location\": \"L62\",\n          \"text\": \"        for l in range(max(s.prior_advance_lookback, i-s.history_window+1, r-s.cup_max+1), r-s.cup_min+2):\"\n        },\n        {\n          \"location\": \"L63\",\n          \"text\": \"            check = hard_checks(bars, i, l, r, s)\"\n        },\n        {\n          \"location\": \"L64\",\n          \"text\": \"            if check:\"\n        },\n        {\n          \"location\": \"L65\",\n          \"text\": \"                pairs.append(check)\"\n        },\n        {\n          \"location\": \"L66\",\n          \"text\": \"    # Deterministic code-only baseline: longest cup, then earliest right/left rim.\"\n        },\n        {\n          \"location\": \"L67\",\n          \"text\": \"    return sorted(pairs, key=lambda x: (-x['cup_sessions'], x['right_rim'], x['left_rim']))\"\n        },\n        {\n          \"location\": \"L68\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L69\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L70\",\n          \"text\": \"def diagnose_anchors(bars,t,l,r,s):\"\n        },\n        {\n          \"location\": \"L71\",\n          \"text\": \"    \\\"\\\"\\\"Explain the existing hard checks for inspection; never changes a run's execution or saved state.\\\"\\\"\\\"\"\n        },\n        {\n          \"location\": \"L72\",\n          \"text\": \"    if not max(s.prior_advance_lookback,t-s.history_window+1)<=l<r<t:\"\n        },\n        {\n          \"location\": \"L73\",\n          \"text\": \"        return [dict(name='anchor_order',value=False,passed=False)]\"\n        },\n        {\n          \"location\": \"L74\",\n          \"text\": \"    b=min(range(l,r+1),key=lambda j:bars[j].low)\"\n        },\n        {\n          \"location\": \"L75\",\n          \"text\": \"    L,R,B=bars[l].high,bars[r].high,bars[b].low\"\n        },\n        {\n          \"location\": \"L76\",\n          \"text\": \"    handle=bars[r+1:t]\"\n        },\n        {\n          \"location\": \"L77\",\n          \"text\": \"    if not handle:return [dict(name='handle_sessions',value=0,minimum=s.handle_min,maximum=s.handle_max,passed=False,unit='sessions')]\"\n        },\n        {\n          \"location\": \"L78\",\n          \"text\": \"    S=min(x.low for x in handle);P=max(x.high for x in bars[r:t])\"\n        },\n        {\n          \"location\": \"L79\",\n          \"text\": \"    checks=[]\"\n        },\n        {\n          \"location\": \"L80\",\n          \"text\": \"    def add(name,value,minimum=None,maximum=None,unit='ratio',strict=False):\"\n        },\n        {\n          \"location\": \"L81\",\n          \"text\": \"        passed=(minimum is None or (value>minimum if strict else value>=minimum)) and (maximum is None or value<=maximum)\"\n        },\n        {\n          \"location\": \"L82\",\n          \"text\": \"        checks.append(dict(name=name,value=value,minimum=minimum,maximum=maximum,passed=passed,unit=unit,strict_minimum=strict))\"\n        },\n        {\n          \"location\": \"L83\",\n          \"text\": \"    add('cup_sessions',r-l+1,s.cup_min,s.cup_max,'sessions')\"\n        },\n        {\n          \"location\": \"L84\",\n          \"text\": \"    add('handle_sessions',t-r-1,s.handle_min,s.handle_max,'sessions')\"\n        },\n        {\n          \"location\": \"L85\",\n          \"text\": \"    add('bottom_internal',int(l<b<r),1,1,'boolean')\"\n        },\n        {\n          \"location\": \"L86\",\n          \"text\": \"    add('rim_difference',abs(R-L)/L,0,s.rim_tolerance)\"\n        },\n        {\n          \"location\": \"L87\",\n          \"text\": \"    add('cup_depth',(L-B)/L,s.depth_min,s.depth_max)\"\n        },\n        {\n          \"location\": \"L88\",\n          \"text\": \"    add('prior_advance',L/bars[l-s.prior_advance_lookback].close-1,s.prior_advance)\"\n        },\n        {\n          \"location\": \"L89\",\n          \"text\": \"    add('handle_above_midpoint',S-(B+s.handle_midpoint_fraction*(L-B)),0,None,'USD')\"\n        },\n        {\n          \"location\": \"L90\",\n          \"text\": \"    add('handle_drop',(R-S)/R,0,s.handle_max_drop)\"\n        },\n        {\n          \"location\": \"L91\",\n          \"text\": \"    add('breakout_extension',bars[t].close/P-1,s.breakout_buffer,s.max_breakout_extension,strict=True)\"\n        },\n        {\n          \"location\": \"L92\",\n          \"text\": \"    add('target_headroom',P+s.target_multiple*(R-B)-bars[t].close,0,None,'USD',strict=True)\"\n        },\n        {\n          \"location\": \"L93\",\n          \"text\": \"    return checks\"\n        },\n        {\n          \"location\": \"L94\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L95\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L96\",\n          \"text\": \"def mean_true_range(bars,i,period=20):\"\n        },\n        {\n          \"location\": \"L97\",\n          \"text\": \"    if i<period or i>=len(bars):\"\n        },\n        {\n          \"location\": \"L98\",\n          \"text\": \"        raise ValueError('Volatility requires covered prior sessions')\"\n        },\n        {\n          \"location\": \"L99\",\n          \"text\": \"    value=sum(max(bars[j].high-bars[j].low,abs(bars[j].high-bars[j-1].close),\"\n        },\n        {\n          \"location\": \"L100\",\n          \"text\": \"                  abs(bars[j].low-bars[j-1].close)) for j in range(i-period+1,i+1))/period\"\n        },\n        {\n          \"location\": \"L101\",\n          \"text\": \"    if value<=0:raise ValueError('Volatility unit must be positive')\"\n        },\n        {\n          \"location\": \"L102\",\n          \"text\": \"    return value\"\n        },\n        {\n          \"location\": \"L103\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L104\",\n          \"text\": \"\"\n        },\n        {\n          \"location\": \"L105\",\n          \"text\": \"def shortlist(bars,i,s,symbol):\"\n        },\n        {\n          \"location\": \"L106\",\n          \"text\": \"    \\\"\\\"\\\"Pure prefix-only geometry selection; no model anchors or future return ranking.\\\"\\\"\\\"\"\n        },\n        {\n          \"location\": \"L107\",\n          \"text\": \"    dates={b.date:j for j,b in enumerate(bars[:i+1])}\"\n        },\n        {\n          \"location\": \"L108\",\n          \"text\": \"    pairs=feasible_anchors(bars,i,s)\"\n        },\n        {\n          \"location\": \"L109\",\n          \"text\": \"    pairs.sort(key=lambda p:(abs(bars[dates[p['right_rim']]].high-bars[dates[p['left_rim']]].high)/bars[dates[p['left_rim']]].high,\"\n        },\n        {\n          \"location\": \"L110\",\n          \"text\": \"                             -p['cup_sessions'],p['right_rim'],p['left_rim']))\"\n        },\n        {\n          \"location\": \"L111\",\n          \"text\": \"    selected=[]\"\n        },\n        {\n          \"location\": \"L112\",\n          \"text\": \"    for p in pairs:\"\n        },\n        {\n          \"location\": \"L113\",\n          \"text\": \"        l,r,b=[dates[p[k]] for k in ['left_rim','right_rim','bottom']]\"\n        },\n        {\n          \"location\": \"L114\",\n          \"text\": \"        duplicate=False\"\n        },\n        {\n          \"location\": \"L115\",\n          \"text\": \"        for q in selected:\"\n        },\n        {\n          \"location\": \"L116\",\n          \"text\": \"            ql,qr,qb=[dates[q[k]] for k in ['left_rim','right_rim','bottom']]\"\n        },\n        {\n          \"location\": \"L117\",\n          \"text\": \"            overlap=max(0,min(r,qr)-max(l,ql)+1)/(max(r,qr)-min(l,ql)+1)\"\n        },\n        {\n          \"location\": \"L118\",\n          \"text\": \"            if abs(b-qb)<=s.bottom_merge_sessions and overlap>=s.candidate_overlap:\"\n        },\n        {\n          \"location\": \"L119\",\n          \"text\": \"                duplicate=True;break\"\n        },\n        {\n          \"location\": \"L120\",\n          \"text\": \"        if duplicate:continue\"\n        },\n        {\n          \"location\": \"L121\",\n          \"text\": \"        L,R,B=bars[l].high,bars[r].high,bars[b].low\"\n        },\n        {\n          \"location\": \"L122\",\n          \"text\": \"        cup=bars[l:r+1];handle=bars[r+1:i]\"\n        },\n        {\n          \"location\": \"L123\",\n          \"text\": \"        p=dict(p,volatility_unit=mean_true_range(bars,i,s.volatility_period),\"\n        },\n        {\n          \"location\": \"L124\",\n          \"text\": \"               visible_start=bars[max(0,i-s.history_window+1)].date,\"\n        },\n        {\n          \"location\": \"L125\",\n          \"text\": \"               handle_start=handle[0].date,handle_end=handle[-1].date,\"\n        },\n        {\n          \"location\": \"L126\",\n          \"text\": \"               left_high=L,right_high=R,bottom_low=B,\"\n        },\n        {\n          \"location\": \"L127\",\n          \"text\": \"               bottom_band_price=B+.25*(L-B),\"\n        },\n        {\n          \"location\": \"L128\",\n          \"text\": \"               bottom_dwell_fraction=sum(x.low<=B+.25*(L-B) for x in cup)/len(cup),\"\n        },\n        {\n          \"location\": \"L129\",\n          \"text\": \"               handle_retrace_of_cup=(R-p['stop'])/(R-B),\"\n        },\n        {\n          \"location\": \"L130\",\n          \"text\": \"               handle_volume_ratio=(sum(x.volume for x in handle)/len(handle))/(sum(x.volume for x in cup)/len(cup)) if sum(x.volume for x in cup)>0 else None,\"\n        },\n        {\n          \"location\": \"L131\",\n          \"text\": \"               numeric_checks=diagnose_anchors(bars,i,l,r,s))\"\n        },\n        {\n          \"location\": \"L132\",\n          \"text\": \"        digest=hashlib.sha256(json.dumps([symbol,bars[i].date,p],sort_keys=True).encode()).hexdigest()[:12]\"\n        },\n        {\n          \"location\": \"L133\",\n          \"text\": \"        p.update(candidate_id=f'{symbol}-{bars[i].date}-{digest}',rank=len(selected)+1)\"\n        },\n        {\n          \"location\": \"L134\",\n          \"text\": \"        selected.append(p)\"\n        },\n        {\n          \"location\": \"L135\",\n          \"text\": \"        if len(selected)>=s.max_candidates:break\"\n        },\n        {\n          \"location\": \"L136\",\n          \"text\": \"    return selected\"\n        },\n        {\n          \"location\": \"L137\",\n          \"text\": \"```\"\n        }\n      ]\n    },\n    {\n      \"id\": \"material-3\",\n      \"image\": {\n        \"alpha_background\": \"white\",\n        \"bytes\": 23444,\n        \"height\": 640,\n        \"metadata_removed\": true,\n        \"normalization\": \"rgb-png-v1\",\n        \"orientation_applied\": true,\n        \"original_height\": 640,\n        \"original_width\": 1024,\n        \"sha256\": \"dbd0939813d93d2bb94564d4f17ebfc0679585d99511c010fc640a5e2ef1ecfb\",\n        \"width\": 1024\n      },\n      \"name\": \"nvda-visual-source-2023-12-29.png\",\n      \"sha256\": \"890f10235ff5297a22d35ee5fc98a11111a3d578851f8f6e95844f1a69e31ee2\",\n      \"units\": [\n        {\n          \"location\": \"I1\",\n          \"text\": \"Visual source I1. No OCR or quotations extracted. Coding uses only the approved visual interpretation and rules.\"\n        }\n      ]\n    }\n  ]\n}",
+          "sha256": "59e4583394e97fcdd4f381ff9d9ec31f1e842d10c974a815bf075028eda30b26",
+          "original_sha256": "0d38a3cf5a0336c5f3465e908b4d6def1301fd5fb53cd82c20db2c475c2874fa"
+        },
+        {
+          "name": "README.md",
+          "text": "# Approved cup-with-handle strategy\n\nThis is a Python standard-library implementation of the approved strategy for daily US stocks/ETFs. It evaluates a rolling maximum of 170 visible bars (169 prior sessions required), uses split-adjusted OHLCV as supplied, and never accesses future bars. `execution.json` declares the strategy-v1 interface and model judgment contract.\n\nCode applies the numeric screen, inclusive cup-span search (25–120 sessions), candidate ranking/deduplication, fixed 50-share sizing, account checks, fill-state reconciliation and close-based exits. The model judges only the single top-ranked eligible candidate using all three approved shape criteria; it must cite visible dates. It receives chart-and-text input and may use only `read_bars` and `price_facts` within visible history. Insufficient evidence skips. Unavailable tools, invalid judgment output or transport failure must stop visibly; they are not a rejection or no-trade result.\n\nThe platform remains authoritative for actual positions, order outcomes, fills, cash and fees. Pending proposals are not fills. The strategy retains original stop/target anchors, clears unfilled or rejected/cancelled entry state when the position remains flat, and clears anchors after observed filled full exits. It sells the entire actual holding only on a completed-close stop breach or target hit. No forced end-of-period liquidation is generated. Entry affordability uses cent rounding with `ROUND_HALF_UP` for gross and fee and never resizes.\n\nImplementation references: approved market/entry/exit requirements and model rubric, material `material-1` locations L7, L12, L15–L29; numeric arithmetic, inclusive ranges, prior-SMA indexing and ranking, material `material-2` locations L27–L31, L38–L67, L105–L120. This revision changes fixed buy quantity from 100 to 50 shares; the preceding version and its outputs are not modified.\n\nRun checks with `python -m unittest -v`; run `python demo.py` to emit the deterministic, explicitly synthetic example and save the same JSON to `result.json`. The demo shows the entry decision but has no following session, so it does not claim an executed fill. This project is an illustrative strategy implementation, not investment advice, live trading, or evidence of performance.",
+          "sha256": "7c8ebef1f0f72f1bd0c81bf4cf9b25e657445dd6c7111ae999f3727d9905fc04",
+          "original_sha256": "1c5802a806202333aa134cb3cea00ccab12602788f626f22caaf5b18b00993b9"
+        },
+        {
+          "name": "result.json",
+          "text": "{\n  \"decisions\": {\n    \"proposals\": [\n      {\n        \"action\": \"buy\",\n        \"explanation\": \"Approved numeric market screen and first-ranked cup-and-handle candidate passed.\",\n        \"judgment\": \"Assess only candidate dated 2024-05-01\\u20132024-06-13; bottom 2024-05-13, handle through 2024-06-18. Numeric stop=99.8000, target=260.9000. Apply all three approved shape criteria and cite visible dates.\",\n        \"sizing\": {\n          \"shares\": 50\n        },\n        \"symbol\": \"SYNTH\"\n      }\n    ],\n    \"state\": {\n      \"SYNTH\": {\n        \"action\": \"buy\",\n        \"bottom\": \"2024-05-13\",\n        \"left_rim\": \"2024-05-01\",\n        \"pending\": true,\n        \"right_rim\": \"2024-06-13\",\n        \"signal_date\": \"2024-06-19\",\n        \"stop\": 99.8,\n        \"target\": 260.9\n      }\n    }\n  },\n  \"inputs\": {\n    \"cutoff\": \"2024-06-19\",\n    \"sessions\": 170,\n    \"symbol\": \"SYNTH\"\n  },\n  \"label\": \"SYNTHETIC EXAMPLE \\u2014 not real market data or investment performance evidence\",\n  \"simulated_transactions\": [\n    {\n      \"action\": \"buy\",\n      \"fill\": \"not simulated: no next session\",\n      \"shares\": 50,\n      \"symbol\": \"SYNTH\"\n    }\n  ]\n}\n",
+          "sha256": "c7379bb25729ad56bd5a075089d7e5951edb70d009e27391e25deb4ecc5f0738",
+          "original_sha256": "c7379bb25729ad56bd5a075089d7e5951edb70d009e27391e25deb4ecc5f0738"
+        },
+        {
+          "name": "strategy.py",
+          "text": "\"\"\"Approved numeric cup-with-handle strategy; see README for provenance.\"\"\"\n\nfrom decimal import Decimal, ROUND_HALF_UP\n\nSHARES = 50\nFEE_RATE = Decimal(\"0.0005\")\n\n\ndef _candidate(bars, index, left, right):\n    cup_size = right - left + 1\n    handle_size = index - right - 1\n    if not (left < right < index and 25 <= cup_size <= 120 and 5 <= handle_size <= 30):\n        return None\n    bottom = min(range(left, right + 1), key=lambda item: bars[item][\"low\"])\n    if not left < bottom < right:\n        return None\n    left_high, right_high, bottom_low = (\n        bars[left][\"high\"], bars[right][\"high\"], bars[bottom][\"low\"]\n    )\n    stop = min(item[\"low\"] for item in bars[right + 1:index])\n    pivot = max(item[\"high\"] for item in bars[right:index])\n    if left_high <= 0 or right_high <= 0 or left < 10:\n        return None\n    rim_difference = abs(right_high - left_high) / left_high\n    depth = (left_high - bottom_low) / left_high\n    if not (\n        rim_difference <= 0.08 and 0.06 <= depth <= 0.50\n        and left_high / bars[left - 10][\"close\"] - 1 >= 0.15\n        and stop >= bottom_low + 0.5 * (left_high - bottom_low)\n        and 0 <= (right_high - stop) / right_high <= 0.35\n    ):\n        return None\n    target = pivot + 5 * (right_high - bottom_low)\n    close = bars[index][\"close\"]\n    if not (pivot < close <= 1.10 * pivot and close < target and close > stop):\n        return None\n    return {\n        \"left\": left, \"right\": right, \"bottom\": bottom, \"stop\": stop,\n        \"pivot\": pivot, \"target\": target, \"rim_difference\": rim_difference,\n        \"cup_sessions\": cup_size,\n    }\n\n\ndef _candidates(bars, index):\n    found = []\n    first_left = max(10, index - 159)\n    for right in range(max(first_left + 24, index - 31), index - 5):\n        for left in range(max(first_left, right - 119), right - 24 + 1):\n            item = _candidate(bars, index, left, right)\n            if item:\n                found.append(item)\n    found.sort(key=lambda item: (\n        item[\"rim_difference\"], -item[\"cup_sessions\"], item[\"right\"], item[\"left\"]\n    ))\n    selected = []\n    for item in found:\n        duplicate = False\n        for prior in selected:\n            intersection = max(\n                0, min(item[\"right\"], prior[\"right\"]) - max(item[\"left\"], prior[\"left\"]) + 1\n            )\n            union = max(item[\"right\"], prior[\"right\"]) - min(item[\"left\"], prior[\"left\"]) + 1\n            if abs(item[\"bottom\"] - prior[\"bottom\"]) <= 3 and intersection / union >= 0.75:\n                duplicate = True\n                break\n        if not duplicate:\n            selected.append(item)\n            if len(selected) == 3:\n                break\n    return selected\n\n\ndef _market_screen(bars, index):\n    if index < 169:\n        return False\n    average = sum(item[\"close\"] for item in bars[index - 19:index + 1]) / 20\n    earlier = sum(item[\"close\"] for item in bars[index - 24:index - 4]) / 20\n    prior_high = max(item[\"high\"] for item in bars[index - 40:index])\n    prior_volume = sum(item[\"volume\"] for item in bars[index - 10:index]) / 10\n    return (\n        bars[index][\"close\"] > average * 0.97\n        and average > earlier * 1.005\n        and bars[index][\"close\"] > prior_high\n        and prior_volume > 0\n        and bars[index][\"volume\"] >= 1.2 * prior_volume\n    )\n\n\ndef _money(value):\n    return Decimal(str(value)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP)\n\n\ndef _reconcile(symbol, state, held, previous_orders):\n    saved = state.get(symbol)\n    if not isinstance(saved, dict):\n        return None\n    matching = [order for order in previous_orders if order.get(\"symbol\") == symbol]\n    entry_orders = [\n        order for order in matching\n        if order.get(\"action\") == \"buy\" and order.get(\"signal_date\") == saved.get(\"signal_date\")\n    ]\n    if any(order.get(\"action\") == \"sell\" and order.get(\"status\") == \"filled\"\n           for order in matching) and held == 0:\n        state.pop(symbol, None)\n        return None\n    if held > 0:\n        if saved.get(\"pending\") and entry_orders and entry_orders[-1].get(\"status\") == \"filled\":\n            saved[\"pending\"] = False\n            saved[\"filled\"] = True\n        return saved\n    if saved.get(\"pending\"):\n        if not entry_orders or entry_orders[-1].get(\"status\") != \"filled\":\n            state.pop(symbol, None)\n            return None\n        saved[\"pending\"] = False\n        saved[\"filled\"] = True\n    if saved.get(\"filled\"):\n        state.pop(symbol, None)\n        return None\n    return saved\n\n\ndef decide(context):\n    \"\"\"Return proposals and bounded method-owned state for one close.\"\"\"\n    state = dict(context.get(\"state\") or {})\n    proposals = []\n    positions = context[\"account\"].get(\"positions\", {})\n    cash = _money(context[\"account\"].get(\"cash\", 0))\n    previous_orders = context.get(\"previous_orders\", [])\n    for symbol, series in context.get(\"bars\", {}).items():\n        bars = series[-170:]\n        if not bars:\n            continue\n        held = int(positions.get(symbol, 0))\n        saved = _reconcile(symbol, state, held, previous_orders)\n        if held > 0:\n            if not isinstance(saved, dict) or \"stop\" not in saved or \"target\" not in saved:\n                continue\n            close = bars[-1][\"close\"]\n            if close < saved[\"stop\"] or close >= saved[\"target\"]:\n                proposals.append({\n                    \"symbol\": symbol, \"action\": \"sell\",\n                    \"explanation\": \"Approved close exit: original stop breached or target reached.\",\n                    \"sizing\": {\"shares\": held}, \"judgment\": None,\n                })\n            continue\n        if isinstance(saved, dict) and saved.get(\"pending\"):\n            continue\n        index = len(bars) - 1\n        if index < 169 or not _market_screen(bars, index):\n            continue\n        candidates = _candidates(bars, index)\n        if not candidates:\n            continue\n        candidate = candidates[0]\n        price = Decimal(str(bars[index][\"close\"]))\n        gross = _money(price * SHARES)\n        fee = _money(gross * FEE_RATE)\n        if cash < gross + fee:\n            continue\n        left, right = candidate[\"left\"], candidate[\"right\"]\n        judgment = (\n            f\"Assess only candidate dated {bars[left]['date']}–{bars[right]['date']}; \"\n            f\"bottom {bars[candidate['bottom']]['date']}, handle through {bars[index-1]['date']}. \"\n            f\"Numeric stop={candidate['stop']:.4f}, target={candidate['target']:.4f}. \"\n            \"Apply all three approved shape criteria and cite visible dates.\"\n        )\n        proposals.append({\n            \"symbol\": symbol, \"action\": \"buy\",\n            \"explanation\": \"Approved numeric market screen and first-ranked cup-and-handle candidate passed.\",\n            \"sizing\": {\"shares\": SHARES}, \"judgment\": judgment,\n        })\n        state[symbol] = {\n            \"pending\": True, \"signal_date\": bars[index][\"date\"],\n            \"action\": \"buy\",\n            \"stop\": candidate[\"stop\"], \"target\": candidate[\"target\"],\n            \"left_rim\": bars[left][\"date\"], \"right_rim\": bars[right][\"date\"],\n            \"bottom\": bars[candidate[\"bottom\"]][\"date\"],\n        }\n    return {\"proposals\": proposals, \"state\": state}",
+          "sha256": "2ff32f5144b7858259ccb96300b9ca66fb2abeab25ad530d4444a1f255471eca",
+          "original_sha256": "2ff32f5144b7858259ccb96300b9ca66fb2abeab25ad530d4444a1f255471eca"
+        },
+        {
+          "name": "test_strategy.py",
+          "text": "import unittest\nfrom datetime import date, timedelta\nfrom decimal import Decimal\n\nfrom strategy import _candidate, _candidates, _market_screen, decide\n\n\ndef bar(index, close=100, high=None, low=None, volume=1000):\n    return {\n        \"date\": (date(2024, 1, 2) + timedelta(days=index)).isoformat(), \"open\": close,\n        \"high\": high if high is not None else close + 0.1,\n        \"low\": low if low is not None else close - 0.1,\n        \"close\": close, \"volume\": volume,\n    }\n\n\nclass StrategyTests(unittest.TestCase):\n    def test_warmup_and_correct_prior_sma_window(self):\n        data = [bar(index) for index in range(170)]\n        self.assertFalse(_market_screen(data, 168))\n        data = [bar(index, close=100, high=100.1) for index in range(170)]\n        for index in range(151, 165):\n            data[index] = bar(index, close=102, high=102.1)\n        data[-1] = bar(169, close=102, high=102.1, volume=1200)\n        self.assertFalse(_market_screen(data, 169))\n\n    def test_geometry_and_strict_breakout_boundary(self):\n        data = [bar(index) for index in range(170)]\n        left, right, signal = 20, 50, 60\n        data[left] = bar(left, 100, 100, 99)\n        data[right] = bar(right, 98, 98, 97)\n        data[35] = bar(35, 75, 76, 70)\n        data[10] = bar(10, 80, 80.1, 79.9)\n        for index in range(right + 1, signal):\n            data[index] = bar(index, 96, 98, 90)\n        data[signal] = bar(signal, 101, 102, 100)\n        self.assertIsNotNone(_candidate(data, signal, left, right))\n        data[signal] = bar(signal, 98, 102, 100)\n        self.assertIsNone(_candidate(data, signal, left, right))\n\n    def test_inclusive_cup_size_endpoints(self):\n        for cup_size in (25, 120):\n            left = 20\n            right = left + cup_size - 1\n            signal = right + 6\n            data = [bar(index) for index in range(signal + 1)]\n            data[left] = bar(left, 100, 100, 99)\n            data[right] = bar(right, 98, 98, 97)\n            if cup_size == 120:\n                data[right - 1] = bar(right - 1, 120, 120, 119)\n            data[(left + right) // 2] = bar((left + right) // 2, 75, 76, 70)\n            data[left - 10] = bar(left - 10, 80, 80.1, 79.9)\n            for index in range(right + 1, signal):\n                data[index] = bar(index, 96, 98, 90)\n            data[signal] = bar(signal, 101, 102, 100)\n            self.assertIsNotNone(_candidate(data, signal, left, right))\n            self.assertTrue(any(item[\"cup_sessions\"] == cup_size\n                                for item in _candidates(data, signal)))\n        data = [bar(index) for index in range(180)]\n        left, right, signal = 20, 43, 49\n        data[left] = bar(left, 100, 100, 99)\n        data[right] = bar(right, 98, 98, 97)\n        data[30] = bar(30, 75, 76, 70)\n        data[left - 10] = bar(left - 10, 80, 80.1, 79.9)\n        for index in range(right + 1, signal):\n            data[index] = bar(index, 96, 98, 90)\n        data[signal] = bar(signal, 101, 102, 100)\n        self.assertFalse(any(item[\"cup_sessions\"] == 24 for item in _candidates(data, signal)))\n        self.assertIsNone(_candidate(data, signal, 20, 140))\n        data.append(bar(180, 101, 102, 100))\n        self.assertFalse(any(item[\"cup_sessions\"] == 121 for item in _candidates(data, 180)))\n\n    def test_exit_sells_actual_position(self):\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(0, 80)]},\n            \"account\": {\"cash\": 0, \"positions\": {\"XYZ\": 7}},\n            \"state\": {\"XYZ\": {\"stop\": 90, \"target\": 200}},\n            \"previous_orders\": [],\n        })\n        self.assertEqual(result[\"proposals\"][0][\"action\"], \"sell\")\n        self.assertEqual(result[\"proposals\"][0][\"sizing\"][\"shares\"], 7)\n\n    def test_unaffordable_entry_does_not_mutate_account(self):\n        account = {\"cash\": 1, \"positions\": {}}\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(index) for index in range(170)]},\n            \"account\": account, \"state\": {}, \"previous_orders\": [],\n        })\n        self.assertEqual(result[\"proposals\"], [])\n        self.assertEqual(account[\"cash\"], 1)\n\n    def test_eligible_entry_proposes_exactly_50_shares(self):\n        data = [bar(index, close=100 + index * 0.05) for index in range(170)]\n        data[120] = bar(120, 100, 100, 99)\n        data[132] = bar(132, 75, 76, 70)\n        data[145] = bar(145, 98, 98, 97)\n        data[110] = bar(110, 80, 80.1, 79.9)\n        for index in range(146, 151):\n            data[index] = bar(index, 96, 98, 90)\n        for index in range(151, 165):\n            data[index] = bar(index, 100)\n        for index in range(165, 169):\n            data[index] = bar(index, 109.8)\n        data[169] = bar(169, 110, 110, 109, 1500)\n        result = decide({\n            \"bars\": {\"XYZ\": data},\n            \"account\": {\"cash\": 6000, \"positions\": {}},\n            \"state\": {}, \"previous_orders\": [],\n        })\n        self.assertEqual(result[\"proposals\"][0][\"action\"], \"buy\")\n        self.assertEqual(result[\"proposals\"][0][\"sizing\"][\"shares\"], 50)\n        self.assertIsNotNone(result[\"proposals\"][0][\"judgment\"])\n\n    def test_pending_proposal_clears_on_rejection(self):\n        pending = {\"pending\": True, \"signal_date\": \"2024-01-01\", \"stop\": 90, \"target\": 150}\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(0)]},\n            \"account\": {\"cash\": 0, \"positions\": {}},\n            \"state\": {\"XYZ\": pending},\n            \"previous_orders\": [{\"symbol\": \"XYZ\", \"signal_date\": \"2024-01-01\", \"status\": \"rejected\"}],\n        })\n        self.assertNotIn(\"XYZ\", result[\"state\"])\n\n    def test_pending_proposal_without_fill_evidence_clears(self):\n        pending = {\"pending\": True, \"signal_date\": \"2024-01-01\", \"stop\": 90, \"target\": 150}\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(0)]},\n            \"account\": {\"cash\": 0, \"positions\": {}},\n            \"state\": {\"XYZ\": pending}, \"previous_orders\": [],\n        })\n        self.assertNotIn(\"XYZ\", result[\"state\"])\n\n    def test_filled_full_exit_clears_original_anchors(self):\n        saved = {\"filled\": True, \"signal_date\": \"2024-01-01\", \"stop\": 90, \"target\": 150}\n        result = decide({\n            \"bars\": {\"XYZ\": [bar(0)]},\n            \"account\": {\"cash\": 0, \"positions\": {}}, \"state\": {\"XYZ\": saved},\n            \"previous_orders\": [{\"symbol\": \"XYZ\", \"action\": \"sell\", \"status\": \"filled\"}],\n        })\n        self.assertNotIn(\"XYZ\", result[\"state\"])\n\n    def test_rounded_exact_affordability(self):\n        from strategy import _money\n        gross = _money(100 * 99.95004)\n        fee = _money(gross * Decimal(\"0.0005\"))\n        self.assertEqual(gross + fee, _money(10000))\n        gross = _money(50 * 99.95004)\n        fee = _money(gross * Decimal(\"0.0005\"))\n        self.assertEqual(gross + fee, _money(5000))\n\n\nif __name__ == \"__main__\":\n    unittest.main()",
+          "sha256": "38891c90891316171747c3e7dec9526dac0cdd09be09b57470c7310d239ac67d",
+          "original_sha256": "38891c90891316171747c3e7dec9526dac0cdd09be09b57470c7310d239ac67d"
+        }
+      ],
+      "validation": {
+        "tests_passed": true,
+        "test_evidence": "generated_self_report",
+        "test_output": "LAB_TEST_RESULT:{\"executed\": 10, \"passed\": true}\n..........\n----------------------------------------------------------------------\nRan 10 tests in 0.037s\n\nOK\n",
+        "demo_output": "{\n  \"decisions\": {\n    \"proposals\": [\n      {\n        \"action\": \"buy\",\n        \"explanation\": \"Approved numeric market screen and first-ranked cup-and-handle candidate passed.\",\n        \"judgment\": \"Assess only candidate dated 2024-05-01\\u20132024-06-13; bottom 2024-05-13, handle through 2024-06-18. Numeric stop=99.8000, target=260.9000. Apply all three approved shape criteria and cite visible dates.\",\n        \"sizing\": {\n          \"shares\": 50\n        },\n        \"symbol\": \"SYNTH\"\n      }\n    ],\n    \"state\": {\n      \"SYNTH\": {\n        \"action\": \"buy\",\n        \"bottom\": \"2024-05-13\",\n        \"left_rim\": \"2024-05-01\",\n        \"pending\": true,\n        \"right_rim\": \"2024-06-13\",\n        \"signal_date\": \"2024-06-19\",\n        \"stop\": 99.8,\n        \"target\": 260.9\n      }\n    }\n  },\n  \"inputs\": {\n    \"cutoff\": \"2024-06-19\",\n    \"sessions\": 170,\n    \"symbol\": \"SYNTH\"\n  },\n  \"label\": \"SYNTHETIC EXAMPLE \\u2014 not real market data or investment performance evidence\",\n  \"simulated_transactions\": [\n    {\n      \"action\": \"buy\",\n      \"fill\": \"not simulated: no next session\",\n      \"shares\": 50,\n      \"symbol\": \"SYNTH\"\n    }\n  ]\n}\n",
+        "demo_error": ""
+      }
+    }
+  ],
+  "runs": [
+    {
+      "id": "run-v2-1",
+      "build_id": "build-v2-1",
+      "version": 2,
+      "status": "completed",
+      "completed_sessions": 32,
+      "total_sessions": 32,
+      "original_run_hash": "8fc38ad8593d176834d85517f58a4c7433b600d3cb94f726af61274429e9b2aa",
+      "market_hash": "037b82f6c477f0b99e7305ffc8cfbb1fda264b68545fd0042c9317890921c291",
+      "price_basis": "Yahoo chart quote OHLC and volume are used as provided, in snapshot split-adjusted share units; never apply split factors a second time. adjclose is not used. Dividends/capital gains are not reinvested or credited. This is price return, not total return or point-in-time as-traded share quantities. Future snapshot splits can rescale earlier quoted prices/volume; this frozen normalization is disclosed.",
+      "judgment": {
+        "criteria": "For the fixed selected candidate assess (1) a connected decline, rounded base or sustained consolidation, and recovery, not mainly an immediate sharp V; (2) a smaller shallow consolidation attached near the recovered upper rim; and (3) one coherent connected cup and handle, not spliced unrelated segments. All three must pass. A steep portion, gap, or handle longer than 20 sessions alone is not failure. Cite dated visible evidence.",
+        "trigger": "Only for the top-ranked, numerically eligible candidate when the symbol has no position and exactly 100 shares are affordable including the buy fee.",
+        "tools": [
+          "read_bars",
+          "price_facts"
+        ],
+        "uncertainty": "skip",
+        "input_mode": "chart_and_text"
+      },
+      "account_policy": {},
+      "assumptions": {
+        "start": "2024-01-02",
+        "end": "2024-02-15",
+        "symbols": [
+          "NVDA"
+        ],
+        "initial_cash": 10000.0,
+        "fee_rate": 0.0005
+      },
+      "curve": [
+        {
+          "date": "2024-01-02",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-03",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-04",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-05",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-08",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-09",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-10",
+          "cash": 4635.72,
+          "equity": 10070.72
+        },
+        {
+          "date": "2024-01-11",
+          "cash": 4635.72,
+          "equity": 10117.92
+        },
+        {
+          "date": "2024-01-12",
+          "cash": 4635.72,
+          "equity": 10106.72
+        },
+        {
+          "date": "2024-01-16",
+          "cash": 4635.72,
+          "equity": 10273.92
+        },
+        {
+          "date": "2024-01-17",
+          "cash": 4635.72,
+          "equity": 10241.02
+        },
+        {
+          "date": "2024-01-18",
+          "cash": 4635.72,
+          "equity": 10346.42
+        },
+        {
+          "date": "2024-01-19",
+          "cash": 4635.72,
+          "equity": 10584.82
+        },
+        {
+          "date": "2024-01-22",
+          "cash": 4635.72,
+          "equity": 10601.12
+        },
+        {
+          "date": "2024-01-23",
+          "cash": 4635.72,
+          "equity": 10623.02
+        },
+        {
+          "date": "2024-01-24",
+          "cash": 4635.72,
+          "equity": 10771.92
+        },
+        {
+          "date": "2024-01-25",
+          "cash": 4635.72,
+          "equity": 10797.42
+        },
+        {
+          "date": "2024-01-26",
+          "cash": 4635.72,
+          "equity": 10738.82
+        },
+        {
+          "date": "2024-01-29",
+          "cash": 4635.72,
+          "equity": 10882.22
+        },
+        {
+          "date": "2024-01-30",
+          "cash": 4635.72,
+          "equity": 10913.12
+        },
+        {
+          "date": "2024-01-31",
+          "cash": 4635.72,
+          "equity": 10788.42
+        },
+        {
+          "date": "2024-02-01",
+          "cash": 4635.72,
+          "equity": 10938.42
+        },
+        {
+          "date": "2024-02-02",
+          "cash": 4635.72,
+          "equity": 11251.72
+        },
+        {
+          "date": "2024-02-05",
+          "cash": 4635.72,
+          "equity": 11568.92
+        },
+        {
+          "date": "2024-02-06",
+          "cash": 4635.72,
+          "equity": 11458.02
+        },
+        {
+          "date": "2024-02-07",
+          "cash": 4635.72,
+          "equity": 11645.62
+        },
+        {
+          "date": "2024-02-08",
+          "cash": 4635.72,
+          "equity": 11599.82
+        },
+        {
+          "date": "2024-02-09",
+          "cash": 4635.72,
+          "equity": 11849.02
+        },
+        {
+          "date": "2024-02-12",
+          "cash": 4635.72,
+          "equity": 11860.52
+        },
+        {
+          "date": "2024-02-13",
+          "cash": 4635.72,
+          "equity": 11848.52
+        },
+        {
+          "date": "2024-02-14",
+          "cash": 4635.72,
+          "equity": 12025.72
+        },
+        {
+          "date": "2024-02-15",
+          "cash": 12018.93,
+          "equity": 12018.93
+        }
+      ],
+      "trades": [
+        {
+          "date": "2024-01-10",
+          "signal_date": "2024-01-09",
+          "symbol": "NVDA",
+          "action": "buy",
+          "quantity": 100,
+          "price": 53.61600112915039,
+          "fee": 2.68,
+          "gross": 5361.6,
+          "decision_id": "2024-01-09-1",
+          "reason": "next_session_open"
+        },
+        {
+          "date": "2024-02-15",
+          "signal_date": "2024-02-14",
+          "symbol": "NVDA",
+          "action": "sell",
+          "quantity": 100,
+          "price": 73.86900329589844,
+          "fee": 3.69,
+          "gross": 7386.9,
+          "decision_id": "2024-02-14-1",
+          "reason": "next_session_open"
+        }
+      ],
+      "positions": [],
+      "decisions": [
+        {
+          "id": "2024-01-08-1",
+          "cutoff": "2024-01-08",
+          "status": "fail",
+          "symbol": "NVDA",
+          "action": "buy",
+          "shares": 100,
+          "explanation": "Approved numeric market screen and first-ranked cup-and-handle candidate passed.",
+          "judgment": "Assess only candidate dated 2023-11-13–2023-12-21; bottom 2023-12-04, handle through 2024-01-05. Numeric stop=47.3200, target=70.4220. Apply all three approved shape criteria and cite visible dates.",
+          "candidates": [],
+          "selected_candidate_id": null,
+          "input_hash": "d34625ed09c27ca154e06b8ce49cfb396de4d7d95e2657493750475fe9fcf514",
+          "images": [
+            {
+              "sha256": "511c6f8103fc434e8be620fdaa916029d8f87a02d990dd003dfdd5535a82abb1",
+              "symbol": "NVDA",
+              "cutoff": "2024-01-08",
+              "start": "2023-07-19",
+              "end": "2024-01-08",
+              "bar_count": 120,
+              "visible_bar_count": 170
+            }
+          ],
+          "model": {
+            "verdict": "fail",
+            "reason": "The proposed Nov 13–Dec 21 candidate does not pass all three shape criteria. The decline and recovery are connected, but the recovery from the Dec 4 low is a sharp V rather than a rounded base or sustained consolidation. The later pullback can be read as a shallow consolidation near the recovered rim, but the initial-base requirement fails, so the candidate is not one qualifying cup and handle.",
+            "evidence": [
+              {
+                "symbol": "NVDA",
+                "date": "2023-11-13"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-04"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-18"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-05"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-08"
+              }
+            ],
+            "tool_names": []
+          }
+        },
+        {
+          "id": "2024-01-09-1",
+          "cutoff": "2024-01-09",
+          "status": "ordered",
+          "symbol": "NVDA",
+          "action": "buy",
+          "shares": 100,
+          "explanation": "Approved numeric market screen and first-ranked cup-and-handle candidate passed.",
+          "judgment": "Assess only candidate dated 2023-11-13–2023-12-21; bottom 2023-12-04, handle through 2024-01-08. Numeric stop=47.3200, target=72.7000. Apply all three approved shape criteria and cite visible dates.",
+          "candidates": [],
+          "selected_candidate_id": null,
+          "input_hash": "1dfca997cca449c6b2f98c15c324d46d6838e6c71c3b3f9d136e154ac8b46c7b",
+          "images": [
+            {
+              "sha256": "2bf8baf064d3f93e1efede4556f609184d450a5442d65b655d35647c53852e3d",
+              "symbol": "NVDA",
+              "cutoff": "2024-01-09",
+              "start": "2023-07-20",
+              "end": "2024-01-09",
+              "bar_count": 120,
+              "visible_bar_count": 170
+            }
+          ],
+          "model": {
+            "verdict": "pass",
+            "reason": "The specified candidate passes all three shape criteria. From the Nov. 14 left-side high, NVDA declined over multiple sessions into a base around Dec. 1–6, then recovered toward the upper rim by Dec. 18–19; this is not mainly an immediate sharp V. The Dec. 20 pullback was shallow and followed by consolidation near the recovered rim through Jan. 5, before a rise on Jan. 8. These moves form one connected cup-and-handle structure in the visible bars.",
+            "evidence": [
+              {
+                "symbol": "NVDA",
+                "date": "2023-11-14"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-11-22"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-04"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-18"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-20"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-05"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-08"
+              }
+            ],
+            "tool_names": []
+          }
+        },
+        {
+          "id": "2024-02-14-1",
+          "cutoff": "2024-02-14",
+          "status": "ordered",
+          "symbol": "NVDA",
+          "action": "sell",
+          "shares": 100,
+          "explanation": "Approved close exit: original stop breached or target reached.",
+          "judgment": "",
+          "candidates": [],
+          "selected_candidate_id": null,
+          "input_hash": "a2bba3e6b115df37de5705ff6da5dea969dbae7a99d5e91f41b7181708b4b6be",
+          "images": [],
+          "model": null
+        }
+      ]
+    },
+    {
+      "id": "run-v3-2",
+      "build_id": "build-v3-2",
+      "version": 3,
+      "status": "completed",
+      "completed_sessions": 32,
+      "total_sessions": 32,
+      "original_run_hash": "fc3a6183c70ebeaa5974c6d5fd6b5e443c6d20c49c16bf30e818d23eb9ec82b0",
+      "market_hash": "037b82f6c477f0b99e7305ffc8cfbb1fda264b68545fd0042c9317890921c291",
+      "price_basis": "Yahoo chart quote OHLC and volume are used as provided, in snapshot split-adjusted share units; never apply split factors a second time. adjclose is not used. Dividends/capital gains are not reinvested or credited. This is price return, not total return or point-in-time as-traded share quantities. Future snapshot splits can rescale earlier quoted prices/volume; this frozen normalization is disclosed.",
+      "judgment": {
+        "criteria": "For the fixed selected candidate assess (1) a connected decline, rounded base or sustained consolidation, and recovery, not mainly an immediate sharp V; (2) a smaller shallow consolidation attached near the recovered upper rim; and (3) one coherent connected cup and handle, not spliced unrelated segments. All three must pass. A steep portion, gap, or handle longer than 20 sessions alone is not failure. Cite dated visible evidence.",
+        "trigger": "Only for the top-ranked, numerically eligible candidate when the symbol has no position and exactly 50 shares are affordable including the buy fee.",
+        "tools": [
+          "read_bars",
+          "price_facts"
+        ],
+        "uncertainty": "skip",
+        "input_mode": "chart_and_text"
+      },
+      "account_policy": {},
+      "assumptions": {
+        "start": "2024-01-02",
+        "end": "2024-02-15",
+        "symbols": [
+          "NVDA"
+        ],
+        "initial_cash": 10000.0,
+        "fee_rate": 0.0005
+      },
+      "curve": [
+        {
+          "date": "2024-01-02",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-03",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-04",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-05",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-08",
+          "cash": 10000.0,
+          "equity": 10000.0
+        },
+        {
+          "date": "2024-01-09",
+          "cash": 7378.64,
+          "equity": 10035.64
+        },
+        {
+          "date": "2024-01-10",
+          "cash": 7378.64,
+          "equity": 10096.14
+        },
+        {
+          "date": "2024-01-11",
+          "cash": 7378.64,
+          "equity": 10119.74
+        },
+        {
+          "date": "2024-01-12",
+          "cash": 7378.64,
+          "equity": 10114.14
+        },
+        {
+          "date": "2024-01-16",
+          "cash": 7378.64,
+          "equity": 10197.74
+        },
+        {
+          "date": "2024-01-17",
+          "cash": 7378.64,
+          "equity": 10181.29
+        },
+        {
+          "date": "2024-01-18",
+          "cash": 7378.64,
+          "equity": 10233.99
+        },
+        {
+          "date": "2024-01-19",
+          "cash": 7378.64,
+          "equity": 10353.19
+        },
+        {
+          "date": "2024-01-22",
+          "cash": 7378.64,
+          "equity": 10361.34
+        },
+        {
+          "date": "2024-01-23",
+          "cash": 7378.64,
+          "equity": 10372.29
+        },
+        {
+          "date": "2024-01-24",
+          "cash": 7378.64,
+          "equity": 10446.74
+        },
+        {
+          "date": "2024-01-25",
+          "cash": 7378.64,
+          "equity": 10459.49
+        },
+        {
+          "date": "2024-01-26",
+          "cash": 7378.64,
+          "equity": 10430.19
+        },
+        {
+          "date": "2024-01-29",
+          "cash": 7378.64,
+          "equity": 10501.89
+        },
+        {
+          "date": "2024-01-30",
+          "cash": 7378.64,
+          "equity": 10517.34
+        },
+        {
+          "date": "2024-01-31",
+          "cash": 7378.64,
+          "equity": 10454.99
+        },
+        {
+          "date": "2024-02-01",
+          "cash": 7378.64,
+          "equity": 10529.99
+        },
+        {
+          "date": "2024-02-02",
+          "cash": 7378.64,
+          "equity": 10686.64
+        },
+        {
+          "date": "2024-02-05",
+          "cash": 7378.64,
+          "equity": 10845.24
+        },
+        {
+          "date": "2024-02-06",
+          "cash": 7378.64,
+          "equity": 10789.79
+        },
+        {
+          "date": "2024-02-07",
+          "cash": 7378.64,
+          "equity": 10883.59
+        },
+        {
+          "date": "2024-02-08",
+          "cash": 7378.64,
+          "equity": 10860.69
+        },
+        {
+          "date": "2024-02-09",
+          "cash": 7378.64,
+          "equity": 10985.29
+        },
+        {
+          "date": "2024-02-12",
+          "cash": 11006.82,
+          "equity": 11006.82
+        },
+        {
+          "date": "2024-02-13",
+          "cash": 11006.82,
+          "equity": 11006.82
+        },
+        {
+          "date": "2024-02-14",
+          "cash": 11006.82,
+          "equity": 11006.82
+        },
+        {
+          "date": "2024-02-15",
+          "cash": 11006.82,
+          "equity": 11006.82
+        }
+      ],
+      "trades": [
+        {
+          "date": "2024-01-09",
+          "signal_date": "2024-01-08",
+          "symbol": "NVDA",
+          "action": "buy",
+          "quantity": 50,
+          "price": 52.4010009765625,
+          "fee": 1.31,
+          "gross": 2620.05,
+          "decision_id": "2024-01-08-1",
+          "reason": "next_session_open"
+        },
+        {
+          "date": "2024-02-12",
+          "signal_date": "2024-02-09",
+          "symbol": "NVDA",
+          "action": "sell",
+          "quantity": 50,
+          "price": 72.5999984741211,
+          "fee": 1.82,
+          "gross": 3630.0,
+          "decision_id": "2024-02-09-1",
+          "reason": "next_session_open"
+        }
+      ],
+      "positions": [],
+      "decisions": [
+        {
+          "id": "2024-01-08-1",
+          "cutoff": "2024-01-08",
+          "status": "ordered",
+          "symbol": "NVDA",
+          "action": "buy",
+          "shares": 50,
+          "explanation": "Approved numeric market screen and first-ranked cup-and-handle candidate passed.",
+          "judgment": "Assess only candidate dated 2023-11-13–2023-12-21; bottom 2023-12-04, handle through 2024-01-05. Numeric stop=47.3200, target=70.4220. Apply all three approved shape criteria and cite visible dates.",
+          "candidates": [],
+          "selected_candidate_id": null,
+          "input_hash": "d34625ed09c27ca154e06b8ce49cfb396de4d7d95e2657493750475fe9fcf514",
+          "images": [
+            {
+              "sha256": "511c6f8103fc434e8be620fdaa916029d8f87a02d990dd003dfdd5535a82abb1",
+              "symbol": "NVDA",
+              "cutoff": "2024-01-08",
+              "start": "2023-07-19",
+              "end": "2024-01-08",
+              "bar_count": 120,
+              "visible_bar_count": 170
+            }
+          ],
+          "model": {
+            "verdict": "pass",
+            "reason": "The candidate forms a connected cup-and-handle: NVDA declines from the recovered-area rim around Nov 14 (high 49.83) into a gradual, multi-session low area around Dec 4–6 (Dec 4 low 45.01; Dec 6 low 45.41), then recovers to the rim and slightly above by Dec 18 (high 50.43). This is not mainly an immediate sharp V. The subsequent pullback and consolidation is relatively shallow and attached near the upper rim: Dec 20 low 48.10, with closes mostly around 48–50 through Jan 5 (close 49.10). The dated sequence is continuous and coherent rather than spliced.",
+            "evidence": [
+              {
+                "symbol": "NVDA",
+                "date": "2023-11-14"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-04"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-06"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-18"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-20"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-05"
+              }
+            ],
+            "tool_names": []
+          }
+        },
+        {
+          "id": "2024-02-09-1",
+          "cutoff": "2024-02-09",
+          "status": "ordered",
+          "symbol": "NVDA",
+          "action": "sell",
+          "shares": 50,
+          "explanation": "Approved close exit: original stop breached or target reached.",
+          "judgment": "",
+          "candidates": [],
+          "selected_candidate_id": null,
+          "input_hash": "d9e0a4f9c94bc776bf8d834d9603fe9691af112b5b354ac5214dea05a074bbe8",
+          "images": [],
+          "model": null
+        },
+        {
+          "id": "2024-02-12-1",
+          "cutoff": "2024-02-12",
+          "status": "fail",
+          "symbol": "NVDA",
+          "action": "buy",
+          "shares": 50,
+          "explanation": "Approved numeric market screen and first-ranked cup-and-handle candidate passed.",
+          "judgment": "Assess only candidate dated 2023-11-10–2024-01-04; bottom 2023-12-04, handle through 2024-02-09. Numeric stop=48.3060, target=89.6350. Apply all three approved shape criteria and cite visible dates.",
+          "candidates": [],
+          "selected_candidate_id": null,
+          "input_hash": "8e254b63b4925d049940819d33cbf4103bb4810675af1c6ab4967ed5a8370180",
+          "images": [
+            {
+              "sha256": "51f84387215f126c451ad7f553fb88f7dff526ffacf877f090d8b3df16eee858",
+              "symbol": "NVDA",
+              "cutoff": "2024-02-12",
+              "start": "2023-08-22",
+              "end": "2024-02-12",
+              "bar_count": 120,
+              "visible_bar_count": 170
+            }
+          ],
+          "model": {
+            "verdict": "fail",
+            "reason": "The decline and recovery are connected: NVDA fell from around $50 in mid-November to a December 4 low near $45, then recovered toward the prior rim by early January. But the proposed handle does not look like a small, shallow consolidation near that rim. After January 4, price rose sharply—from $49.10 on January 5 to $59.49 on January 19 and $72.25 on February 9—rather than consolidating near the recovered upper rim. The dates form one continuous price sequence, not a splice, but the proposed cup-and-handle shape fails because its handle criterion is absent.",
+            "evidence": [
+              {
+                "symbol": "NVDA",
+                "date": "2023-11-14"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2023-12-04"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-04"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-05"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-01-19"
+              },
+              {
+                "symbol": "NVDA",
+                "date": "2024-02-09"
+              }
+            ],
+            "tool_names": []
+          }
+        }
+      ]
+    }
+  ]
+}
