@@ -4,7 +4,7 @@
 
 <h3 align="center">Turn your investment method into a testable strategy.</h3>
 
-<p align="center">Bring an idea, a set of rules, or an annotated chart. Clarify the method with the Builder Agent, then turn your approved rules into Python code you can test, run on historical data, and revise.</p>
+<p align="center">Describe your investment method to the Builder Agent. It turns the rules you approve into testable Python code and, when your strategy needs model judgment, <strong>builds a second agent to apply your rules during historical runs</strong>.</p>
 
 <p align="center">
   <a href="https://xxiao053.github.io/strategy-agent-lab/"><img alt="Explore the online demo" src="https://img.shields.io/badge/Explore_Online_Demo-245744?style=for-the-badge"></a>
@@ -28,15 +28,15 @@ A replay of real project records with English and Chinese captions. [Open the MP
 
 ## ✨ Highlights
 
-### Turn your rules into code and tests
+### Turn your rules into code, tests, and an optional Execution Agent
 
-Start in English or Chinese with notes, files or chart examples. The Builder asks what is unclear; you approve the rules before it generates and tests the Python implementation. [See supported materials.](docs/en/materials.md)
+Give the Builder Agent your rules, notes, or chart examples in English or Chinese. Once you approve the method, it generates the strategy code and tests. If your strategy needs judgment—for example, deciding whether a chart matches a pattern—the Builder also creates an **Execution Agent** with criteria to apply and evidence it can inspect. [See supported materials.](docs/en/materials.md)
 
 ![Generated strategy files and validation results in the workbench](docs/media/builder-implementation.png)
 
 ### See why the strategy made a decision
 
-Inspect equity, return, drawdown, trades and holdings alongside the evidence behind individual decisions. When the method calls for model judgment, an optional Execution Agent applies the approved rules using information available at the time.
+During a historical run, the system supplies the Execution Agent with evidence available as of each decision date. Review its recorded judgments and supporting evidence alongside equity, return, drawdown, trades and holdings.
 
 ![Decision evidence from a historical strategy run](docs/media/decision-evidence.png)
 

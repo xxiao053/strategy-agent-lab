@@ -4,7 +4,7 @@
 
 <h3 align="center">把你的投资方法，变成可验证的策略项目。</h3>
 
-<p align="center">从一个想法、一套规则或一张标注图表开始。构建智能体帮你理清方法，把你确认的规则写成 Python 策略代码，方便测试、用历史数据运行，再继续修改。</p>
+<p align="center">跟构建智能体讲你的投资方法。它会把你确认的规则写成可测试的 Python 代码；如果策略需要模型判断，还能<strong>创建另一个智能体，在历史运行中按你的规则作出判断</strong>。</p>
 
 <p align="center">
   <a href="https://xxiao053.github.io/strategy-agent-lab/"><img alt="浏览在线演示" src="https://img.shields.io/badge/Explore_Online_Demo-245744?style=for-the-badge"></a>
@@ -28,15 +28,15 @@ https://github.com/user-attachments/assets/b51d49c6-d592-4613-8d59-c11fb458bf88
 
 ## ✨ 产品亮点
 
-### 把规则写成代码和测试
+### 把规则写成代码和测试，按需创建执行智能体
 
-可以用中文或英文提供笔记、文件或图表案例。构建智能体追问不清楚的地方，由你确认规则，然后生成并测试 Python 实现。[查看支持的资料格式。](docs/zh-CN/materials.md)
+用中文或英文向构建智能体提供规则、笔记或图表案例。你确认方法后，它会生成策略代码和测试。如果你的策略需要判断（例如某段走势是否符合形态标准），它还会创建一个**执行智能体**，明确它按什么标准判断、能查看哪些证据。[查看支持的资料格式。](docs/zh-CN/materials.md)
 
 ![工作台里生成的策略文件和验证结果](docs/media/builder-implementation.png)
 
 ### 查看策略为什么这样判断
 
-除了权益、累计收益率、最大回撤、成交和持仓，还可以查看每次模型判断的依据。策略确实需要模型判断时，才由执行智能体根据已确认规则和当时可用的信息作出判断。
+历史运行中，系统只向执行智能体提供截至当时可用的数据和证据。除了权益、累计收益率、最大回撤、成交和持仓，还可以查看它的判断记录与依据。
 
 ![历史运行中记录的单次判断依据](docs/media/decision-evidence.png)
 
