@@ -1,46 +1,72 @@
-# Strategy Agent Lab
+<h1 align="center">Strategy Agent Lab</h1>
 
-**English** | [简体中文](README.zh-CN.md)
+<p align="center"><strong>English</strong> · <a href="README.zh-CN.md">简体中文</a></p>
 
-### Turn your investment method into a testable strategy.
+<h3 align="center">Turn your investment method into a testable strategy.</h3>
 
-Start with an investment idea, your own rules, or examples from your notes and charts. The Builder Agent asks questions to make the rules clear, then turns your approved method into strategy code and tests. Run it on historical data, inspect what it did, and refine it in the same conversation.
+<p align="center">Bring an idea, a set of rules, or an annotated chart. Clarify the method with the Builder Agent, then turn your approved rules into Python code you can test, run on historical data, and revise.</p>
 
-[![Open Workbench](https://img.shields.io/badge/Open_Workbench-2357D9?style=for-the-badge)](https://xxiao053.github.io/strategy-agent-lab/)
-[![CI](https://img.shields.io/github/actions/workflow/status/xxiao053/strategy-agent-lab/ci.yml?branch=main&style=for-the-badge&label=CI)](https://github.com/xxiao053/strategy-agent-lab/actions/workflows/ci.yml)
-[![MIT License](https://img.shields.io/badge/License-MIT-117A55?style=for-the-badge)](LICENSE)
+<p align="center">
+  <a href="https://xxiao053.github.io/strategy-agent-lab/"><img alt="Explore the online demo" src="https://img.shields.io/badge/Explore_Online_Demo-245744?style=for-the-badge"></a>
+  <a href="https://github.com/xxiao053/strategy-agent-lab/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/xxiao053/strategy-agent-lab/ci.yml?branch=main&amp;style=for-the-badge&amp;label=CI"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/License-MIT-64705D?style=for-the-badge"></a>
+</p>
 
-**[Run locally](#quick-start)** · **[Documentation](#documentation)** · **[Watch the walkthrough](docs/media/walkthrough.mp4)**
+<p align="center"><a href="#walkthrough">Walkthrough</a> · <a href="#quick-start">Run locally</a> · <a href="#how-it-works">Architecture</a> · <a href="#documentation">Documentation</a></p>
 
-![A real Builder conversation beside run results: equity, total return, maximum drawdown and the equity curve](docs/media/workbench-run-results.png)
+<p align="center">
+  <a href="https://xxiao053.github.io/strategy-agent-lab/"><img alt="A real Builder conversation beside run results: equity, total return, maximum drawdown and the equity curve" src="docs/media/workbench-run-results.png" width="100%"></a>
+</p>
 
-The video is edited playback of real saved records, with English and Chinese captions. Browsing these examples makes no model calls.
+<a name="walkthrough"></a>
 
-## A workbench for building strategies
+## 🎥 Walkthrough
 
-You bring the idea and decide the rules. The Builder helps turn them into a strategy you can run, inspect and change. If your method needs model judgment as well as calculations, the strategy can include an Execution Agent.
+https://github.com/user-attachments/assets/b51d49c6-d592-4613-8d59-c11fb458bf88
 
-- Clarify a method in English or Chinese, approve immutable versions and revise without overwriting earlier work.
-- Import text, Markdown, CSV, text-extractable PDF and PNG/JPEG examples with inspectable source references.
-- Search model catalogs or enter a model ID; configure builder and execution roles independently with your own credentials.
-- Generate and test standard-library Python projects in restricted Docker workers or native Windows MXC.
-- Run compatible projects on frozen US stock/ETF daily data. Inspect equity, trades, holdings and dated model evidence, then bring a decision back into the conversation.
-- Browse packaged conversations, generated files, tests and run results without credentials or a private database; create an independent editable copy in the local application.
+A replay of real project records with English and Chinese captions. [Open the MP4](docs/media/walkthrough.mp4) if the player is unavailable.
 
-Generated self-tests are reports from the generated project, not independent proof of correctness. The workbench is not a live-trading service, an autonomous strategy optimizer or a guarantee of investment performance.
+## ✨ Highlights
 
-## How it works
+### Turn your rules into code and tests
+
+Start in English or Chinese with notes, files or chart examples. The Builder asks what is unclear; you approve the rules before it generates and tests the Python implementation. [See supported materials.](docs/en/materials.md)
+
+![Generated strategy files and validation results in the workbench](docs/media/builder-implementation.png)
+
+### See why the strategy made a decision
+
+Inspect equity, return, drawdown, trades and holdings alongside the evidence behind individual decisions. When the method calls for model judgment, an optional Execution Agent applies the approved rules using information available at the time.
+
+![Decision evidence from a historical strategy run](docs/media/decision-evidence.png)
+
+### Change a rule and keep the previous version
+
+In the NVDA example, a follow-up changes fixed sizing from **100 to 50 shares**. Both method versions, implementations and historical runs remain available to compare.
+
+[![The NVDA position-sizing revision](docs/media/revision.gif)](docs/en/demonstration.md)
+
+<a name="how-it-works"></a>
+
+## 🧩 How it works
+
+![Five columns show the method, Builder Agent, strategy project containing the program and optional Execution Agent, shared historical runtime, and results and evidence that feed the next revision](docs/media/workflow-illustrated.png)
+
+The Builder creates a strategy project. The shared runtime runs it on historical data, enforces information cutoffs and handles simulated accounting. See the [architecture and execution boundaries](docs/en/architecture.md).
+
+<details>
+<summary>Original architecture diagram</summary>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/media/workflow-en-dark.svg">
-  <img alt="The Builder turns your method into strategy code and an optional Execution Agent. A shared runtime executes the project; results feed the next revision." src="docs/media/workflow-en-light.svg">
+  <img alt="Original workflow diagram showing the Builder, strategy project, shared runtime, and results" src="docs/media/workflow-en-light.svg">
 </picture>
 
-Want to change something? Continue the conversation and build a new version. Earlier methods, code and results stay available.
+</details>
 
-You decide what the strategy should do; the workbench helps you check whether it does it. For the technical responsibilities and execution boundaries, see [Architecture](docs/en/architecture.md).
+<a name="quick-start"></a>
 
-## Quick start
+## 🚀 Quick start
 
 Install and start Docker with Linux containers. From the downloaded repository:
 
@@ -62,23 +88,21 @@ Open **[localhost:8765](http://127.0.0.1:8765)**.
 2. Configure your credentials in **Model settings** and assign the project's model roles.
 3. Clarify and approve the method, then **Build and validate**. Prepare market data separately before a historical run.
 
-Live model tasks require your own credentials and spending authorization. Startup and browsing do not call models; the initial build downloads dependencies. The controller and generated-code workers run in separate containers.
+Startup and browsing do not call models. Live model tasks use your own credentials and spending authorization; the Builder and Execution Agent can use different model connections. See [models and costs](docs/en/models.md).
 
-Windows Docker Desktop has undergone scoped application, worker and fresh-volume acceptance. Linux/macOS scripts are supplied but have **not** been platform-accepted. See [Docker setup, persistence and trust boundaries](docs/en/docker-local.md). Native Windows development is also available through [Getting started](docs/en/getting-started.md).
+The initial build downloads dependencies. Docker Desktop has been tested on Windows; the macOS and Linux startup scripts are provided but have not been tested end to end on those hosts. See [Docker setup](docs/en/docker-local.md) or [native Windows setup](docs/en/getting-started.md).
 
-## Explore real examples
+## 🎬 Explore real examples
 
 | Example | What it demonstrates |
 | --- | --- |
-| Complete cup-and-handle Builder project | Full method → clarification → generated implementation → 40 instruments and 718 historical sessions; independent implementation, cutoff and accounting checks |
-| NVDA revision | A Chinese instruction changes fixed sizing from 100 to 50 shares; both method versions, implementations and historical runs remain inspectable |
+| Complete cup-and-handle Builder project | Follow the approved method through generated code and tests to a run across 40 instruments and 718 trading sessions |
+| NVDA revision | Follow a rule change requested in Chinese and compare two versions of the same strategy |
 | Original cup execution example | The separately preserved method-specific workflow, with its original configuration and saved results |
 
-[![The NVDA position-sizing revision](docs/media/revision.gif)](docs/en/demonstration.md)
+The complete Builder example covers **2024-01-02–2026-11-10**. Its simulated account starts at $100,000 and ends at **$176,188.30**: **+76.19% total return** and **36.14% maximum daily-close drawdown**, including simulated fees and slippage. These are historical results, not expected returns. See the [method, run assumptions and verification](docs/en/demonstration.md).
 
-The primary generated run covers **2024-01-02–2026-11-10**, starts at $100,000 and ends at **$176,188.30**: **+76.19% return, 36.14% maximum daily-close drawdown**, including simulated fees and slippage. These are historical example results, not expected returns. The original example is not relabeled as Builder output. See the [scope, configuration and limitations](docs/en/demonstration.md).
-
-## Local application and online showcase
+## 💻 Local application and online demo
 
 | | Local application | Static showcase |
 | --- | --- | --- |
@@ -87,22 +111,22 @@ The primary generated run covers **2024-01-02–2026-11-10**, starts at $100,000
 | Backend | Local controller and isolated workers | Static files only |
 | Continue an example | Create an editable copy | Read-only |
 
-The local application uses the operator's own model credentials and spending authorization; it supplies no author account or allowance. OpenAI is live-tested for the demonstrated workflows. Other provider adapters are offline-tested extension points, not verified substitutes for every coding or image capability.
+The [online demo](https://xxiao053.github.io/strategy-agent-lab/) is hosted on GitHub Pages. It lets you inspect saved conversations, code and runs without a key. Run the app locally to create projects or continue an example. OpenAI has been tested in the demonstrated live workflows; check [provider support](docs/en/models.md) before choosing another provider.
 
-A separate static showcase shares the saved-project viewer and packaged examples. It supports navigation, code inspection, results and media without a Python backend. It cannot start new conversations, builds or historical runs. **[Open the online workbench](https://xxiao053.github.io/strategy-agent-lab/)**, hosted for free on GitHub Pages. See the [preview and publishing guide](docs/en/github-pages.md). No hosted live backend is planned.
-
-## Try it, make it yours, and share what you learn
+## 🤝 Try it, make it yours, and share what you learn
 
 You're welcome to try the workbench, use it for your own methods, fork it and change it. If you find something useful, build a variation or have an idea for improvement, I'd love to hear about it—open an issue or share a pull request on GitHub. Feedback and a note about what you've built are appreciated, not required by the license.
 
 For changes, see the [development guide](docs/en/development.md). Please keep API keys, personal trading records and private materials out of public issues and pull requests.
 
-## Documentation
+<a name="documentation"></a>
+
+## 📚 Documentation
 
 [Product scope](docs/en/product-direction.md) · [Getting started](docs/en/getting-started.md) · [Architecture](docs/en/architecture.md) · [Models and costs](docs/en/models.md) · [Materials](docs/en/materials.md) · [Security and limitations](docs/en/security.md) · [Development](docs/en/development.md)
 
-Initial execution scope is Python, daily long-only US stocks/ETFs and the validated local data catalog. No broker connections, live orders, hosted multiuser accounts or arbitrary dependencies are included. See the [strategy-v1 contract](docs/en/execution-contract.md).
+Execution currently supports Python strategies on daily long-only US stocks/ETFs using the validated local data catalog. There are no broker connections, live orders, hosted accounts or arbitrary dependencies. Generated self-tests are not independent proof of correctness. See the [strategy-v1 contract](docs/en/execution-contract.md).
 
-## License
+## 📄 License
 
 Original software and documentation are available under the [MIT License](LICENSE), copyright © 2026 xxiao053. Third-party software retains its [own licenses and notices](THIRD_PARTY_NOTICES.txt). Market data, referenced publications and third-party content shown in media are not licensed by MIT; see the [data and reference-material notice](DATA_NOTICE.md).
